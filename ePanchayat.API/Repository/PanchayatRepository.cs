@@ -22,6 +22,11 @@ namespace ePanchayat.API.Repository
 
         private List<Panchayat> MapToPanchayat(DataSet dataset)
         {
+            if(dataset.Tables.Count == 0 || dataset.Tables[0].Rows.Count == 0)
+            {
+                return new List<Panchayat>();
+            }
+
             var panchayats = dataset.Tables[0].AsEnumerable().Select(row => new Panchayat()
             {
                 PanchayatId = Convert.ToInt32(row["PanchayatId"]),
