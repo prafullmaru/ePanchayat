@@ -1,3 +1,5 @@
+-- TODO - Finalize fields and prepare CRUD stored procs
+
 USE [ePanchayat]
 GO
 

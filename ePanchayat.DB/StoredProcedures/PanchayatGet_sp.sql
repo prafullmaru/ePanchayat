@@ -9,7 +9,7 @@ GO
 
 CREATE PROCEDURE dbo.PanchayatGet_sp
 (
-	@PanchayatName VARCHAR(50)
+	@PanchayatName VARCHAR(50) = NULL
 )
 AS
 BEGIN
