@@ -1,0 +1,12 @@
+@import "src/core/styles/scss/variables"; 
+@import "src/core/styles/scss/bootstrapOverridesVariables";
+
+@each $theme in $themes { 
+    :host-context(.ag-theme-core-#{$theme}) {
+        .btn-group { 
+            .dropdown-menu {
+                padding-top: 7px; // todo.. revisit these paddings specified for grid header
+            }
+        }
+    }
+}

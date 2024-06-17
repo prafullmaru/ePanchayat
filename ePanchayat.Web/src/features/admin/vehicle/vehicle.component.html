@@ -1,0 +1,46 @@
+<div class="panel panel-primary height-100p animated fadeIn" id="refDataPanel">
+    <div class="panel-heading">
+        <h4 class="panel-title">Vehicle</h4>
+  </div>
+  <div class="core-panel height-100p" *ngIf="!showOnlyDetails">
+    <div *ngIf="mode !== 1" class="underlined-menu">
+      <ul class="nav nav-tabs">
+        <li
+          class="nav-item"
+          *ngFor="let tab of tabs"
+          [ngClass]="{ 'active': tab.description === activeTab?.description }"
+          (click)="tab.isLoaded = true; activeTab = tab; loadedTabs.push(tab.description)"
+        >
+          <a class="nav-link">
+            <span>{{ tab.description }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  
+    <div class="core-tab-panel">
+        <div class="row">
+          <div class="col-md-2">
+            <core-field label="Asset Type">
+              <input
+                class="form-control input-sm"
+                type="text"
+              />
+            </core-field>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-primary mt-22">Update</button>
+          </div>
+        </div>
+    </div>
+    <div class="height-100p">
+        <core-grid
+            [gridOptions]="gridOptions"
+            [columnDefs]="columnDefs"
+            [rowData]="vehicles"
+            [rowSelection]="'multiple'"
+            [suppressRowClickSelection]="true"
+        >
+        </core-grid>
+    </div>
+  </div>

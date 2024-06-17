@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
+import { VehicleModule, VehicleComponent } from '@features/admin';
+
 import {
   ModuleContainerComponent,
   ModuleContainerModule,
@@ -23,11 +25,20 @@ const adminRoutes: Route[] = [
         component: ModuleHomeComponent,
         canActivate: [HomeRouteGuard],
       },
+      {
+        path: 'vehicle',
+        component: VehicleComponent,
+        data: { description: 'vehicle' },
+      },
     ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(adminRoutes), ModuleContainerModule],
+  imports: [
+    RouterModule.forChild(adminRoutes),
+    ModuleContainerModule,
+    VehicleModule,
+  ],
 })
 export class AdminRoutesModule {}

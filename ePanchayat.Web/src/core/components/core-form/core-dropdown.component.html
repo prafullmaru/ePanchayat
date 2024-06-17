@@ -1,0 +1,20 @@
+<div class="btn-group compact-menu">
+  <button
+    type="button"
+    data-toggle="dropdown"
+    aria-haspopup="true"
+    aria-expanded="false"
+    class="btn btn-default dropdown-toggle"
+  >
+    {{ selectedOption?.value }}
+    <span class="fas fa-chevron-down"></span>
+  </button>
+
+  <ul class="dropdown-menu">
+    <li *ngFor="let option of options">
+      <a (click)="setSelectedOption(option)">
+        {{ option.value }}
+      </a>
+    </li>
+  </ul>
+</div>
