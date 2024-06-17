@@ -1,0 +1,235 @@
+@import "theme-variables";
+@import "bootstrapOverridesVariables";
+
+@each $theme in $themes {
+    .core-#{$theme}-theme {
+        .panel {
+            color: map_get($default-text-color-map, $theme);
+            background-color: map_get($default-background-map, $theme) !important;
+        }
+
+        &.panel-info {
+            border-color: map_get($panel-border-color-map, $theme);
+        }
+
+        .btn.btn-primary.action-button {
+            border: 1px solid map_get($panel-border-color-map, $theme);
+            border-radius: 5px !important;
+            padding: 8px 12px;
+            margin-top: -1px;
+
+            &:hover {
+                border-radius: 5px !important;
+                border: 1px solid map_get($panel-border-color-map, $theme);
+                color: white;
+            }
+        }
+
+        .panel-default {
+            border: none;
+        }
+
+        .panel-mini {
+            box-shadow: none;
+            margin-bottom: 0;
+        }
+
+        .panel-primary {
+            border: none;
+            margin-bottom: 0;
+
+            .panel-heading {
+                margin-top: 1px;
+                border-bottom: 1px solid map_get($panel-border-color-map, $theme) !important;
+                // color: $body-font-color; 
+                // background: $primary-background; 
+                height: 43px;
+                // padding: 13px 15px;
+                padding-right: 0;
+
+                .panel-title {
+                    font-size: 18px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .tile {
+            .panel {
+                margin-bottom: 0;
+                box-shadow: none;
+
+            }
+
+            .panel-title {
+                text-transform: none !important;
+            }
+
+            border: 2px solid map_get($panel-border-color-map, $theme);
+            border-radius: map_get($tile-radius-5px-map, $theme);
+            margin: 5px;
+        }
+
+        .alert-panel {
+            background-color: map_get($default-background-map, $theme);
+            margin: 10px;
+            font-size: 20px;
+            align-content: center;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &.success {
+                color: map_get($success-color-map, $theme);
+            }
+
+            &.error {
+                color: map_get($error-color-map, $theme);
+            }
+        }
+    }
+}
+
+.core-panel {
+    border-radius: 5px;
+    padding: 10px 10px 5px;
+    border: none;
+
+    &>div.row {
+        margin-right: 0 !important;
+    }
+}
+
+.core-tab-panel {
+    @extend .core-panel;
+    border-top-left-radius: 0;
+}
+
+.modal-content {
+    .core-tab-panel {
+        padding: 0;
+    }
+}
+
+.core-tab-content {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .dropdown-menu-right {
+        margin-top: 3px;
+        margin-bottom: 3px;
+    }
+
+    // btn-xs dimensions used here 
+    .btn-primary {
+        font-size: 12px;
+        line-height: 1.5;
+        border-radius: 3px;
+    }
+
+    &>.row {
+        margin-right: 0;
+    }
+}
+
+// ideally ag-grid-viewport should have been in ag-grid. scss, 
+// but i am unable to exten/inherit the pseudo classes and hence keeping it here 
+.fancy-scroll,
+.ag-body-viewport,
+.ag-body-horizontal-scroll-viewport,
+.ag-pinned-left-cols-viewport,
+.ag-column-select-list,
+.ag-tool-panel-wrapper,
+.scrollable-panel {
+    overflow-y: hidden;
+    overflow-x: hidden;
+
+    &:hover {
+        overflow-x: auto; //overflow-y: auto; 
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+    }
+
+    &::-webkit-scrollbar {
+        height: 10px;
+        background-color: #f1f1f1;
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #c1c1c1;
+        border-radius: 5px;
+    }
+}
+
+
+// todo.. we need to create a directive to auto calculate // the scrollable panle height onsteadd of below classes
+.scrollable-panel {
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: calc(100vh - 90px);
+    height: calc(100vh - 90px);
+}
+
+.underlined-menu .scrollable-panel,
+.underlined-menu-with-border .scrollable-panel {
+    max-height: calc(100vh - 100px);
+    height: calc(100vh - 100px);
+}
+
+.core-widgets .scrollable-panel {
+    max-height: calc(100vh - 70px);
+    height: calc(100vh - 70px);
+}
+
+.menu-direction-horizontal .scrollable-panel {
+    max-height: calc(100vh - 150px);
+    height: calc(100vh - 150px);
+}
+
+.app-mode-module {
+    &.menu-direction-horizontal .scrollable-panel {
+        max-height: calc(100vh - 100px);
+        height: calc(100vh - 100px);
+    }
+
+    &.menu-direction-vertical .scrollable-panel {
+        max-height: calc(100vh - 50px);
+        height: calc(100vh - 50px);
+    }
+}
+
+.notification-counter {
+    margin-top: -6px;
+    position: absolute;
+    background: $error-color-input;
+    border-radius: 50%;
+    color: white;
+    padding: 0 3px 0 3px;
+    font-size: 11px;
+    z-index: 10;
+}
+
+.dismiss-popover {
+    opacity: .6;
+    margin-top: -5px;
+    margin-right: -7px;
+    cursor: pointer;
+    transition: all 200ms linear;
+
+    &:hover {
+        opacity: 1;
+        transform: scale (1.2);
+    }
+}
+
+.widget-panel {
+    box-shadow: unset;
+
+    .widget-panel-title {
+        text-transform: none !important;
+    }
+}

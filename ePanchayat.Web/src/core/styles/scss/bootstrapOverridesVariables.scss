@@ -1,0 +1,239 @@
+@import "theme-variables";
+@import "variables";
+
+// Main 
+$default-border-color-map: (
+    "light": $primary-color,
+    "dark": $dark-gray-9, 
+);
+
+$default-text-color-map: ( 
+    "light": #333333,
+    "dark": $primary-white, 
+);
+
+$default-border-map: ( 
+    "light": 1px solid $panel-border-color-light,
+    "dark": 1px solid $dark-gray-9, 
+);
+
+$default-background-map: ( 
+    "light": $primary-white,
+    "dark": $dark-charcoal-0
+);
+
+$panel-heading-background-map: ( 
+    "light": $secondary-background,
+    "dark": $dark-charcoal-0, 
+);
+
+$panel-border-color-map: ( 
+    "light": $panel-border-color-light,
+    "dark": $dark-gray-9,
+);
+
+// Main menu
+$main-menu-background-map: (
+    "light": $primary-color,
+    "dark": $mid-turquoise,
+);
+
+$main-menu-hover-background-map: ( 
+    "light": $secondary-color,
+    "dark": $dark-turquoise,
+);
+
+$vertical-menu-background-map: ( 
+    "light": $primary-color-20,
+    "dark": $dark-gray-11,
+);
+
+$vertical-menu-text-color-map: (
+    "light": rgba(0, 0, 0, 0.65),
+    "dark": $gray-gray-0, 
+);
+
+$vertical-menu-hover-background-map: (
+    "light": #03a9f4, 
+    "dark": $mid-turquoise,
+);
+
+$vertical-menu-hover-text-color-map: (
+    "light": $primary-white, 
+    "dark": map_get($default-text-color-map, "dark"),
+);
+
+$vertical-menu-expanded-text-color-map: (
+    "light": rgba(0, 0, 0, 0.65),
+    "dark": $gray-gray-3, 
+);
+
+$vertical-menu-expanded-hover-background-map: ( 
+    "light": transparent, 
+    "dark": inherit, 
+);
+
+$vertical-menu-expanded-hover-text-color-map: ( 
+    "dark": map_get($default-text-color-map, "dark"), 
+    "light":#03a9f4, 
+); 
+
+// Scrollbars 
+$scrollbar-track-color-map: (
+    "light": $gray-gray-1,
+    "dark": $dark-gray-9, 
+);
+
+$scrollbar-thumb-color-map: ( 
+    "light": $gray-gray-0,
+    "dark": $gray-gray-0, 
+);
+
+// Buttons 
+$buttons-background-map: ( 
+    "light": $primary-color,
+    "dark": $bright-turquoise, 
+); 
+
+$buttons-hover-background-map: (
+    "light": $secondary-color,
+    "dark": $mid-turquoise, 
+);
+
+// Input
+$input-background-map: (
+    "light": $primary-white,
+    "dark": $dark-gray-8, 
+);
+
+$input-radius-map: (
+    "light": 4px,
+    "dark": 0, 
+);
+
+$tile-radius-3px-map: (
+    "light": 3px,
+    "dark": 0, 
+);
+
+$tile-radius-5px-map: (
+    "light": 5px,
+    "dark": 0, 
+); 
+
+$tile-color-map: ( 
+    "light": $primary-color,
+    "dark": "inherit", 
+); 
+
+$tile-active-border-color: (
+    "light": null, 
+    "dark": $bright-turquoise, 
+);
+
+$input-border-map: ( 
+    "light": 1px solid #337ab7, 
+    "dark": 1px solid map_get($input-background-map, "dark")
+);
+
+$input-border-color-active-map: ( 
+    "light": #337ab7,
+    "dark": $turquoise, 
+);
+
+$dropdown-arrow-map: (
+    "light": $primary-black,
+    "dark": $primary-white, 
+);
+
+//Table 
+$form-table-th-background-map: ( 
+    "light":#e6e7e8,
+    "dark": $dark-gray-10,
+);
+
+$form-table-border-color-map: (
+    "light": #bdc3c7, 
+    "dark": map_get($default-border-color-map, "dark"),
+);
+
+$form-table-winner-rule-row-background-map: ( 
+    "light": #652394,
+    "dark": $dark-gray-8, 
+); 
+
+$calculation-td-background-hover-map: (
+    "light": map_get($form-table-th-background-map, light),
+    "dark": $dark-gray-10, 
+);
+
+// Gutter
+$gutter-color-map: (     
+    "light": #eeeeee,
+    "dark": map_get($default-border-color-map, dark), 
+);
+
+$warning-bg-color-map: ( 
+    "light": $warning-bg-color-1,
+    "dark": $warning-bg-color-2, 
+);
+
+$error-bg-color-map: (
+    "light": $error-bg-color-1,
+    "dark": $error-bg-color-2,
+);
+
+$error-border-color-map: (
+    "light": $error-border-color-1,
+    "dark": $error-border-color-2, 
+);
+
+$success-bg-color-map: (
+    "light": $success-bg-color-1,
+    "dark": $success-bg-color-2,
+);
+
+$error-color-map: ( 
+    "light": $error-bg-color-2,
+    "dark": $error-bg-color-2, 
+);
+
+$error-border-color-map: ( 
+    "light": $error-border-color-1,
+    "dark": $error-border-color-2, 
+); 
+
+$success-bg-color-map: (
+    "light": $success-bg-color-1,
+    "dark": $success-bg-color-2, 
+); 
+
+$error-color-map: ( 
+    "light": $error-bg-color-2,
+    "dark": $error-bg-color-2, 
+);
+
+$success-color-map: ( 
+    "light": $bright-green-1,
+    "dark": $alerts-success, 
+); 
+
+$action-link-color-map: ( 
+    "light": $primary-color,
+    "dark": $bright-turquoise, 
+); 
+
+$widget-bg: ( 
+    "dark": $dark-gray-11,
+    "light": white, 
+);
+
+$widget-font-color: (
+    "dark": white, 
+    "light": #333333, 
+);
+
+$icon-opacity: (
+    "light": 1, 
+    "dark": 0.5, 
+); 

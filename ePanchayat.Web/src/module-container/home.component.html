@@ -1,0 +1,32 @@
+<div class="pt-20 host">
+  <div *ngFor="let subMenu of subMenus" class="col-md-3 card-container">
+    <div class="hpanel stats" (click)="onCardClick(subMenu.Location)">
+      <div class="panel-body h-200">
+        <div class="stats-title pull-left">
+          <h4 class="mt-5">{{ subMenu.Description }}</h4>
+        </div>
+        <div class="stats-icon pull-right">
+          <i class="pe-7s-monitor fa-4x"></i>
+        </div>
+        <div class="m-t-xl">
+          <div class="widget-image" width="100%"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="subMenus === undefined || subMenus.length === 0" class="col-md-3 card-container">
+    <div class="hpanel stats">
+      <div class="panel-body h-200">
+        <div class="stats-title pull-right" style="padding-top: 50px;">
+          <h4 class="mt-5">Work In Progress...</h4>
+        </div>
+        <div class="m-t-xl">
+          <div width="100%">
+            <span class="fa-solid fa-cubes-stacked" style="font-size: 64px; color: #5f69e8;"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

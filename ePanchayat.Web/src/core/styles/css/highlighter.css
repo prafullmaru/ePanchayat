@@ -1,0 +1,15 @@
+.highlight-red {
+    color: hotpink;
+    font-weight: bold;
+}
+
+.highlight-green {
+    color: lightgreen;
+    font-weight: bold;
+}
+
+td {
+    -webkit-transition: 300ms linear all;
+    transition: 1s linear all;
+    background-color: transparent;
+}

@@ -1,0 +1,34 @@
+<div class="host">
+  <div class="container">
+    <div class="row">
+      <dashbaord-carousel></dashbaord-carousel>
+    </div>
+    <div class="row">
+      <div class="cards">
+        <div
+          *ngFor="let topMenu of topMenus"
+          class="card col-md-3"
+          (click)="onCardClick(topMenu.Location)"
+        >
+          <div class="mt-10">
+            <span class="card-title">{{ topMenu.Name }}</span>
+            <span class="icon {{ topMenu.Icon }}"></span>
+          </div>
+          <div class="mt-30">
+            {{ topMenu.Description }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <span>© 2024 ePanchayat | MIT License | Developed by </span>
+    <a target="_blank" style="color: white;" href="https://github.com/prafullmaru">
+      <span>Prafull Maru</span>
+    </a>
+      & 
+    <a target="_blank" style="color: white;" href="https://github.com/prafullmaru/ePanchayat">
+      <span>Open Source Community</span>
+    </a>
+  </div>
+</div>

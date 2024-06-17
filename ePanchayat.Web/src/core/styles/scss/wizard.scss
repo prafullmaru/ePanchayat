@@ -1,0 +1,45 @@
+@import "theme-variables";
+@import "bootstrapOverridesVariables";
+
+@each $theme in $themes {
+    .core-#{$theme}-theme {
+        aw-wizard-navigation-bar {
+            background-color: map_get($default-background-map, $theme);
+        }
+
+        aw-wizard-navigation-bar.horizontal.large-empty-symbols {
+            ul.steps-indicator {
+                li a .label {
+                    text-transform: none;
+                }
+
+
+                li .step-indicator {
+                    border: 2px solid map_get($panel-border-color-map, $theme);
+                }
+
+                li.current .step-indicator {
+                    border-color: $panel-border-color;
+                    color: map_get($buttons-background-map, $theme);
+                }
+
+                li.done .step-indicator {
+                    border: 2px solid map_get($success-color-map, $theme);
+                    color: map_get($success-color-map, $theme);
+
+                    & .wizard-error {
+                        color: map_get($error-color-map, $theme);
+                    }
+                }
+
+                li:not(:last-child):after {
+                    background-color: map_get($panel-border-color-map, $theme);
+                }
+
+                li.done:not(:last-child):after {
+                    background-color: map_get($success-color-map, $theme);
+                }
+            }
+        }
+    }
+}

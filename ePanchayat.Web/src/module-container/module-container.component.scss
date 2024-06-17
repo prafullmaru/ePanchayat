@@ -1,0 +1,226 @@
+@import "src/core/styles//scss/theme-variables";
+@import "src/core/styles//scss/bootstrapOverridesVariables";
+
+@each $theme in $themes {
+    :host-context(.core-#{$theme}-theme) {
+        .vertical-menu {
+            .slider-panel {
+                border-right: map_get($default-border-map, $theme);
+                background-color: map_get($vertical-menu-background-map, $theme);
+
+                .sub-nav {
+                    background-color: map_get($vertical-menu-background-map, $theme);
+                }
+
+                .nav-item {
+                    .nav-link {
+                        color: map_get($vertical-menu-expanded-text-color-map, $theme);
+
+                        &:hover,
+                        &.active,
+                        &:focus {
+                            background-color: map_get($vertical-menu-expanded-hover-background-map, $theme);
+                            color: map_get($vertical-menu-expanded-hover-text-color-map, $theme);
+                        }
+                    }
+
+                    &.collapsed {
+                        .nav-link {
+                            color: map_get($vertical-menu-text-color-map, $theme);
+
+                            &:hover,
+                            &.active,
+                            &:focus {
+                                color: map_get($vertical-menu-hover-text-color-map, $theme);
+                                background-color: map_get($vertical-menu-hover-background-map, $theme);
+                            }
+                        }
+                    }
+                }
+            }
+
+            .slider {
+                border-right: map_get($default-border-map, $theme);
+                background-color: map_get($default-background-map, $theme);
+
+                &>span {
+                    color: map_get($buttons-background-map, $theme);
+                }
+
+                &:hover>span {
+                    box-shadow: 2px 2px map_get($buttons-background-map, $theme);
+                }
+            }
+        }
+    }
+}
+        
+
+block-ui {
+    height: 100%;
+}
+
+.icon {
+    margin-right: 10px;
+    min-width: 21px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.nav-tabs {
+    border-bottom: 1px solid $supporting-color;
+}
+
+.nav-item {
+    &:focus {
+        outline: none;
+    }
+}
+
+.nav-link {
+    font-size: 13px;
+    color: gray;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+}
+
+@media (max-width: 1300px) and (min-width: 700px) {
+    .nav-link {
+        font-size: 11.5px;
+    }
+}
+
+.horizontal-menu {
+
+    // TODO: Remove it in near future. because it's bad idea make some customisation existed stules for special module.
+    // We should use a special class for special styling 
+    .underlined-menu {
+        margin-bottom: 0;
+
+        .nav-item {
+            &::after {
+                height: 3px;
+            }
+        }
+    }
+}
+
+.slider-panel {
+    width: 100%;
+    height: 100%;
+    transition: width 400ms;
+    border-right: 1px solid #eaecec;
+    background-color: $primary-color-20;
+    overflow-y: hidden;
+
+    &:hover {
+        overflow-y: auto;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar {
+        width: 4px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: silver;
+        border: 1px solid silver;
+        border-radius: 6px;
+    }
+}
+
+.slider-panel-content {
+    width: 100%;
+    transition: width 400ms;
+    border-right: 1px solid #eaecec;
+    background-color: inherit;
+}
+
+.slider {
+    width: 12px;
+    height: 100%;
+    border-right: 1px solid #eaecec;
+    position: relative;
+    background-color: white;
+    z-index: 10;
+    cursor: pointer;
+
+    &>span {
+        position: absolute;
+        top: 41%;
+        left: 10%;
+        cursor: pointer;
+        font-size: 20px;
+        opacity: 0.4;
+        transition: all .3s ease;
+        height: 50px;
+        padding-top: 5px;
+
+        i:last-child {
+            margin-top: 1px;
+        }
+    }
+
+    &:hover>span {
+        opacity: 0.8;
+    }
+}
+
+.vertical-menu {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+
+    .sub-nav {
+        margin-top: 7px;
+        height: calc(180vh - 34px);
+    }
+
+    .nav-item {
+        &.collapsed {
+            .nav-link {
+                padding-top: 13px;
+                padding-bottom: 13px;
+            }
+        }
+
+        .nav-link {
+            padding: 11px 15px 11px 14px;
+            transition: all .3s ease;
+
+            &:hover {
+                text-decoration: none;
+            }
+
+            &.active {
+                font-weight: bold;
+            }
+
+            .fa-dollar-sign:before {
+                margin-left: 5px;
+            }
+        }
+    }
+}
+
+:host-context(.core-dark-theme) {
+    .vertical-menu {
+        .slider-panel {
+            border-right: none;
+        }
+
+        .slider {
+            border-right: 1px solid $dark-gray-9;
+        }
+    }
+
+    .nav-tabs {
+        border-bottom: $default-border-dark;
+    }
+}

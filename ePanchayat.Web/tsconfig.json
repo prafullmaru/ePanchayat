@@ -1,33 +1,41 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "sourceMap": true,
-    "declaration": false,
+    "target": "es2020",
+    "module": "es2020",
+    "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
+    "declaration": true,
+    "sourceMap": true,
+    "inlineSources": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
-    "useDefineForClassFields": false,
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2020", "dom"],
+    "paths": {
+      "angular-split": ["node_modules/angular-split-workaround-angular6"],
+      "@rxjs-exports": ["src/rxjs-exports"],
+      "@endpoint-config": ["src/endpoint-config"],
+      "@core/models": ["src/core/models/public-api"],
+      "@core/services": ["src/core/services/public-api"],
+      "@core/components": ["src/core/components/public-api"],
+      "@core/styles": ["src/core/styles"],
+
+      "@features/finance": ["src/features/finance/public-api"],
+      "@features/complaint": ["src/features/complaint/public-api"],
+      "@features/events": ["src/features/events/public-api"],
+      "@features/gallery": ["src/features/gallery/public-api"],
+      "@features/egovernance": ["src/features/egovernance/public-api"],
+      "@features/analytics": ["src/features/analytics/public-api"],
+      "@features/admin": ["src/features/admin/public-api"],
+    }
   },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+  "files": ["src/main.ts", "src/polyfills.ts"],
+  "include": ["src/**/*.d.ts"]
 }

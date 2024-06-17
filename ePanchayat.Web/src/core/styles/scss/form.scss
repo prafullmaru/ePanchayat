@@ -1,0 +1,489 @@
+@use "sass:map";
+@import "theme-variables";
+@import "bootstrapOverridesVariables";
+
+$dropdown-color: (
+    "dark": $light-gray-5,
+    "light": inherit,
+);
+
+$dropdown-option-bg: (
+    "dark": $dark-gray-10,
+    "light": $light-gray-13,
+);
+
+$icon-opacity: (
+    "light": 1,
+    "dark": 0.8,
+);
+
+@each $theme in $themes {
+    .core-#{$theme}-theme {
+
+        core-calendar-daterange.compact-calendar,
+        core-calendar.compact-calendar {
+            .input-group {
+                padding: 0 5px;
+                min-width: 260px;
+
+                input {
+                    border-radius: 10px 0px 0px 10px !important;
+                    height: 25px;
+                    background-color: map_get($widget-bg, $theme);
+                    font-size: 11px;
+                    opacity: map_get($icon-opacity, $theme);
+                    padding-right: 0px;
+                }
+
+                .input-group-btn {
+                    button.btn-primary {
+                        height: 25px !important;
+                        padding: 10px;
+                        background: map_get($main-menu-hover-background-map, $theme);
+                        box-shadow: none;
+                        border-radius: 0 10px 10px 0 !important;
+                        // opacity: 0.7; 
+                    }
+                }
+            }
+        }
+
+        core-calendar.compact-calendar .input-group {
+            min-width: 160px;
+            width: 160px;
+        }
+
+        select.form-control.compact,
+        div.multiselect-dropdown-filter.compact,
+        input.form-control.compact {
+            border-radius: 10px !important;
+            height: auto;
+            padding: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            border: none;
+
+
+            option {
+                cursor: pointer;
+            }
+
+            @if $theme =="light" {
+                border: 1px solid $light-gray-15;
+                box-shadow: none;
+            }
+        }
+
+        .dropdown-menu {
+            border: 1px solid map_get($buttons-background-map, $theme);
+
+            li {
+                a {
+                    background-color: map_get($buttons-background-map, $theme);
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: map_get($buttons-hover-background-map, $theme);
+                    }
+                }
+            }
+        }
+
+        .btn-group.compact-menu {
+            &.open {
+                .btn {
+                    background-color: unset;
+                }
+            }
+
+            .btn.btn-default.dropdown-toggle {
+                font-size: 11px;
+                padding: 7px;
+                height: 12px !important;
+                box-shadow: unset;
+                color: inherit;
+                box-shadow: none;
+                margin: 0px;
+                background-color: inherit;
+                border: none;
+
+                span {
+                    padding-left: 4px;
+                    font-size: 9px;
+                    color: map_get($buttons-background-map, $theme);
+                }
+            }
+
+            .dropdown-menu {
+                min-width: 100px;
+                box-shadow: unset;
+                border: unset;
+                padding-left: 0px;
+                background-color: inherit;
+
+                li>a {
+                    background-color: map_get($dropdown-option-bg, $theme);
+                    color: inherit;
+                    font-size: 11px;
+                    padding: 5px;
+
+                    &:hover {
+                        background-color: map_get($input-background-map, $theme);
+
+                        @if $theme =="light" {
+                            background-color: $gray-gray-3;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.btn-primary {
+
+    &:hover,
+    &:focus {
+        background: $primary-button-pseudo-background !important;
+        box-shadow: 0 0 7px $primary-color;
+        outline: none;
+    }
+
+    &.active {
+        border: none;
+        outline: none;
+        border-radius: 3px !important;
+        color: $primary-background !important;
+        background-color: $primary-color !important;
+    }
+}
+
+.btn-warning {
+
+    &:hover,
+    &:focus {
+        background-color: $primary-button-color !important;
+        color: $body-font-color;
+        border-color: $primary-button-background;
+        box-shadow: 0 0 7px $primary-color;
+        outline: none;
+    }
+
+    &:active {
+        outline: none !important;
+    }
+}
+
+.btn-group.dropdown-menu-right,
+.btn-group-vertical {
+    .btn {
+        color: $body-font-color; //background: $supporting-color none; 
+        background: none;
+        padding: 10px 20px;
+        border: none;
+
+        &:hover {
+
+            border: none;
+            border-radius: 3px !important;
+            color: $primary-background;
+        }
+    }
+}
+
+.button-icon {
+    padding: 6px;
+    border: 1px solid $grid-border-color;
+    width: fit-content;
+    border-radius: 3px;
+    font-size: 12px;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 0 4px $supporting-color-light-blue-80;
+    }
+}
+
+.dropdown {
+    .btn-primary {
+        color: $body-font-color;
+        background-color: $primary-button-color;
+        border-radius: 0;
+        border: none;
+        // border: 1px solid silver;  
+    }
+}
+
+.dropdown-menu-right {
+    .btn {
+
+        &:hover,
+        &:focus {
+            border: none;
+        }
+    }
+
+    .fal {
+        font-size: 13px;
+    }
+}
+
+// TODO: need make it clearable... (align right position by button for dropdown menu in header) 
+.pull-right.dropdown-menu-right .dropdown ul.dropdown-menu-right.dropdown-menu {
+    margin-right: 2px;
+}
+
+.dropdown-menu {
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+
+    li {
+        a {
+            padding: 8px 18px;
+            color: $primary-white;
+            cursor: pointer;
+
+            &:hover {
+                border: none;
+                color: $primary-white;
+            }
+        }
+    }
+}
+
+.pillContainer {
+    border: $control-border;
+    height: $control-height;
+}
+
+.input-base {
+    border: $control-border;
+    transition: $primary-transition;
+}
+
+.input-danger-wrapper {
+
+    input,
+    select,
+    textarea {
+        border: 1px solid $bright-red-1 important;
+    }
+
+    .pillContainer {
+        border: unset;
+    }
+}
+
+textarea:disabled {
+    background-color: $separator-color;
+}
+
+.disabled-link {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+select[multiple].form-control {
+    height: 250px !important;
+}
+
+textarea.form-control {
+    @extend .input-base;
+
+    &:focus {
+        @extend .input-focus-base !optional;
+    }
+}
+
+.input-group-addon {
+    background-color: inherit;
+    border: none;
+}
+
+.btn-sm {
+    height: $control-height !important;
+}
+
+.btn-group,
+.btn-group-vertical {
+    padding-top: 5px;
+}
+
+.btn-group.dropdown-menu-right .btn,
+.btn-group-vertical .btn {
+    padding: 8px 17px;
+    margin-right: 2px;
+    margin-left: 2px;
+    font-size: 12px;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    box-shadow: 0 0 3px silver;
+}
+
+.control-label {
+    font-size: 13px;
+}
+
+.form-input-custom {
+    background-color: inherit;
+    border: none;
+}
+
+.selector-container {
+    background: none;
+}
+
+.selectize-input {
+    border: $control-border !important;
+    height: $control-height;
+    background-image: none !important;
+    background-color: $primary-background !important;
+    padding-top: 5px !important;
+}
+
+.div-error-wrapper {
+    .selectize-control {
+        .selectize-input {
+            border-color: $error-color-input !important;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075) !important;
+        }
+
+        .selectize-input:focus {
+            border-color: $error-color-input !important;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483 !important;
+            box-shadow: inset 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #ce8483 !important;
+        }
+    }
+}
+
+.info {
+    color: $primary-color;
+    padding: 10px 0 0 10px;
+}
+
+.selectize-control.multi .selectize-input [data-value] {
+    line-height: 13px;
+    background-color: $primary-color !important;
+    background-image: linear-gradient(to bottom, $primary-color, $primary-color);
+}
+
+.selectize-dropdown,
+.selectize-input,
+.selectize-input input {
+    font-size: 12px !important;
+}
+
+.form-table {
+
+    th,
+    tr {
+        font-size: 12px;
+
+        td {
+            padding: 10px !important;
+            border-top: 1px solid $panel-border-color-light;
+        }
+    }
+
+    th {
+        font-weight: bold;
+        padding: 10px !important;
+        border-bottom: 1px solid $panel-border-color-light;
+    }
+
+    i {
+        cursor: pointer;
+    }
+}
+
+.sub-header {
+    font-size: 14px;
+    font-weight: bold;
+    color: $primary-color;
+}
+
+input[type="checkbox"]:before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    box-sizing: border-box;
+    height: 14px;
+    width: 14px;
+    border-radius: 2px;
+    border: 1px solid #767676;
+    background-color: #fff;
+    line-height: 0.9;
+    padding-left: 1px;
+}
+
+input[type="checkbox"]:checked:before {
+    content: '\2713';
+    display: inline-block;
+    position: absolute;
+    box-sizing: border-box;
+    height: 14px;
+    width: 14px;
+    border-radius: 2px;
+    border: 1px solid #cfc1c1;
+    color: #fff;
+    background-color: $primary-color;
+}
+
+option {
+    filter: drop-shadow(0px 8px 8px rgba(0, 0, 0, 0.2));
+}
+
+.toggle-button-group {
+    position: absolute;
+    border-radius: 20px;
+    top: 7px;
+    right: 10px;
+    padding: 6px;
+    background-color: #4c1e6d;
+
+    .toggle-button {
+        width: 100px;
+        border-radius: 20px !important;
+        background-color: #4c1e6d;
+        transition: all 0.3s;
+        padding: 3px;
+        
+        &:hover {
+            color: white !important;
+        }
+        
+        &.active {
+            background-color: #652394;
+            box-shadow: 0 0 8px white;
+        }
+    }
+}
+
+.generic-typeahead + typeahead-container {
+    width: 500px !important;
+    border: 0 !important;
+
+    .typeahead-item {
+        width: 100%;
+        display: flex;
+
+        span {
+            text-align: left;
+            flex-basis: 20%;
+        }
+
+        span:nth-child(1) {
+            flex-basis: 33%;
+        }
+
+        span:nth-child(3) {
+            flex-basis: 27%;
+        }
+    }
+}
