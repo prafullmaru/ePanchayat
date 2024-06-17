@@ -1,0 +1,73 @@
+<div
+  class="horizontal-menu sub-nav height-100p"
+  *ngIf="menuDirection === 'horizontal'"
+>
+  <div class="underlined-menu" *ngIf="!isMenuHidden">
+    <ul class="nav nav-tabs">
+      <li
+        class="nav-item"
+        *ngFor="let menu of subMenus"
+        [ngClass]="isMenuActive(menu.Location) ? 'active' : ''"
+        (click)="navigateTo(menu.Location)"
+      >
+        <a class="nav-link"
+          ><span>{{ menu.Description }}</span></a
+        >
+      </li>
+    </ul>
+  </div>
+
+  <ng-container *ngTemplateOutlet="routerTemplate"></ng-container>
+</div>
+
+<div class="vertical-menu" *ngIf="menuDirection === 'vertical'">
+  <div
+    class="slider-panel"
+    *ngIf="!isMenuHidden"
+    [ngStyle]="{ width: isMenuCollapsed ? '55px' : '250px' }"
+  >
+    <div class="sub-nav">
+      <ul class="nav">
+        <li
+          class="nav-item"
+          *ngFor="let subMenu of subMenus"
+          [ngClass]="isMenuCollapsed ? 'collapsed' : ''"
+        >
+          <a
+            class="nav-link"
+            [ngClass]="isMenuActive(subMenu.Location) ? 'active' : ''"
+            (click)="navigateTo(subMenu.Location)"
+            [tooltip]="isMenuCollapsed ? subMenu.Description : ''"
+            [adaptivePosition]="false"
+            placement="right"
+            container="body"
+          >
+            <i class="{{ subMenu.Icon }} icon"></i>
+            <span *ngIf="!isMenuCollapsed">{{ subMenu.Description }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="slider" (click)="toggleMenu()" *ngIf="!isMenuHidden">
+    <span
+      [tooltip]="isMenuCollapsed ? 'Expand Menu' : 'Collapse Menu'"
+      placement="right"
+      container="body"
+    >
+      <i class="fas fa-ellipsis-v pull-left"></i>
+      <i class="fas fa-ellipsis-v pull-left"></i>
+    </span>
+  </div>
+
+  <div class="slider-panel-content">
+    <ng-container *ngTemplateOutlet="routerTemplate"></ng-container>
+  </div>
+</div>
+
+<ng-template #routerTemplate>
+  <block-ui>
+    <router-outlet #routerOutlet="outlet" isFillterCollapsed></router-outlet>
+  </block-ui>
+</ng-template>

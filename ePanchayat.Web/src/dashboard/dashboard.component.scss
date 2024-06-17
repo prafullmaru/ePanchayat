@@ -1,0 +1,161 @@
+@import "src/core/styles//scss/theme-variables";
+@import "src/core/styles//scss/bootstrapOverridesVariables";
+
+@each $theme in $themes {
+    :host-context(.core-#{$theme}-theme) {
+        .welcome {
+            color: map_get($buttons-background-map, $theme);
+        }
+
+        .card {
+            background: map_get($default-background-map, $theme);
+            border: map_get($default-border-map, $theme);
+            box-shadow: 0 0 5px $supporting-color;
+
+            &:hover {
+                box-shadow: 0 0 6px map_get($buttons-background-map, $theme);
+            }
+
+            .card-title,
+            .icon {
+                color: map_get($buttons-background-map, $theme);
+            }
+        }
+    }
+}
+
+// TODO: need do something with that override
+:host-context(.core-light-theme) .host {
+    background-color: #f3f6f9 !important;
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    align-content: flex-start;
+    justify-content: center;
+}
+
+.welcome {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    height: 350px;
+
+    h1 {
+        font-size: 50px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+.cards {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.footer {
+    background-color: $primary-color;
+    color: white;
+    width: 100%;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+}
+
+@media(min-width: 2100px) {
+    .cards {
+        padding-left: 10%;
+    }
+}
+
+@media(min-width: 1600px) and (max-width: 2100px) {
+    .cards {
+        padding-left: 10%;
+    }
+}
+
+@media(min-width: 800px) and (max-width: 1600px) {
+    .cards {
+        padding-left: 3%;
+    }
+}
+
+.card {
+    margin: 15px;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid $panel-border-color-light;
+    border-radius: 5px;
+    transition: all 300ms;
+    padding: 15px;
+    min-height: 200px;
+    box-shadow: 0 0 5px $supporting-color;
+
+    @media(min-width: 2100px) {
+        & {
+            width: 16.66666667%;
+        }
+    }
+
+    @media(min-width: 1600px) and (max-width: 2100px) {
+        & {
+            width: 20%;
+        }
+    }
+
+    @media(min-width: 800px) and (max-width: 1600px) {
+        & {
+            width: 30%;
+        }
+    }
+
+    &:hover {
+        transform: scale(1.07);
+    }
+
+    .card-title {
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .icon {
+        font-size: 30px;
+        float: right;
+        margin-top: -5px;
+    }
+}
+
+// todo.. move this to theme for loop
+:host-context(.core-dark-theme) {
+    .welcome {
+        color: $primary-white-2;
+    }
+
+    .card {
+        background: linear-gradient($dark-gray-10, $dark-gray-9);
+        color: $primary-white-2;
+        border: none;
+        box-shadow: unset;
+        border-radius: 0;
+
+        &:hover {
+            border: none;
+            box-shadow: none;
+            color: $primary-white;
+
+            .icon,
+            .card-title {
+                color: $primary-white;
+            }
+        }
+
+        .icon,
+        .card-title {
+            color: $primary-white-2;
+        }
+    }
+}

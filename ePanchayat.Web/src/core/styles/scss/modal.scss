@@ -1,0 +1,76 @@
+@import "theme-variables";
+
+bs-modal-backdrop.modal-backdrop {
+    z-index: 1020;
+    top: 40px;
+}
+
+modal-container.modal {
+    z-index: 1020;
+    top: 40px;
+}
+
+.app-mode-module {
+
+    bs-modal-backdrop.modal-backdrop,
+    modal-container.modal {
+        top: 0;
+    }
+}
+
+.modal-lg-1000 {
+    width: 1000px;
+}
+
+.modal-backdrop.in {
+    opacity: 0.8;
+    background: #172b4d73;
+}
+
+.modal.show {
+    opacity: 1;
+}
+
+.modal.in .modal-dialog,
+.modal.show .modal-dialog {
+    margin-top: 70px;
+    transform: translate(0, 0);
+}
+
+.modal-content {
+    border: none;
+    box-shadow: 0 0 5px 2px #a4a6a7;
+}
+
+.modal-header {
+    background: $primary-color;
+    color: $primary-text-color;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px;
+}
+
+.modal-footer,
+.modal-body {
+    background-color: $primary-background;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.jumbotron {
+    color: $primary-color;
+    padding: 48px 60px 48px 60px;
+    margin: 0 10px;
+    border-radius: 6px;
+    background-color: inherit;
+}
+
+body {
+    background-color: $primary-background;
+}
+
+.sharp-border-modal {
+    .modal-content {
+    border-radius: 0;
+    }
+}

@@ -1,0 +1,169 @@
+$themes: "light", "dark";
+$sides: "left", "top", "right", "bottom";
+
+$primary-white: #ffffff;
+$primary-white-2: rgba(255, 255, 255, 0.87);
+$primary-black: #000000; 
+$primary-black-2: #231f20; 
+$turquoise: #02c6bf;
+$bright-turquoise: #00b2ac; 
+$mid-turquoise: #007d84;
+$dark-turquoise: #005b66;
+$gray-gray-0: #cccccc;
+$gray-gray-1: #f1f2f2;
+$gray-gray-2: #e6e7e8;
+$gray-gray-3: #dadada;
+$gray-gray-4: #a8a8a7;
+$gray-gray-5: #7c7c7b;
+$dark-gray-7: #5a6672;
+$dark-gray-8: #46505a;
+$dark-gray-9: #3a444f;
+$dark-gray-10: #2c3845;
+$dark-gray-11: #222b35;
+$dark-gray-12: #2a3542;
+$dark-charcoal-0: #0a1724;
+
+$light-gray-5: #b4b6b8;
+$light-gray-11: #fcfbfb;
+$light-gray-12: #f1f2f3;
+$light-gray-13: #edeef2;
+$light-gray-14: #e2e5ec; 
+$light-gray-15:#eaecec; 
+$bright-green: #78c043;
+
+$core-blue-1: #652394;
+$core-blue-2: #398dd0; 
+$core-blue-3: #0d4a7b; 
+$core-light-blue-1:#eef0f7; 
+
+$accent-font-color: #e6e7e8; 
+$alerts-red: #d91e19;
+$alerts-red-2: #c23841; 
+
+// Buttons variables
+$button-height: 38px;
+$button-font-size: 14px;
+$button-icon-font-size: 1.3rem;
+$button-top-bottom-padding: 0;
+$button-left-right-padding: 16px; 
+
+//primary 
+$button-border-primary: $turquoise;
+$button-bg-primary: $turquoise; 
+$button-font-primary: $primary-white;
+$button-border-primary__hover: $mid-turquoise;
+$button-bg-primary__hover: $mid-turquoise;
+$button-border-primary__focus: $dark-turquoise;
+$button-bg-primary__focus: $dark-turquoise;
+$button-border-primary__disabled: $gray-gray-1;
+$button-bg-primary__disabled: $gray-gray-1;
+$button-font-primary__disabled: $dark-gray-8; 
+
+//secondary 
+$button-border-secondary: $turquoise; 
+$button-bg-secondary: transparent; 
+$button-font-secondary: $primary-black; 
+$button-border-secondary__hover: $bright-turquoise;
+$button-border-secondary__focus: $dark-turquoise;
+$button-border-secondary__disabled: $gray-gray-3;
+$button-bg-secondary__disabled:rgba(241, 242, 242, 0.51);
+$button-font-secondary__disabled: $gray-gray-5; 
+
+$button-font-secondary_dark: $primary-white; 
+$button-border-secondary__disabled_dark: $gray-gray-2;
+$button-font-secondary__disabled_dark: $gray-gray-3;
+$button-bg-secondary__disabled_dark: rgba(241, 242, 242, 0.51); 
+
+// Tabs 
+$tab-active-underline: $bright-turquoise;
+
+// Metric Tile
+$metric-tile-text-shadow: rgba(0, 0, 0, 0.5);
+$metric-tile-text-shadow-light: rgba(0, 0, 0, 0.33);
+
+// Status Icon 
+$status-icon-background: #9a9a9a;
+$status-icon-background-success: $bright-green;
+$status-icon-background-warning: #ffd800;
+$status-icon-background-error: $alerts-red;
+$status-icon-border: solid 2px $primary-white; 
+$status-icon-font-size: 16px;
+$status-icon-color: $primary-white;
+
+// unused 
+$blue-bright-blue: #0072ce;
+$blue-light-blue: #adc8e9;
+$blue-dark-blue: #003868;
+$blue-mid-blue: #004c97;
+$gray-gray-6: #58585b; 
+$green-dark-green: #00562a; 
+$gray-gray-5: #7c7c7b;
+$green-mid-green: #1f7c34; 
+$alert-and-notifications-green:#008000;
+$alert-and-notifications-warning: #f8d67f; 
+$other-tier-1: #c8b273;
+$other-tier-3: #cf8852; 
+$light-light-slate-gray: #626c77;
+$other-overlays-pinned-column-dark-ui: rgba(255, 255, 255, 0.1);
+$dark-purple: #4c227c;
+$mid-purple: #633f9a;
+$light-turquoise: #bfe5e2; 
+$mid-magenta: #b4006e; 
+$bright-purple: #865bbc; 
+$light-green: #d5e9c1; 
+$light-magenta: #f9c0cc;
+$bright-magenta: #da0c6f;
+$bright-red-1: #ad4239; 
+$bright-red-2: #72342f;
+$bright-green: #78c043;
+$bright-green-1: #3c763d;
+$bright-green-2: #11d03d;
+$bright-green-3: #4eab22; 
+$light-purple: #d1c4e0;
+$dark-magenta: #7a004c;
+$alerts-amber: #ffb81c;
+$alerts-amber-2: #c18e0f; 
+$dark-charcoal-inactive: rgba(10, 23, 36, 0.8);
+$light-slate-gray-active-app: #38424c;
+$light-slate-gray-inactive: rgba(56, 66, 76, 0.8);
+$alerts-success: #78b16b; 
+$alerts-danger: #da7f78;
+$child-container-light-ui: rgba(140, 161, 182, 0.07);
+$child-container-dark-ui: rgba(10, 23, 36, 0.4);
+$pinned-column-light-ui: Orgba(58, 68, 79, 0.09);
+
+$warning-bg-color-1: $alert-and-notifications-warning;
+$warning-bg-color-2: #cc9318; 
+$error-bg-color-1:#f1a19b; 
+$error-bg-color-2: $bright-red-1;
+$success-bg-color-1: #91fda9;
+$success-bg-color-2: $alerts-success;
+$error-border-color-1: red;
+$error-border-color-2: red;
+
+// TODO Dropdown delete in future 
+$dropdown-list-item-bg: $primary-white;
+$dropdown-list-item-text: $primary-black-2;
+$dropdown-list-item-icon: $primary-white;
+$dropdown-list-item-hover-bg: $mid-turquoise;
+$dropdown-list-item-hover-text: $primary-white;
+$dropdown-list-shortcut-code: $gray-gray-1;
+$dropdown-list-shortcut-link: $turquoise; 
+
+$default-border-color: $gray-gray-5; 
+$default-border: 1px solid $default-border-color;
+$default-border-dark: 1px solid $dark-gray-9; // todo. move this to theme for loop
+
+:export { 
+    primaryWhite: $primary-white;
+    primarykhite2: $primary-white-2; 
+    primaryBlack: $primary-black;
+    primaryBlack2: $primary-black-2; 
+    turquoise: $turquoise; 
+    darkMenuItemBgColor: $dark-charcoal-0;
+    darkMenuItemHoverColor: $dark-gray-7;
+    darkMenuItemSelectedColor: $dark-gray-8;
+    lightMenuItemBgColor: $light-gray-11;
+    lightMenuItemHoverColor: $light-gray-13;
+    lightMenuItemSelectedColor: $light-gray-13;
+}

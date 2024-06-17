@@ -1,0 +1,17 @@
+@import "theme-variables";
+
+.notifier__notification, .notifier__notification--info {
+    background-color: white;
+    color: #111;
+    padding: 0;
+    min-width: 450px;
+    max-width: 500px;
+    border: 1px solid #ecf0f3;
+    border-radius: 5px;
+    box-shadow: unset;
+
+    &:hover {
+        box-shadow: unset;
+        cursor: pointer;
+    }
+}

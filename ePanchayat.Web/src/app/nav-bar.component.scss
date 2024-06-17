@@ -1,0 +1,118 @@
+@import "src/core/styles//scss/theme-variables.scss";
+@import "src/core/styles//scss/bootstrapOverridesVariables.scss";
+
+@each $theme in $themes {
+    :host-context(.core-#{$theme}-theme) {
+        .navbar {
+            background-color: map_get($main-menu-background-map, $theme);
+
+            .overflow-menu-opener {
+                border-left: 1px solid $dark-gray-10;
+            }
+
+            .navbar-nav>li {
+                background-color: map_get($main-menu-background-map, $theme) !important;
+
+                &.dropdown {
+                    .dropdown-menu {
+                        border-color: map_get($main-menu-background-map, $theme);
+
+                        li a {
+                            background-color: map_get($main-menu-hover-background-map, $theme) !important;
+
+                            &:hover,
+                            &:focus {
+                                background-color: map_get($main-menu-hover-background-map, $theme) !important;
+                            }
+                        }
+                    }
+                }
+
+                &.active a,
+                &>a:hover,
+                &>a:focus {
+                    background-color: map_get($main-menu-background-map, $theme);
+                }
+            }
+        }
+
+
+        .app-settings {
+            height: 100vh;
+            position: fixed;
+            top: 50;
+            right: 0;
+            transition: all 300ms linear;
+            border-left: 1px solid map_get($default-border-map, $theme);
+            background-color: map_get($default-background-map, $theme);
+        }
+    }
+}
+
+.navbar {
+    .navbar-brand {
+        font-weight: 900;
+        cursor: pointer;
+        color: white;
+    }
+
+    li,
+    a {
+        outline: transparent;
+        cursor: pointer;
+        user-select: none;
+        color: #eeecf2;
+
+        span {
+            font-size: 16px;
+        }
+    }
+}
+
+// all the Css flex stuff will be disabled when Hambruger menu takes over
+@media (min-width: 1100px) {
+    .flex-container {
+        display: flex;
+    }
+
+    .flex-item {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 170px;
+        min-width: 100px;
+
+        &.nav-link {
+            @media (max-width: 1400px) {
+                padding-left: 13px;
+                padding-right: 13px;
+            }
+        }
+    }
+}
+
+.navbar-right {
+    .nav-link {
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+.navbar-default {
+    .navbar-toggle {
+        border-color: transparent;
+
+        &:focus,
+        &:hover {
+            background-color: transparent;
+        }
+
+        .icon-bar {
+            background-color: white;
+        }
+    }
+}
+
+.sub-menu {
+    display: block;
+}
