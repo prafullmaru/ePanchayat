@@ -29,8 +29,11 @@ import {
 } from '@core/components';
 import {
   NavigationDataModule,
+  WebApiHandlerServiceModule,
   GlobalErrorHandlerModule,
   DateInternationalizationModule,
+  LocaleModule,
+  UserPreferencesDataServiceModule,
 } from '@core/services';
 
 import { HttpInterceptorModule } from 'src/http-interceptor';
@@ -99,7 +102,10 @@ import { TreeModule } from 'angular-tree-component';
     GlobalErrorHandlerModule,
 
     // core common services
+    WebApiHandlerServiceModule.forRoot('ePnachayatCoreHttp'),
     DateInternationalizationModule.forRoot(),
+    LocaleModule.forRoot(),
+    UserPreferencesDataServiceModule.forRoot(),
     GlobalErrorHandlerModule.forRoot(),
     NavigationDataModule.forRoot(),
 

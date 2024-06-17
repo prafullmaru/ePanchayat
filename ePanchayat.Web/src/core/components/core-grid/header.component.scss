@@ -1,0 +1,152 @@
+@use "sass:map";
+@import "./variables";
+
+:host {
+    z-index: 1000;
+}
+
+.single-widget-dashboard .ag-grid-header-custom-container {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px; 
+}
+
+.ag-grid-header-button-container { 
+    height: 100%;
+    display: flex;
+    margin-left: auto; 
+}
+
+.ag-grid-header-button {
+    cursor: pointer;
+    width: 40px;
+    height: 100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+
+    .ag-grid-header-button-icon { 
+        height: 20px; 
+        width: 20px;
+        font-size: 16px; 
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    .ag-grid-header-button-icon-clear { 
+        height: 20px;
+        width: 20px;
+    }
+
+    .ag-grid-header-button-icon:hover { 
+        color: $ag-grid-header-button-icon-color; 
+    }
+
+    .ag-grid-header-button-icon-clear:hover { 
+        color: $ag-grid-header-button-icon-clear-color;
+    }
+}
+
+$filter-pill-border: (
+    "dark": $gray-gray-5,
+    "light": $gray-gray-4, 
+);
+
+$filter-pill-background: ( 
+    "dark": $mid-turquoise,
+    "light": $core-blue-1, 
+);
+
+$filter-pill-bg-active: ( 
+    "dark": $dark-turquoise,
+    "light": $core-blue-3,
+);
+
+@each $theme in $themes {
+    .ag-theme-core-#{$theme} {
+        .ag-grid-header-custom-container { 
+            display: flex;
+            width: 100%;
+            height: 28px; 
+            align-items: center; 
+            font-family: $ag-font, sans-serif; 
+            font-size: 14px; 
+            font-weight: normal; 
+            line-height: 1.5;
+            letter-spacing: 0.5px; 
+            background-color: map.get($ag-background-header, $theme);
+            border-bottom: 1px solid map.get($ag-row-divider-color, $theme);
+            color: map.get($ag-grid-header-text, $theme); 
+            padding-left: 5px; 
+            
+            .title { 
+                padding-left: 5px; 
+                font-family: $ag-font, sans-serif; 
+                color: map.get($ag-grid-header-title, $theme); 
+            }
+
+            .text { 
+                font-size: 12px; 
+                text-transform: none;
+            }
+        }
+
+        .ag-grid-header-button-active { 
+            background: map_get($ag-grid-header-button-active-background-map, $theme);
+            color: $primary-white;
+        }
+
+        .filter-pills-container {
+            display: flex; 
+            flex-wrap: nowrap; 
+            max-width: calc(100% - 400px); 
+            margin-left: 10px; 
+            padding-left: 5px; 
+            border-left: 1px solid silver; 
+            transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+            .filter-pill { 
+                margin-left: 5px; 
+                display: flex;
+                flex: 11 auto;
+                align-items: center;
+                min-width: 65px;
+                max-width: 300px;
+                border-radius: 2px;
+                padding: 1px 5px;
+                font-size: 11px; 
+                background-color: map.get($filter-pill-background, $theme); 
+                color: $primary-white;
+                cursor: pointer;
+
+                &:hover { 
+                    background-color: map.get($filter-pill-bg-active, $theme); 
+                }
+
+                .expression { 
+                    text-overflow: ellipsis; 
+                    width: auto;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    margin-left: 2px;
+                }
+
+                .expression-value { 
+                    @extend .expression; 
+                    font-style: italic;
+                    padding-right: 2px; 
+                }
+
+                i {
+                    margin-left: 5px; 
+                    font-size: 12px; 
+                    padding: 3px 0px 3px 5px; 
+                    border-left: 1px solid map.get($filter-pill-border, $theme);
+                }
+            }
+        }
+        .group-by {
+            width: auto;
+        }
+    }
+}

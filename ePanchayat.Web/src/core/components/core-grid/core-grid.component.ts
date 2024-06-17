@@ -14,12 +14,11 @@ import {
 } from '@angular/core';
 
 import {
-  // AppThemeService,
   cloneDeep,
   isChangeDefinedAndDifferent,
   isNullOrUndefined,
-  // LocaleService,
 } from '@core/services';
+
 import {
   ColDef,
   ColumnApi,
@@ -28,9 +27,11 @@ import {
   MenuItemDef,
   SideBarDef,
 } from 'ag-grid-community';
-import { getAnimations } from '../animations/index';
-import { Subscription } from '../rxjs-exports';
 
+import { getAnimations } from '../animations/index';
+// tslint:disable-next-line:disallow-direct-import
+import { Subscription } from '../rxjs-exports';
+// tslint:disable-next-line:disallow-direct-import
 import {
   gridConstants,
   CoreColumnApi,
@@ -44,8 +45,8 @@ import {
 
 import { frameworkComponents } from './framework.component';
 import { SelectOption } from '@core/models';
-// import { ActionPanelStateStore } from './action-panel-state.store';
-// import { GridStateStore } from './grid-state.store';
+import { ActionPanelStateStore } from './action-panel-state.store';
+import { GridStateStore } from './grid-state.store';
 
 @Component({
   selector: 'core-grid',
@@ -53,7 +54,7 @@ import { SelectOption } from '@core/models';
   styleUrls: ['./core-grid.component.scss'],
   animations: getAnimations(),
   encapsulation: ViewEncapsulation.None,
-  //providers: [ActionPanelStateStore],
+  providers: [ActionPanelStateStore],
 })
 export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
   @Input() width: string;
@@ -116,11 +117,10 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
   private dateFormatSubscription: Subscription;
   private activeGridSettingSubscription: Subscription;
   constructor(
-    private datePipe: DatePipe // private appThemeService: AppThemeService,
-  ) // private localeService: LocaleService,
-  // private actionPanelStateStore: ActionPanelStateStore,
-  // private gridStateStore: GridStateStore
-  {}
+    private datePipe: DatePipe,
+    private actionPanelStateStore: ActionPanelStateStore,
+    private gridStateStore: GridStateStore
+  ) {}
 
   @HostListener('mouseover') onMouseOver() {
     this.isMouseOver = true;
@@ -154,24 +154,13 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
       this.menuHeight = +this.height.replace('px', '') - this.menuHeightOffset;
     }
 
-    // this.themeSubscription = this.appThemeService.AppTheme$.subscribe(
-    //   (newTheme) => (this.themeName = newTheme)
-    // );
-
-    // this.dateFormatSubscription = this.localeService.AppLocale$.subscribe(
-    //   () => {
-    //     this.gridApi?.redrawRows();
-    //     this.gridApi?.refreshHeader();
-    //   }
-    // );
-
-    // this.activeGridSettingSubscription =
-    //   this.actionPanelStateStore.activeGridSetting.subscribe((setting) => {
-    //     if (setting.name === this.gridStateKey && setting.gridState == null) {
-    //       this.gridApi.resetGridState();
-    //     }
-    //     this.gridApi?.setGridState(setting.gridState);
-    //   });
+    this.activeGridSettingSubscription =
+      this.actionPanelStateStore.activeGridSetting.subscribe((setting) => {
+        if (setting.name === this.gridStateKey && setting.gridState == null) {
+          this.gridApi.resetGridState();
+        }
+        this.gridApi?.setGridState(setting.gridState);
+      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -259,13 +248,13 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
     this.gridApi.setFilterModel(newFilterModel);
   }
 
-  // saveGridState() {
-  //   this.actionPanelStateStore.saveGridState(this.gridApi.getGridState());
-  // }
+  saveGridState() {
+    this.actionPanelStateStore.saveGridState(this.gridApi.getGridState());
+  }
 
-  // resetGridState() {
-  //   this.actionPanelStateStore.resetGridState(this.gridApi.getGridState());
-  // }
+  resetGridState() {
+    this.actionPanelStateStore.resetGridState(this.gridApi.getGridState());
+  }
 
   private toggleFiler = (name: string) => {
     if (!this.gridApi) {
@@ -529,16 +518,16 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
     this.calculateCountSummary();
     this.applyInitialValueFilter();
 
-    //this.gridStateStore.gridReady(this.gridApi);
+    this.gridStateStore.gridReady(this.gridApi);
 
-    // this.actionPanelStateStore.loadGridSettings(
-    //   this.gridOptions.getCustomMainMenuItems,
-    //   this.gridStateKey,
-    //   this.gridApi,
-    //   this.exporterCsvFilename,
-    //   this.processCellCallback,
-    //   this.skipGroupsDuringExport
-    // );
+    this.actionPanelStateStore.loadGridSettings(
+      this.gridOptions.getCustomMainMenuItems,
+      this.gridStateKey,
+      this.gridApi,
+      this.exporterCsvFilename,
+      this.processCellCallback,
+      this.skipGroupsDuringExport
+    );
 
     fnOriginal(args);
   }

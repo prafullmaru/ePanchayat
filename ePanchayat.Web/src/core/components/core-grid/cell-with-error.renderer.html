@@ -1,0 +1,6 @@
+<div class="cell-error-renderer">
+  <span *ngIf="titleText" class="fas fa-exclamation-triangle pt-5 error-icon">
+    [title]="titleText">
+  </span>
+  <span class="value">{{ params.value | amountFormatter }}</span>
+</div>

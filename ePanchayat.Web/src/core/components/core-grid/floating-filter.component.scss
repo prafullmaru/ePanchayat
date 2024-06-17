@@ -1,0 +1,65 @@
+@use "sass:map"; 
+@import "./variables";
+
+@each $theme in $themes { 
+    .ag-theme-core-#{$theme} {
+        .core-grid-filter-wrapper { 
+            background-color: map.get($ag-filter-background, $theme);
+            color: map.get($ag-filter-color, $theme); 
+            border: 1px solid map.get($ag-border-input-color, $theme);
+        }
+        
+        .filter-text:disabled { 
+            border-color: map.get($ag-row-divider-color, $theme); 
+            background-color: map.get($ag-disabled-filter-background, $theme); 
+        } 
+        
+        .filter-invalid { 
+            border-color: map.get($ag-input-color-border-error, $theme);
+            background-color: map.get($ag-filter-background, $theme);
+        }
+    }
+}
+
+.core-grid-filter-wrapper.filter-text-disabled {
+    border-width: 0;
+} 
+
+.filter-text { 
+    width: 100%; 
+    background-color: transparent;
+    color: inherit;
+    font-family: 'core-SegoeUI', sans-serif;
+    line-height: 1.71;
+    letter-spacing: 0.44px;
+    font-size: 12px;
+    border: unset;
+    height: 100%;
+
+    &:focus {
+        outline: none;
+    }
+} 
+
+.core-grid-filter-wrapper { 
+    width: 100%;
+    height: 19px;
+    display: flex;
+    align-items: center; 
+    
+    .filter-icon-cancel { 
+        width: 12px;
+        height: 12px; 
+        font-size: 10px;
+        object-fit: contain;
+        cursor: pointer;
+    }
+
+    .filter-text:focus {
+        outline: none;
+    }
+    
+    .filter-text:focus ~ .filter-icon-search {
+    color: $turquoise;
+    }
+}

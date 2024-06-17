@@ -5,10 +5,13 @@ import {
   MenuItemDef,
   ColGroupDef,
   ColumnApi,
+  ICellRendererParams,
+  ICellEditorParams,
+  IHeaderParams,
 } from 'ag-grid-community';
 
-// import { DataType } from '@core/models';
-// import { Observable } from '../rxjs-exports';
+import { DataType } from '@core/models';
+import { Observable } from '../rxjs-exports';
 
 export interface CoreGridOptions extends GridOptions {
   getCustomContextMenuItems?(params): MenuItemDef[];
@@ -144,31 +147,31 @@ export enum ActionStatus {
   Info = 'info',
 }
 
-// export interface FavoriteRendererParams extends RenderenerParams {
-//   propName: string;
-//   disableTabbing?: boolean;
-// }
+export interface FavoriteRendererParams extends RenderenerParams {
+  propName: string;
+  disableTabbing?: boolean;
+}
 
-// export interface DropdownRendererParams extends RenderenerParams {
-//   options: { text: string; value: string }[];
-//   modelPropName: string;
-//   disableTabbing?: boolean;
-// }
+export interface DropdownRendererParams extends RenderenerParams {
+  options: { text: string; value: string }[];
+  modelPropName: string;
+  disableTabbing?: boolean;
+}
 
-// export interface CellWithErrorCellRendererParams extends ICellRendererParams {
-//   validateError?: () => string;
-// }
+export interface CellWithErrorCellRendererParams extends ICellRendererParams {
+  validateError?: () => string;
+}
 
-// export interface CoreCalendarCellEditorParams extends ICellEditorParams {
-//   date: string;
-//   minDate: string;
-//   maxDate: string;
-//   daysDisabled: number[];
-//   disabledDates: Date[] | Observable<Date[]>;
-//   preserveTime: boolean;
-//   class: string;
-//   dateOutputFormat: string;
-// }
+export interface CoreCalendarCellEditorParams extends ICellEditorParams {
+  date: string;
+  minDate: string;
+  maxDate: string;
+  daysDisabled: number[];
+  disabledDates: Date[] | Observable<Date[]>;
+  preserveTime: boolean;
+  class: string;
+  dateOutputFormat: string;
+}
 
 export const gridConstants = {
   filterTypeNumber: 'agNumberColumnFilter',
@@ -233,38 +236,38 @@ export const gridConstants = {
   groupDisplayTypeMultiple: 'multipleColumns',
 };
 
-// export interface GridHeaderDefinition {
-//   header: string;
-//   dataType: DataType;
-//   childHeaders?: ChildGridHeaderDefinition[];
-// }
+export interface GridHeaderDefinition {
+  header: string;
+  dataType: DataType;
+  childHeaders?: ChildGridHeaderDefinition[];
+}
 
-// export interface ChildGridHeaderDefinition {
-//   header: string;
-//   dataType: DataType;
-// }
+export interface ChildGridHeaderDefinition {
+  header: string;
+  dataType: DataType;
+}
 
-// export interface FilterPill {
-//   columnName?: string;
-//   expressionValue?: string;
-//   columnId?: string;
-// }
+export interface FilterPill {
+  columnName?: string;
+  expressionValue?: string;
+  columnId?: string;
+}
 
-// // ag grid doesnt provide interface for filterModel. we should ideallly create multiple models
-// // becoz data is populated in diff properties based on FilterType, for now using a unified model to avoid type casting
-// export interface FilterModel {
-//   type?: string;
-//   filter?: string;
-//   dateFrom?: string;
-//   dateTo?: string;
-//   values?: string[];
-//   condition1: FilterModel;
-//   condition2: FilterModel;
-//   operator?: string;
-// }
+// ag grid doesnt provide interface for filterModel. we should ideallly create multiple models
+// becoz data is populated in diff properties based on FilterType, for now using a unified model to avoid type casting
+export interface FilterModel {
+  type?: string;
+  filter?: string;
+  dateFrom?: string;
+  dateTo?: string;
+  values?: string[];
+  condition1: FilterModel;
+  condition2: FilterModel;
+  operator?: string;
+}
 
-// export interface RequiredColumnHeaderParams extends IHeaderParams {
-//   required: boolean | Function;
-//   icon: string;
-//   tooltip: string;
-// }
+export interface RequiredColumnHeaderParams extends IHeaderParams {
+  required: boolean | Function;
+  icon: string;
+  tooltip: string;
+}
