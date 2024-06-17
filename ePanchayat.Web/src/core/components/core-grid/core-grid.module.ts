@@ -16,7 +16,6 @@ import { CoreDirectivesModule } from '../directives/core-directives.module';
 import { CoreFormModule } from '../core-form/core-form.module';
 
 import { ActionLinkCellRenderer } from './action-link.renderer';
-import { ActionPanelStateStore } from './action-panel-state.store';
 import { AmountInputCellEditor } from './amount-input.editor';
 import { AmountInputCellRenderer } from './amount-input.renderer';
 import { CellWithErrorCellRenderer } from './cell-with-error.renderer';
@@ -66,11 +65,6 @@ const gridArtifacts = [
     ...gridArtifacts,
   ],
   exports: [CoreGridComponent],
-  providers: [
-    GridUtilityService,
-    CompareDatesService,
-    ActionPanelStateStore,
-    GridStateStore,
-  ],
+  providers: [GridUtilityService, CompareDatesService, GridStateStore],
 })
 export class CoreGridModule {}

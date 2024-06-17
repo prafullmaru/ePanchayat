@@ -6,7 +6,6 @@ import {
   HostListener,
   Input,
   OnChanges,
-  OnDestroy,
   OnInit,
   Output,
   SimpleChanges,
@@ -18,7 +17,6 @@ import {
   isChangeDefinedAndDifferent,
   isNullOrUndefined,
 } from '@core/services';
-
 import {
   ColDef,
   ColumnApi,
@@ -27,10 +25,8 @@ import {
   MenuItemDef,
   SideBarDef,
 } from 'ag-grid-community';
-
 import { getAnimations } from '../animations/index';
-// tslint:disable-next-line:disallow-direct-import
-import { Subscription } from '../rxjs-exports';
+
 // tslint:disable-next-line:disallow-direct-import
 import {
   gridConstants,
@@ -45,7 +41,6 @@ import {
 
 import { frameworkComponents } from './framework.component';
 import { SelectOption } from '@core/models';
-import { ActionPanelStateStore } from './action-panel-state.store';
 import { GridStateStore } from './grid-state.store';
 
 @Component({
@@ -54,9 +49,8 @@ import { GridStateStore } from './grid-state.store';
   styleUrls: ['./core-grid.component.scss'],
   animations: getAnimations(),
   encapsulation: ViewEncapsulation.None,
-  providers: [ActionPanelStateStore],
 })
-export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
+export class CoreGridComponent implements OnChanges, OnInit {
   @Input() width: string;
   @Input() height: string;
   @Input() minHeight = '0';
@@ -91,7 +85,6 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
   customFrameworkComponents: any;
   customAggFuncs: { [name: string]: Function };
   sideBar: SideBarDef;
-  // filterModel: FilterModel;
   filterModel: { [key: string]: any };
   isMouseOver = false;
   filtersActive = false;
@@ -100,7 +93,7 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
   filterPresented = false;
   isGroupedGrid = false;
   iconsBySideBar = [];
-  themeName = '';
+  themeName = 'light';
   userChangedColumns: string[] = [];
   gridState: CoreGridState;
   initialFilterModel: { [key: string]: any };
@@ -113,12 +106,8 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
 
   private gridApi: CoreGridApi;
   private menuHeightOffset = 30;
-  private themeSubscription: Subscription;
-  private dateFormatSubscription: Subscription;
-  private activeGridSettingSubscription: Subscription;
   constructor(
     private datePipe: DatePipe,
-    private actionPanelStateStore: ActionPanelStateStore,
     private gridStateStore: GridStateStore
   ) {}
 
@@ -153,14 +142,6 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
     if (this.height) {
       this.menuHeight = +this.height.replace('px', '') - this.menuHeightOffset;
     }
-
-    this.activeGridSettingSubscription =
-      this.actionPanelStateStore.activeGridSetting.subscribe((setting) => {
-        if (setting.name === this.gridStateKey && setting.gridState == null) {
-          this.gridApi.resetGridState();
-        }
-        this.gridApi?.setGridState(setting.gridState);
-      });
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -175,12 +156,6 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
     if (isColumnDefsChanged) {
       this.onColumnDefsChange();
     }
-  }
-
-  ngOnDestroy() {
-    this.themeSubscription?.unsubscribe();
-    this.dateFormatSubscription?.unsubscribe();
-    this.activeGridSettingSubscription?.unsubscribe();
   }
 
   getHeight() {
@@ -246,14 +221,6 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
 
   onFilterModelChange(newFilterModel) {
     this.gridApi.setFilterModel(newFilterModel);
-  }
-
-  saveGridState() {
-    this.actionPanelStateStore.saveGridState(this.gridApi.getGridState());
-  }
-
-  resetGridState() {
-    this.actionPanelStateStore.resetGridState(this.gridApi.getGridState());
   }
 
   private toggleFiler = (name: string) => {
@@ -519,15 +486,6 @@ export class CoreGridComponent implements OnChanges, OnInit, OnDestroy {
     this.applyInitialValueFilter();
 
     this.gridStateStore.gridReady(this.gridApi);
-
-    this.actionPanelStateStore.loadGridSettings(
-      this.gridOptions.getCustomMainMenuItems,
-      this.gridStateKey,
-      this.gridApi,
-      this.exporterCsvFilename,
-      this.processCellCallback,
-      this.skipGroupsDuringExport
-    );
 
     fnOriginal(args);
   }
