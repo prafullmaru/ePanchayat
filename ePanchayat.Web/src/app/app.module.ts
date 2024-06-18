@@ -22,9 +22,19 @@ import { AgGridModule } from 'ag-grid-angular';
 import { NotifierModule } from 'angular-notifier';
 import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 
-import { CorePipesModule, CoreDirectivesModule } from '@core/components';
-
-import { NavigationDataModule, GlobalErrorHandlerModule } from '@core/services';
+import {
+  CorePipesModule,
+  CoreDirectivesModule,
+  CoreFormModule,
+} from '@core/components';
+import {
+  NavigationDataModule,
+  WebApiHandlerServiceModule,
+  GlobalErrorHandlerModule,
+  DateInternationalizationModule,
+  LocaleModule,
+  UserPreferencesDataServiceModule,
+} from '@core/services';
 
 import { HttpInterceptorModule } from 'src/http-interceptor';
 import { CoreRoutesModule } from 'src/routes';
@@ -92,11 +102,16 @@ import { TreeModule } from 'angular-tree-component';
     GlobalErrorHandlerModule,
 
     // core common services
+    WebApiHandlerServiceModule.forRoot('ePnachayatCoreHttp'),
+    DateInternationalizationModule.forRoot(),
+    LocaleModule.forRoot(),
+    UserPreferencesDataServiceModule.forRoot(),
     GlobalErrorHandlerModule.forRoot(),
     NavigationDataModule.forRoot(),
 
     // core common components modules
     CorePipesModule.forRoot(),
+    CoreFormModule,
   ],
   declarations: [AppComponent, NavBarComponent, BlockUiTemplateComponent],
   bootstrap: [AppComponent],

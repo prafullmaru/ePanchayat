@@ -1,0 +1,8 @@
+.cell-error-renderer {
+    width: 100%;
+    & span.error-icon {
+        color: red;
+        position: absolute;
+        left: 2px;
+    }
+}

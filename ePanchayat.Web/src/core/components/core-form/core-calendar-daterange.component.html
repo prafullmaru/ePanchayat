@@ -1,0 +1,24 @@
+<span class="input-group">
+  <input
+    type="text"
+    required
+    class="form-control {{ className }}"
+    #dpDate="bsDaterangepicker"
+    #daterangepicker="bsDaterangepicker"
+    bsDaterangepicker
+    [minDate]="startDate?.minDate"
+    [maxDate]="endDate?.maxDate"
+    [bsConfig]="startDate?.config"
+    [(ngModel)]="dateRangeModel"
+    (ngModelChange)="onValueChange()"
+  />
+  <span class="input-group-btn">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm calendarBtn"
+      (click)="dpDate.toggle()"
+    >
+      <i class="far fa-calendar"></i>
+    </button>
+  </span>
+</span>

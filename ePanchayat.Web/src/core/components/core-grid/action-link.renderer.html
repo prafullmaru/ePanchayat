@@ -1,0 +1,47 @@
+<div *ngIf="!isHidden" class="ui-grid-cell-contents action-link-container">
+  <span *ngIf="value" class="mr-10">{{value}}</span>
+
+  <a
+    class="cursor-p"
+    *ngIf="!params.data?.isProcessing || !params.showProgressbar"
+    (click)="invokeParentMethod()"
+    [ngClass]="isDisabled ? 'disabled-link':''"
+  >
+    <i *ngIf="linkIcon" class="fal {{linkIcon}} mr-5"></i>{{linkText}}
+  </a>
+
+  <span
+    style="color: orangered"
+    *ngIf="params.data?.lastProcessingFailed && !params.data?.isProcessing && params.showProgressbar"
+    tooltip="Last Save Failed"
+    container="body"
+    placement="right"
+    class="danger glyphicon glyphicon-remove"
+  >
+  </span>
+
+  <i
+    *ngIf="actionStatus"
+    [tooltip]="actionStatusMessage"
+    container="body"
+    placement="right"
+    class="action-status-{{actionStatus}} ml-5 cursor-p"
+    [ngClass]="{
+            'fas': ['error', 'warning', 'success'].includes(actionStatus), 
+            'fal': actionStatus === 'info',
+            'fa-remove': actionStatus === 'error', 
+            'fa-check-circle': actionStatus === 'success', 
+            'fa-exclamation-circle': ['warning', 'info'].includes(actionStatus)
+        }"
+  >
+  </i>
+
+  <progressbar
+    class="progress-striped active"
+    *ngIf="params.data?.isProcessing && params.showProgressbar"
+    [value]="params.data?.processProgress"
+    [animate]="true"
+    type="success"
+  >
+  </progressbar>
+</div>

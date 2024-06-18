@@ -1,0 +1,25 @@
+@import "src/core/styles/scss/bootstrapOverridesVariables";
+
+input { 
+    width: 100%; 
+    padding-bottom: 5px; 
+    height: 25px; 
+    padding-right: 5px; 
+    outline: none; 
+    background: transparent; 
+    border: none; 
+    
+    &.ng-invalid { 
+        color: $error-color-input; 
+    }
+}
+
+@each $theme in $themes { 
+    :host-context(.ag-theme-core-#{$theme}) { 
+        input {
+            &:focus { 
+                background-color: map_get($input-background-map, $theme);
+            }
+        }
+    }
+}

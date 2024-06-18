@@ -1,0 +1,20 @@
+<div
+  class="pretty {{ favorite ? 'favorite' : '' }} p-icon {{ shape }} {{
+    animation
+  }} {{ additionalClasses }} mr-0"
+>
+  <input
+    [tabindex]="disableTabbing ? -1 : 0"
+    type="checkbox"
+    [(ngModel)]="model"
+    (ngModelChange)="modelChange.emit(model)"
+    [disabled]="disabled"
+  />
+
+  <div class="state {{ state }}">
+    <i class="icon {{ getFontClass() }}"></i>
+    <label>
+      <span class="{{ labelClass }}">{{ label }}</span>
+    </label>
+  </div>
+</div>

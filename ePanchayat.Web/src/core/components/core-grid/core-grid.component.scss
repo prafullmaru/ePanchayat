@@ -1,0 +1,807 @@
+@use "sass:map";
+
+@import "./variables";
+@import "src/core/styles/scss/theme-variables";
+@import "src/core/styles/scss/bootstrapOverridesVariables";
+
+@import "../../../../node_modules/ag-grid-community/dist/styles/ag-grid.scss";
+@import "../../../../node_modules/ag-grid-community/dist/styles/ag-theme-material/sass/ag-theme-material-mixin.scss";
+
+@each $theme in $themes {
+    .ag-theme-core-#{$theme} {
+        font-weight: normal;
+        @include ag-theme-material (
+            (
+                foreground-color: map.get($ag-foreground-color, $theme),
+                data-color: map.get($ag-font-color, $theme),
+                header-foreground-color: map.get($ag-header-foreground-color, $theme),
+                row-hover-color: map.get($ag-row-selected, $theme),
+                background-color: map.get($ag-background, $theme),
+                header-background-color: map.get($ag-header-row-bg, $theme),
+                header-cell-hover-background-color: map.get($ag-header-cell-hover-bg, $theme),
+                subheader-background-color: map.get($ag-background-subheader, $theme),
+                subheader-toolbar-background-color: map.get($ag-background-subheader, $theme),
+                control-panel-background-color: map.get($ag-background, $theme),
+                selected-row-background-color: map.get($ag-row-selected, $theme),
+                input-focus-border-color: transparent,
+                grid-size: 4px,
+                row-height: $row-height,
+                header-height: $header-height,
+                list-item-height: $list-item-height,
+                borders-critical: map.get($ag-row-divider-color, $theme),
+                borders-secondary: map.get($ag-row-divider-color, $theme),
+                borders-side-button: map.get($ag-row-divider-color, $theme),
+                border-color: map.get($ag-row-divider-color, $theme),
+                secondary-border-color: map.get($ag-row-divider-color, $theme),
+                row-border-color: map.get($ag-row-divider-color, $theme),
+                cell-horizontal-border: solid transparent,
+                font-family: $ag-font,
+                selected-tab-underline-color: map.get($mg-main-color-map, $theme),
+                selected-tab-underline-width: 3px,
+                font-size: 11px,
+            )
+        );
+
+        input[class^="ag-"]:focus:not([type]),
+        input[class^="ag-"][type="text"]:focus,
+        input[class^="ag-"][type="number"]:focus,
+        input[class^="ag-"][type="tel"]:focus,
+        input[class^="ag-"][type="date"]:focus,
+        input[class^="ag-"][type="datetime-local"]:focus,
+        input[class^="ag-"][type="datetime-local"]:focus,
+        textarea [class="ag-"]:focus {
+            border-bottom-color: map.get($mg-main-color-map, $theme);
+        }
+
+        //header 
+        .ag-header-row-floating-filter {
+            background-color: map.get($ag-filter-row-bg, $theme);
+        }
+
+        .ag-header-row {
+            font-family: $ag-font;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        .ag-react-container {
+            width: 100% !important;
+        }
+
+        .ag-floating-filter-body .ag-react-container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .ag-header-cell {
+            padding: 5px;
+            display: flex;
+        }
+
+        .ag-set-filter-list {
+            height: 192px;
+        }
+
+        .ag-header-cell-menu-button {
+            opacity: 0;
+            transition: opacity 0.2s ease es, border 0.2s ease 0s;
+        }
+
+        .ag-header-cell:hover .ag-header-cell-menu-button {
+            opacity: 1;
+        }
+
+        .bg-header-cell-hover {
+            background-color: map.get($ag-header-cell-hover-bg, $theme);
+        }
+
+        .ag-header-icon {
+            color: map.get($mg-main-color-map, $theme);
+        }
+
+        .ag-header-group-cell-with-group {
+            padding-right: 0;
+        }
+
+        .ag-menu-button-filter-active {
+            opacity: 1;
+            color: $bright-purple;
+        }
+
+        .ag-header-icon:hover {
+            color: map.get($mg-main-color-map, $theme);
+        }
+
+        .column-group-header-regular {
+            font-size: 13px;
+
+            .expand-collapse-header {
+                margin: auto;
+            }
+        }
+
+        .column-group-header {
+            color: map.get($mg-main-color-map, $theme);
+            font-size: 13px;
+
+            .expand-collapse-header {
+                margin: auto;
+            }
+        }
+
+        .column-group-header-yellow {
+            color: $warning-color;
+            font-size: 13px;
+
+            .expand-collapse-header {
+                margin: auto;
+            }
+        }
+
+        .column-group-header-green {
+            color: $bright-green-3;
+            font-size: 13px;
+
+            .expand-collapse-header {
+                margin: auto;
+            }
+        }
+
+        .column-header-alert {
+            background-color: $bright-red-2;
+
+            @if $theme =="light" {
+                background-color: $error-bg-color-1;
+            }
+        }
+
+        .column-header-green {
+            color: $bright-green-3;
+        }
+
+        .column-header-yellow {
+            color: $warning-color;
+        }
+
+        .column-header-primary {
+            color: map.get($mg-main-color-map, $theme);
+        }
+
+        .ag-header-group-cell-with-group {
+            border-right: solid 1px map-get($ag-row-divider-color, $theme);
+        }
+
+        .ag-filter-header-container {
+            border-bottom: none;
+        }
+
+        .ag-floating-filter-button .ag-icon {
+            font-size: 14px;
+        }
+
+        .ag-floating-filter-button:hover {
+            color: map.get($mg-main-color-map, $theme);
+        }
+
+        .ag-ltr .ag-floating-filter-button {
+            margin-left: 4px;
+        }
+
+        textarea[class^="ag-"],
+        textarea[class^="ag-"],
+        input[class^="ag-"]:not([type]),
+        input[class^="ag-"][type="text"],
+        input[class^="ag-"][type="number"],
+        input[class^="ag-"][type="tel"],
+        input[class^="ag-"][type="date"],
+        input[class^="ag-"][type="datetime-local"],
+        input[class^="ag-"][type="text"]:disabled,
+        textarea[class^="ag-"] {
+            @if $theme =="light" {
+                border-bottom-color: $primary-white
+            }
+        }
+
+        .ag-row {
+            background-color: map.get($ag-background, $theme);
+        }
+
+        .ag-row-even {
+            background-color: map.get($ag-row-lower-levels-background, $theme);
+        }
+
+        .ag-row-hover {
+            background-color: map.get($ag-row-selected, $theme) !important;
+        }
+
+        .ag-row-selected,
+        .ag-row-focus {
+            background-color: map.get($ag-row-selected, $theme) !important;
+        }
+
+        .ag-row-selected.ag-row-hover {
+            background-color: map.get($ag-row-selected__hover, $theme);
+        }
+
+        .ag-ltr .ag-row-level-1 .ag-row-group-leaf-indent,
+        .ag-row-group-leaf-indent {
+            margin-left: 0px;
+        }
+
+        .ag-tool-panel-wrapper {
+            width: 250px;
+        }
+
+        //cells 
+        .ag-ltr .ag-cell.editable-cell {
+            background-color: map_get($ag-input-editable-background-map, $theme);
+            border: 1px solid map_get($ag-input-editable-border-color-map, $theme);
+            text-align: right;
+
+            &.ag-cell-inline-editing {
+                border: 1px solid map_get($input-border-color-active-map, $theme) !important;
+                background-color: map_get($input-background-map, $theme);
+
+                input {
+                    border: unset;
+                }
+            }
+        }
+
+        .editable-cell-left {
+            @extend .editable-cell;
+            text-align: left;
+        }
+
+        .editable-cell-light {
+            @extend .editable-cell;
+        }
+
+        .editable-cell-light-left {
+            @extend .editable-cell;
+            text-align: left;
+        }
+
+        .ag-ltr .ag-cell.editable-cell-whole-grid {
+            // todo.. add theme map for light
+            background-color: map.get($editable-cell-whole-grid-bg, $theme);
+            border-right: 1px solid map.get($editable-cell-whole-grid-border, $theme);
+            border-bottom: 1px solid map.get($editable-cell-whole-grid-border, $theme);
+        }
+
+        .ag-ltr .ag-cell.edited-cell {
+            // todo .. add theme map for light
+            background-color: map.get($edited-cell-bg, $theme);
+        }
+
+        .ag-cell {
+            padding-left: 4px;
+
+            &.ag-cell-range-selected:not(.ag-cell-range-single-cell).ag-cell-range-top {
+                border-top-color: map.get($mg-main-color-map, $theme);
+            }
+
+            &.ag-cell-range-selected:not(.ag-cell-range-single-cell).ag-cell-range-right {
+                border-right-color: map.get($mg-main-color-map, $theme);
+            }
+
+            &.ag-cell-range-selected:not(.ag-call-range-single-cell).ag-cell-range-bottom {
+                border-bottom-color: map.get($mg-main-color-map, $theme);
+            }
+
+            &.ag-cell-range-selected:not(.ag-cell-range-single-cell).ag-cell-range-left {
+                border-left-color: map.get($mg-main-color-map, $theme);
+            }
+
+            &.column-group-first-child {
+                border-left: 1px solid map_get($ag-row-divider-color, $theme) !important;
+                border-right: 1px solid map_get($ag-row-divider-color, $theme) !important;
+            }
+
+            &.column-group-first-child+.ag-cell.column-group-first-child,
+            &.column-group-last-child+.ag-cell.column-group-first-child {
+                border-left: unset !important;
+            }
+
+            &.column-group-last-child {
+                border-right: 1px solid map_get($ag-row-divider-color, $theme) !important;
+            }
+
+            @for $i from 0 through 50 {
+                &.column-group-#{$i}.column-group-first-child:has(~ .column-group-#{$i}) {
+                    border-right: unset !important;
+                }
+            }
+        }
+
+        .ag-center-cols-clipper {
+            .ag-row>.column-group-first-child:first-child {
+                border-left: unset !important;
+            }
+        }
+
+        .ag-center-cols-clipper .ag-row {
+            .ag-cell:first-child {
+                border-left: unset !important;
+            }
+        }
+
+        .ag-ltr .ag-has-focus .ag-cell-focus:not(.ag-cell-range-selected),
+        .ag-ltr .ag-has-focus .ag-cell-focus.ag-cell-range-single-cell {
+            border-color: map.get($mg-main-color-map, $theme);
+        }
+
+        .ag-cell a {
+            color: map.get($ag-row-hyperlink-color, $theme);
+            text-decoration: underline;
+        }
+
+        .ag-column-drop-cell {
+            background: map.get($mg-main-color-map, $theme);
+            height: $row-height;
+            color: $light-gray-11;
+        }
+
+
+        .ag-column-drop-cell-drag-handle,
+        .ag-column-drop-cell-button {
+            color: $light-gray-11;
+        }
+
+        //editable cell input
+        .ag-cell-inline-editing {
+            background-color: unset;
+            height: inherit;
+            border: none;
+            box-shadow: none;
+        }
+
+        .ag-cell-inline-editing.ag-cell {
+            line-height: 0;
+        }
+
+        .ag-cell-inline-editing {
+            border: unset !important;
+        }
+
+        // side bar buttons
+        .ag-side-bar {
+            border-left: 1px solid map.get($ag-row-divider-color, $theme);
+        }
+
+        //menu 
+        .ag-menu {
+            background-color: map.get($ag-menu-background, $theme);
+
+            &-option {
+                display: flex;
+                border-left: 4px solid map.get($ag-menu-background, $theme);
+                font-size: 12px;
+                min-width: 200px;
+            }
+
+            &-option-active {
+                border-left: 4px solid map.get($mg-main-color-map, $theme);
+                background-color: map.get($ag-menu-selected, $theme);
+            }
+
+            &-option-text {
+                flex: 1;
+            }
+        }
+
+        .ag-tab {
+            height: $row-height;
+        }
+
+        //checkbox 
+        .ag-checkbox-input-wrapper {
+            font-size: 15px;
+            line-height: 15px;
+            height: 15px;
+            width: 15px;
+
+            input {
+                cursor: pointer;
+            }
+        }
+
+        .ag-checkbox-input-wrapper::after {
+            content: "";
+        }
+
+        .ag-checkbox-input-wrapper::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 4px;
+            border: 1px solid map.get($ag-checkbox-border, $theme);
+
+            @if $theme == "light" {
+                opacity: 1;
+            } @else {
+                opacity: 0.1;
+            }
+        }
+
+        .ag-checkbox-input-wrapper .ag-indeterminate::before,
+        .ag-checkbox-input-wrapper .ag-checked::before {
+            opacity: 1;
+        }
+
+        .ag-cell-Value {
+            overflow: unset;
+        }
+
+        .ag-checkbox-input-wrapper.ag-checked::after {
+            border: 1px solid $ag-checkbox-check-color;
+            border-right: none;
+            border-top: none;
+            border-left: none;
+            color: map.get($ag-checkbox-background-color-map, $theme);
+        }
+
+        .ag-checkbox-input-wrapper:focus-within,
+        .ag-checkbox-input-wrapper:active {
+            box-shadow: none;
+        }
+
+        //togle
+        .ag-toggle-button-input-wrapper {
+            background: $gray-gray-3;
+            border: 1px solid $gray-gray-3;
+        }
+
+        .ag-toggle-button-input-wrapper .ag-checked,
+        .ag-toggle-button-input-wrapper .ag-checked::before {
+            border: 1px solid map.get($mg-main-color-map, $theme);
+        }
+
+        .ag-toggle-button-input-wrappar .ag-checked {
+            background-color: map.get($mg-main-color-map, $theme);
+        }
+
+        .ag-toggle-button-input-wrapper::before {
+            background-color: $primary-white;
+            border-color: $gray-gray-3;
+        }
+
+
+        //scrollbar 
+
+        .ag-body-horizontal-scroll-viewport {
+            overflow-x: hidden;
+        }
+
+        .ag-center-cols-viewport {
+            overflow: hidden;
+        }
+
+        .ag-horizontal-left-spacer,
+        .ag-horizontal-right-spacer {
+            overflow: auto;
+        }
+
+        .ag-body-viewport {
+            overflow-y: hidden;
+        }
+
+        &.mouse-over {
+            .ag-body-horizontal-scroll-viewport {
+                overflow-x: auto;
+            }
+
+            .ag-body-viewport {
+                overflow-y: auto;
+            }
+
+            ::-webkit-scrollbar {
+                position: absolute;
+                background-color: map.get($ag-background, $theme);
+                width: 16px;
+                height: 16px;
+            }
+
+            ::-webkit-scrollbar-track {
+                background-color: map.get($ag-background, $theme);
+            }
+
+            ::-webkit-scrollbar-thumb {
+                background-color: #babace;
+                min-height: 30px;
+                border-radius: 16px;
+                border: 5px solid map.get($ag-background, $theme);
+            }
+
+            ::-webkit-scrollbar-thumb:hover {
+                background-color: #a0a0a5;
+                border: 4px solid map.get($ag-background, $theme);
+            }
+        }
+
+        .ag-body-horizontal-scroll[style="height: 10px; max-height: 10px; min-height: 10px;"],
+        .ag-body-horizontal-scroll-viewport[style="height: 10px; max-height: 10px; min-height: 10px;"],
+        .ag-body-horizontal-scroll-container[style="height: 10px; max-height: 10px; min-height: 10px;"] {
+            height: 16px !important;
+            min-height: 16px !important;
+            max-height: 16px !important;
+        }
+
+        ::-webkit-scrollbar-button {
+            display: none;
+        }
+
+        span[class^="ag-icon-tree"],
+        span[class*=" ag-icon-tree"] {
+            color: map.get($mg-main-color-map, $theme);
+        }
+
+        .ag-side-buttons {
+            display: none;
+            // padding-top: 28px; 
+        }
+
+        .align-right {
+            text-align: right;
+        }
+
+        //floating-filter
+        .ag-floating-filter-body {
+            display: block;
+        }
+
+        //filter
+        .ag-filter {
+            //padding: 10px 6px; 
+
+            .ag-filter-body-wrapper>* {
+                padding-top: 8px;
+            }
+
+            .ag-select .ag-picker-field-display {
+                // margin: 8px;
+                font-size: 12px;
+            }
+
+            .ag-select .ag-picker-field-wrapper {
+                height: 30px;
+            }
+
+            input[class^='ag-'] {
+                height: 25px;
+                border-bottom-color: map.get($ag-input-border-color, $theme);
+                padding-bottom: 0;
+            }
+
+            .ag-filter-body {
+                padding-top: 10px;
+            }
+        }
+
+        .ag-filter-apply-panel {
+            padding: 16px 6px;
+
+            .ag-standard-button {
+                color: map.get($mg-main-color-map, $theme);
+            }
+        }
+
+        .ag-filter-condition {
+            margin-top: 10px;
+            margin-bottom: 16px;
+        }
+
+        .ag-ltr .ag-filter-apply-panel-button {
+            margin-left: 14px;
+        }
+
+        .ag-radio-button-input-wrapper.ag-checked::after {
+            color: map.get($mg-main-color-map, $theme);
+        }
+
+        //tool panel
+        .ag-tool-panel-wrapper {
+
+            .ag-column-select-column-group:not(:last-child),
+            .ag-column-select-column:not(:last-child) {
+                height: 22px;
+            }
+
+            .ag-filter-toolpanel-header {
+                height: 25px;
+            }
+
+            .ag-select .ag-picker-field-wrapper {
+                height: 25px;
+            }
+
+            .ag-filter-toolpanel-group-level-0-header {
+                height: $row-height+ 5px;
+            }
+        }
+
+        .footer-grid {
+            width: 100%;
+            height: 26px;
+
+            .ag-body-horizontal-scroll,
+            .ag-body-horizontal-scroll-viewport,
+            .ag-body-horizontal-scroll-container {
+                height: 0px !important;
+                min-height: 0px !important;
+                max-height: 0px !important;
+            }
+
+            .ag-group-contracted,
+            .ag-group-expanded {
+                display: none !important;
+            }
+
+            .ag-body-viewport,
+            .ag-body-viewport.ag-layout-normal {
+                overflow-y: hidden;
+
+                &:hover {
+                    overflow-y: hidden;
+                }
+            }
+
+            .ag-header {
+                display: none;
+            }
+        }
+
+        .bordered-grid {
+            border: 1px solid map.get($ag-row-divider-color, $theme);
+
+            & .ag-details-grid {
+                border: 1px solid map.get($ag-row-divider-color, $theme);
+            }
+
+        }
+
+        .core-grid-footer {
+            padding-top: 5px;
+        }
+
+        .compact-grid {
+            &.bordered-grid {
+                border: none;
+            }
+
+            .ag-header-group-cell-with-group {
+                border: unset;
+
+                &.border-enabled {
+                    display: flex;
+                    justify-content: center;
+                    padding-left: 0px;
+                    border-left: 1px solid map_get($ag-row-divider-color, $theme) !important;
+                    border-right: 1px solid map_get($ag-row-divider-color, $theme) !important;
+                }
+
+                &.border-enabled+.border-enabled {
+                    border-left: unset !important;
+                }
+
+                .ag-header-group-cell-label {
+                    display: flex;
+                    justify-content: center;
+                    font-size: 13px;
+                }
+            }
+
+            .ag-header {
+                border: unset;
+            }
+
+            .ag-header-cell {
+                &.column-group-header-first-child {
+                    border-left: 1px solid map_get($ag-row-divider-color, $theme) !important;
+                    border-right: 1px solid map_get($ag-row-divider-color, $theme) !important;
+                }
+
+                &.column-group-header-first-child+.ag-header-cell.column-group-header-first-child,
+                &.column-group-header-last-child+.ag-header-cell.column-group-header-first-child {
+                    border-left: unset !important;
+                }
+
+                &.column-group-header-last-child {
+                    border-right: 1px solid map_get($ag-row-divider-color, $theme) !important;
+                }
+
+                @for $i from 0 through 50 {
+                    &.column-group-header-#{$i}.column-group-header-first-child:has(~ .column-group-header-#{$i}) {
+                        border-right: unset !important;
+                    }
+                }
+            }
+
+            .ag-header-cell:not(:last-child) {
+                border-right: none;
+            }
+
+            .ag-header-row {
+                opacity: map.get($compact-grid-content-opacity, $theme);
+            }
+
+            .ag-row {
+                opacity: map.get($compact-grid-content-opacity, $theme);
+                border-bottom: unset;
+            }
+
+            .core-grid-filter-wrapper {
+                border: unset;
+                background-color: map.get($compact-grid-filter-wrapper-bg, $theme);
+            }
+
+            .ag-floating-filter-button-button {
+                opacity: map.get($compact-grid-content-opacity, $theme);
+            }
+
+            .ag-grid-header-custom-container {
+                border-bottom: none;
+            }
+
+            .ag-side-bar {
+                border: none;
+            }
+
+            .ag-root-wrapper,
+            &.footer-enabled .footer-grid .ag-root-wrapper {
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+            }
+
+            &.footer-enabled .ag-root-wrapper {
+                border-bottom-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+
+            .ag-header-row:not(:first-child) .ag-header-cell {
+                border-top: unset;
+            }
+        }
+    }
+}
+
+.ag-theme-core-light {
+    .ag-header-cell:not(:last-child) {
+        border-right: 1px solid map.get($ag-row-divider-color, "light");
+    }
+}
+
+// todo remove the above grouped-grid class across the app 
+@each $theme in $themes {
+    .ag-theme-core-#{$theme}.grouped-grid { 
+        rows *[class^="ag-row-level-"],
+        *[class*=" ag-row-level-"] {
+            background-color: map.get($ag-grouped-grid-background, $theme);
+        }
+
+        .ag-row-level-0 {
+            background-color: map.get($ag-row-lower-levels-background, $theme)
+        }
+    }
+}
+
+core-grid {
+    height: 100%;
+    width: 100%;
+    //Probably it's not need for grid if need padding you can use some wrapper i.e. core-panel or pb-10 class
+    padding-bottom: 5px;
+
+    .core-grid-container {
+        display: flex;
+        flex-direction: column;
+        transition: 300ms height linear;
+    }
+}
+
+.ui-grid-cell-contents {
+    font-size: 11px;
+    .btn {
+        font-size: 9px;
+    }
+}
