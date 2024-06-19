@@ -1,6 +1,5 @@
 ﻿using ePanchayat.API.Interfaces;
 using ePanchayat.API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ePanchayat.API.Controllers
@@ -19,7 +18,7 @@ namespace ePanchayat.API.Controllers
         [HttpGet("")]
         public IEnumerable<Panchayat> Get()
         {
-            var panchayats = panchayatRepository.GetPanchayats();
+            var panchayats = panchayatRepository.GetAll();
             return panchayats;
         }
     }

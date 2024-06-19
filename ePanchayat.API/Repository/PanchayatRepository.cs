@@ -13,14 +13,14 @@ namespace ePanchayat.API.Repository
             _sqlDataAccess = sqlDataAccess;
         }
 
-        public List<Panchayat> GetPanchayats()
+        public List<Panchayat> GetAll()
         {
 
             var dataset = _sqlDataAccess.GetDataSetByStoredProc("PanchayatGet_sp");
-            return MapToPanchayat(dataset);
+            return Map(dataset);
         }
 
-        private List<Panchayat> MapToPanchayat(DataSet dataset)
+        private List<Panchayat> Map(DataSet dataset)
         {
             if(dataset.Tables.Count == 0 || dataset.Tables[0].Rows.Count == 0)
             {
