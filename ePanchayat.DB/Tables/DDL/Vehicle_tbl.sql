@@ -23,3 +23,18 @@ CREATE TABLE dbo.Vehicle_tbl
 	IsActive BIT NOT NULL
 )
 GO
+ALTER TABLE dbo.Vehicle_tbl
+ADD CONSTRAINT PK_VehicleId PRIMARY KEY (VehicleId)
+GO
+
+ALTER TABLE dbo.Vehicle_tbl
+ADD CONSTRAINT UK_ RegistrationNumber UNIQUE (RegistrationNumber)
+GO
+
+ALTER TABLE dbo.Vehicle_tbl
+ADD CONSTRAINT DF_Vehicle_Date DEFAULT GETDATE() FOR LastModifiedOn
+GO
+
+ALTER TABLE dbo.Vehicle_tbl
+ADD CONSTRAINT DF_Vehicle_IsActive DEFAULT 1 FOR IsActive
+GO
