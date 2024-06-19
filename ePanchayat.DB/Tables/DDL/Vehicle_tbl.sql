@@ -19,20 +19,29 @@ CREATE TABLE dbo.Vehicle_tbl
 	RegistrationNumber VARCHAR(50) NOT NULL,
 	OwnerId INT NOT NULL,
 	LastModifiedOn DATETIME NOT NULL,
-	LastModifiedBy VARCHAR(50) NOT NULL,
+	LastModifiedBy INT NOT NULL,
 	IsActive BIT NOT NULL
 )
 GO
+
 ALTER TABLE dbo.Vehicle_tbl
-ADD CONSTRAINT PK_VehicleId PRIMARY KEY (VehicleId)
+ADD CONSTRAINT PK_Vehicle_VehicleId PRIMARY KEY (VehicleId)
 GO
 
 ALTER TABLE dbo.Vehicle_tbl
-ADD CONSTRAINT UK_ RegistrationNumber UNIQUE (RegistrationNumber)
+ADD CONSTRAINT FK_Vehicle_OwnerId FOREIGN KEY(OwnerId) REFERENCES dbo.User_tbl(UserId)
+GO
+
+ALTER TABLE dbo.Vehicle_tbl
+ADD CONSTRAINT UK_Vehicle_RegistrationNumber UNIQUE (RegistrationNumber)
 GO
 
 ALTER TABLE dbo.Vehicle_tbl
 ADD CONSTRAINT DF_Vehicle_Date DEFAULT GETDATE() FOR LastModifiedOn
+GO
+
+ALTER TABLE dbo.Vehicle_tbl
+ADD CONSTRAINT FK_Vehicle_LastModified FOREIGN KEY(LastModifiedBy) REFERENCES dbo.User_tbl(UserId)
 GO
 
 ALTER TABLE dbo.Vehicle_tbl

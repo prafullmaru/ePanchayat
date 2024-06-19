@@ -1,4 +1,4 @@
-USE [ePanchayat]
+USE ePanchayat
 GO
 
 IF OBJECT_ID('dbo.UserRoleGet_sp') IS NOT NULL
@@ -14,15 +14,17 @@ CREATE PROCEDURE dbo.UserRoleGet_sp
 AS
 BEGIN
 	SELECT
-		[UserRoleId]
-		,[UserRoleName]
-		,[Description]
-		,[LastModifiedOn]
-		,[LastModifiedBy]
-		,[IsActive]
+		R.UserRoleId
+		,R.UserRoleName
+		,R.Description
+		,R.LastModifiedOn
+		,R.LastModifiedBy
+		,Modified.FirstName + ' ' + Modified.LastName AS 'LastModifiedByFullName'
+		,R.IsActive
 	FROM
-		[dbo].[UserRole_tbl]
+		dbo.UserRole_tbl R
+		LEFT JOIN dbo.User_tbl Modified ON R.LastModifiedBy = Modified.UserId
 	WHERE
-		[UserRoleId] = ISNULL(@RoleId, [UserRoleId])
+		UserRoleId = ISNULL(@RoleId, UserRoleId)
 END
 GO

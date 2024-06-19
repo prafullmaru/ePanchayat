@@ -18,7 +18,7 @@ CREATE TABLE dbo.UserRole_tbl
 	UserRoleName VARCHAR(50) NOT NULL,
 	Description VARCHAR(500) NULL,
 	LastModifiedOn DATETIME NOT NULL,
-	LastModifiedBy VARCHAR(50) NOT NULL,
+	LastModifiedBy INT NOT NULL,
 	IsActive BIT NOT NULL
 )
 GO
@@ -29,6 +29,10 @@ GO
 
 ALTER TABLE dbo.UserRole_tbl
 ADD CONSTRAINT DF_UserRole_Date DEFAULT GETDATE() FOR LastModifiedOn
+GO
+
+ALTER TABLE dbo.UserRole_tbl
+ADD CONSTRAINT FK_UserRole_LastModified FOREIGN KEY(LastModifiedBy) REFERENCES dbo.User_tbl(UserId)
 GO
 
 ALTER TABLE dbo.UserRole_tbl

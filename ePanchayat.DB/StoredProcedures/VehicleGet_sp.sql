@@ -15,18 +15,22 @@ CREATE PROCEDURE dbo.VehicleGet_sp
 AS
 BEGIN
 	SELECT
-		VehicleId
-		,Category
-		,RegistrationNumber
-		,OwnerId
-		,LastModifiedOn
-		,LastModifiedBy
-		,IsActive
+		 V.VehicleId
+		,V.Category
+		,V.RegistrationNumber
+		,V.OwnerId
+		,U.FirstName + ' ' + U.LastName AS 'OwnerFullName'
+		,V.LastModifiedOn
+		,V.LastModifiedBy
+		,Modified.FirstName + ' ' + Modified.LastName AS 'LastModifiedByFullName'
+		,V.IsActive
 	FROM
-		dbo.Vehicle_tbl
+		dbo.Vehicle_tbl V
+		LEFT JOIN dbo.User_tbl U ON V.OwnerId = U.UserId
+		LEFT JOIN dbo.User_tbl Modified ON V.LastModifiedBy = Modified.UserId
 	WHERE
 		VehicleId = @VehicleId
 		AND RegistrationNumber = ISNULL(@RegistrationNumber, RegistrationNumber)
-		AND IsActive = 1
+		AND V.IsActive = 1
 END
 GO

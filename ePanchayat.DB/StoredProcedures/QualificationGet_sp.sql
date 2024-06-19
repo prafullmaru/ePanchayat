@@ -15,21 +15,25 @@ CREATE PROCEDURE dbo.QualificationGet_sp
 AS
 BEGIN
 	SELECT
-		QualificationId
-		,UserId
-		,Qualification
-		,Major
-		,PassingYear
-		,LastModifiedOn
-		,LastModifiedBy
-		,IsActive
+		 Q.QualificationId
+		,Q.UserId
+		,U.FirstName + ' ' + U.LastName AS 'UserFullName'
+		,Q.Qualification
+		,Q.Major
+		,Q.PassingYear
+		,Q.LastModifiedOn
+		,Q.LastModifiedBy
+		,Modified.FirstName + ' ' + Modified.LastName AS 'LastModifiedByFullName'
+		,Q.IsActive
 	FROM
-		dbo.Qualification_tbl
+		dbo.Qualification_tbl Q
+		LEFT JOIN dbo.User_tbl U ON Q.UserId = U.UserId
+		LEFT JOIN dbo.User_tbl Modified ON Q.LastModifiedBy = Modified.UserId
 	WHERE
 		(
 			QualificationId = @QualificationId
 			OR Qualification = ISNULL(@Qualification, Qualification)
 		)
-		AND IsActive = 1
+		AND Q.IsActive = 1
 END
 GO
