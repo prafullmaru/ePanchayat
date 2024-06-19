@@ -14,8 +14,8 @@ END
 
 CREATE TABLE dbo.UserRole_tbl
 (
-	RoleId INT IDENTITY(1,1) NOT NULL,
-	RoleName VARCHAR(50) NOT NULL,
+	UserRoleId INT IDENTITY(1,1) NOT NULL,
+	UserRoleName VARCHAR(50) NOT NULL,
 	Description VARCHAR(500) NULL,
 	LastModifiedOn DATETIME NOT NULL,
 	LastModifiedBy VARCHAR(50) NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE dbo.UserRole_tbl
 GO
 
 ALTER TABLE dbo.UserRole_tbl
-ADD CONSTRAINT PK_UserRole_RoleId PRIMARY KEY (RoleId)
+ADD CONSTRAINT PK_UserRole_RoleId PRIMARY KEY (UserRoleId)
 GO
 
 ALTER TABLE dbo.UserRole_tbl

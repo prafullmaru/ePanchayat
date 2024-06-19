@@ -14,8 +14,8 @@ CREATE PROCEDURE dbo.UserRoleGet_sp
 AS
 BEGIN
 	SELECT
-		[RoleId]
-		,[RoleName]
+		[UserRoleId]
+		,[UserRoleName]
 		,[Description]
 		,[LastModifiedOn]
 		,[LastModifiedBy]
@@ -23,6 +23,6 @@ BEGIN
 	FROM
 		[dbo].[UserRole_tbl]
 	WHERE
-		[RoleId] = ISNULL(@RoleId, [RoleId])
+		[UserRoleId] = ISNULL(@RoleId, [UserRoleId])
 END
 GO

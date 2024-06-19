@@ -9,14 +9,14 @@ GO
 
 CREATE PROCEDURE dbo.UserRoleAccessGet_sp
 (
-	@UserRoleAccessId INT
+	@UserRoleAccessId INT = NULL
 )
 AS
 BEGIN
 	SELECT
 		[UserRoleAccessId]
 		,[UserId]
-		,[RoleId]
+		,[UserRoleId]
 		,[LastModifiedOn]
 		,[LastModifiedBy]
 		,[IsActive]

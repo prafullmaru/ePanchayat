@@ -1,5 +1,3 @@
--- TODO - Finalize fields and prepare CRUD stored procs
-
 USE [ePanchayat]
 GO
 
@@ -17,6 +15,9 @@ END
 CREATE TABLE dbo.Vehicle_tbl
 (
 	VehicleId INT IDENTITY(1,1) NOT NULL,
+	Category VARCHAR(50) NOT NULL,
+	RegistrationNumber VARCHAR(50) NOT NULL,
+	OwnerId INT NOT NULL,
 	LastModifiedOn DATETIME NOT NULL,
 	LastModifiedBy VARCHAR(50) NOT NULL,
 	IsActive BIT NOT NULL
