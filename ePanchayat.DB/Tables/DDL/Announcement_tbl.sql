@@ -1,5 +1,3 @@
--- TODO - Finalize fields and prepare CRUD stored procs
-
 USE [ePanchayat]
 GO
 
@@ -17,6 +15,9 @@ END
 CREATE TABLE dbo.Announcement_tbl
 (
 	AnnouncementId INT IDENTITY(1,1) NOT NULL,
+	AnnouncementTitle VARCHAR(200) NOT NULL,
+	Description VARCHAR(1000) NOT NULL,
+	DisplayTill DATETIME NOT NULL,
 	LastModifiedOn DATETIME NOT NULL,
 	LastModifiedBy VARCHAR(50) NOT NULL,
 	IsActive BIT NOT NULL
