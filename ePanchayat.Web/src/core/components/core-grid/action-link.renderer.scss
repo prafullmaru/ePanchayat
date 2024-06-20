@@ -1,0 +1,26 @@
+@import "src/core/styles/scss/theme-variables";
+
+.action-link-container { 
+    padding-top: 0; 
+    font-weight: normal
+}
+
+.action-link-container .progress { 
+    height: 15px; 
+    margin-top: 2px;
+}
+
+.action-status-success {
+    color: $success-color;
+    font-size: 12px;
+}
+
+.action-status-warning {
+    color: $warning-color;
+    font-size: 12px;
+}
+
+.action-status-error {
+    color: $error-color;
+    font-size: 12px;
+}

@@ -14,21 +14,25 @@ END
 
 CREATE TABLE dbo.UserRole_tbl
 (
-	RoleId INT IDENTITY(1,1) NOT NULL,
-	RoleName VARCHAR(50) NOT NULL,
+	UserRoleId INT IDENTITY(1,1) NOT NULL,
+	UserRoleName VARCHAR(50) NOT NULL,
 	Description VARCHAR(500) NULL,
 	LastModifiedOn DATETIME NOT NULL,
-	LastModifiedBy VARCHAR(50) NOT NULL,
+	LastModifiedBy INT NOT NULL,
 	IsActive BIT NOT NULL
 )
 GO
 
 ALTER TABLE dbo.UserRole_tbl
-ADD CONSTRAINT PK_UserRole_RoleId PRIMARY KEY (RoleId)
+ADD CONSTRAINT PK_UserRole_RoleId PRIMARY KEY (UserRoleId)
 GO
 
 ALTER TABLE dbo.UserRole_tbl
 ADD CONSTRAINT DF_UserRole_Date DEFAULT GETDATE() FOR LastModifiedOn
+GO
+
+ALTER TABLE dbo.UserRole_tbl
+ADD CONSTRAINT FK_UserRole_LastModified FOREIGN KEY(LastModifiedBy) REFERENCES dbo.User_tbl(UserId)
 GO
 
 ALTER TABLE dbo.UserRole_tbl

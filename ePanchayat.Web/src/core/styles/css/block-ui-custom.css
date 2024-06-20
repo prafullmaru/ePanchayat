@@ -1,0 +1,21 @@
+.block-ui-overlay {
+    background-color: #2b3e50 !important;
+}
+
+.block-ui-container {
+    /*For not blocking menu: */
+    z-index: 1025;
+}
+
+.block-ui-message-container {
+    /*For not blocking menu:*/
+    z-index: 1025;
+}
+
+.block-ui-whole-page-container {
+    z-index: 2000;
+}
+
+.block-ui-whole-page-message-container {
+    z-index: 2000;
+}

@@ -1,0 +1,68 @@
+@import "src/core/styles/scss/variables";
+
+carousel {
+    width: 100%;
+}
+
+img {
+    max-height: 200px;
+}
+
+.slide {
+    z-index: 99 l !important;
+}
+
+.carousel-inner {
+    padding: 5px !important;
+    overflow: visible !important;
+}
+
+.carousel-slide {
+    margin: 0 !important;
+    min-width: 156px !important;
+    max-width: 156px !important;
+}
+
+.carousel-card {
+    margin: 0 !important;
+}
+
+.carousel-cards-holder {
+    flex-wrap: nowrap !important;
+}
+
+.carousel-control {
+    width: 25% !important;
+}
+
+.carousel-control .icon-prev,
+.carousel-control .icon-next {
+    transform: scale(1.5);
+    color: $primary-color;
+}
+
+.carousel-control .icon-prev:hover,
+.carousel-control .icon-next:hover {
+    transform: scale(1.5);
+}
+
+a.left.carousel-control.carousel-control-prev,
+a.right.carousel-control.carousel-control-next {
+    opacity: 1;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none !important;
+}
+
+/* dark theme */
+.core-dark-theme .carousel-control .icon-prev,
+.core-dark-theme .carousel-control .icon-next {
+    color: $primary-color;
+}
+
+.core-dark-theme a.left.carousel-control.carousel-control-prev,
+.core-dark-theme a.right.carousel-control.carousel-control-next {
+    opacity: 1;
+}

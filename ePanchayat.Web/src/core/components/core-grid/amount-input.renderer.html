@@ -1,0 +1,10 @@
+<input
+  #amount="ngModel"
+  class="editable-cell ag-cell-edit-input"
+  amountFormatter
+  [ngModel]="value"
+  [ngClass]="amount.invalid? 'error-input': cssClass"
+  (keydown)="suppressGridNavigation($event)"
+  (click)="onClick($event)"
+  (ngModelChange)="onChange($event)"
+/>

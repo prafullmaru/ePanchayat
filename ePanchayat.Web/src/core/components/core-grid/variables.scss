@@ -1,0 +1,245 @@
+@import "src/core/styles/scss/variables";
+@import "src/core/styles/scss/theme-variables";
+
+$ag-foreground-color: (
+    "dark": $primary-white,
+    "light": $dark-gray-8,
+);
+
+$ag-header-foreground-color: (
+    "dark": $primary-white,
+    "light": $dark-gray-8
+); 
+
+$ag-background: ( 
+    "dark": $dark-gray-9,
+    "light": $light-gray-11, 
+); 
+
+$ag-grouped-grid-background: (
+    "dark": $dark-gray-9,
+    "light": $primary-white,
+);
+
+$ag-background-header: ( 
+    "dark": $dark-gray-10,
+    "light": $light-gray-13, 
+);
+
+$ag-background-subheader: (
+    "dark": $dark-gray-10, 
+    "light":#eee, 
+);
+
+$ag-font-color: ( 
+    "dark": $primary-white,
+    "light": $dark-gray-8,
+);
+
+$ag-border-input-color: ( 
+    "dark": $gray-gray-5,
+    "light": $light-gray-14, 
+); 
+
+$ag-row-divider-color: ( 
+    "dark": #515a63, 
+    "light": $light-gray-14, 
+);
+
+$ag-row-lower-levels-background: (
+    "dark": $dark-gray-10,
+    "light": $light-gray-12,
+);
+
+$ag-row-selected: ( 
+    "dark": $dark-gray-8,
+    "light": $core-light-blue-1, 
+);
+
+$ag-row-selected__hover: ( 
+    "dark": $dark-gray-7,
+    "light": $light-gray-12, 
+);
+
+$ag-filter-row-bg: (
+    "dark": #101d2b, 
+    "light": $primary-white, 
+);
+
+$ag-header-row-bg: ( 
+    "dark": #101d2b, 
+    "light": $primary-white, 
+);
+
+$ag-cell-input-border: #4a5158;
+$ag-cell-input-bg: $dark-gray-10;
+
+//menu 
+$ag-menu-background: (
+    "dark": $dark-charcoal-0,
+    "light": $light-gray-11,
+);
+
+$ag-menu-selected: (
+    "dark": $dark-gray-7,
+    "light": $light-gray-12,
+);
+
+// filter 
+$ag-filter-background: ( 
+    "dark": $dark-gray-8,
+    "light": $light-gray-11, 
+);
+
+$ag-disabled-filter-background: ( 
+    "dark": $dark-gray-10,
+    "light": $light-gray-13, 
+);
+
+$ag-filter-color: (
+    "dark": $primary-white,
+    "light": $dark-gray-8, 
+);
+
+// input 
+$ag-input-background: (
+    "dark": $dark-gray-10,
+    "light": $light-gray-13, 
+);
+
+$ag-input-color: (
+    "dark": #acc7e8, 
+    "light": $dark-gray-8, 
+);
+
+$ag-input-border-color: ( 
+    "dark": $gray-gray-4,
+    "light": $gray-gray-3, 
+);
+
+$ag-input-color-placeholder: (
+    "dark": $primary-black,
+    "light": $primary-white, 
+);
+
+$ag-input-color-warning: (
+    "dark": $gray-gray-3,
+    "light": $dark-gray-8, 
+);
+
+$ag-input-color-border-warning: ( 
+    "dark": $alert-and-notifications-warning,
+    "light": $alert-and-notifications-warning, 
+);
+
+$ag-input-color-error: ( 
+    "dark": $gray-gray-3,
+    "light": $dark-gray-8, 
+); 
+
+$ag-input-color-border-error: ( 
+    "dark": $light-magenta,
+    "light": $alerts-red,
+);
+
+$ag-input-editable-background-map: (
+    "dark": #3333,
+    "light": $supporting-color-light-blue-20, 
+);
+
+$ag-input-editable-border-color-map: (
+    "dark": $dark-charcoal-0,
+    "light": $supporting-color-light-blue-80, 
+);
+
+$ag-grid-header-title: (
+    "dark": $primary-white,
+    "light": #575756, 
+);
+
+$ag-grid-header-text: (
+    "dark": $gray-gray-3,
+    "light": #575756, 
+);
+
+$ag-header-cell-hover-bg: (
+    "dark": #2f3740,
+    "light": $light-gray-13, 
+);
+
+$ag-row-hyperlink-color: (
+    "dark": $turquoise,
+    "light": $alerts-red-2, 
+);
+
+$mg-main-color-map: (
+    "dark": $turquoise,
+    "light": #652394,
+);
+
+$ag-selected-tab-underline-color: $mg-main-color-map;
+$ag-grid-header-button-icon-color: $bright-turquoise;
+
+$ag-grid-header-button-icon-clear-color: $alerts-red;
+
+$ag-grid-header-button-active-background-map: (
+    "dark": linear-gradient(to bottom, $mid-turquoise, $bright-turquoise),
+    "light": #652394,
+);
+
+$ag-input-refresh-container: $dark-turquoise;
+$ag-input-refresh-icon: $gray-gray-3;
+$ag-input-negative-number: $light-magenta; 
+
+//fonts
+$ag-font: "core-SegoeUI";
+$ag-header-font: "core-SegoeUI-Medium";
+$ag-header-font-bold: "core-SegoeUI-Bold"; 
+
+//checkbox 
+$ag-checkbox-background-color:  $light-gray-11;
+
+$ag-checkbox-background-color-map: (
+    "dark": $light-gray-11,
+    "light": $primary-color,
+);
+
+$ag-checkbox-border: (
+    "dark": $light-gray-11,
+    "light": $primary-color,
+);
+
+$ag-checkbox-check-color: $primary-color;
+
+//input- temp? 
+$ag-input-focus-border-color: $dark-turquoise; 
+
+$row-height: 23px;
+$list-item-height: 29px;
+$header-height: 30px; 
+
+// below classes are for compact-grid
+$compact-grid-content-opacity: ( 
+"dark": 0.9,
+"light": 1,
+);
+
+$compact-grid-filter-wrapper-bg: (
+    "dark": $dark-gray-12,
+    "light": $light-gray-12, 
+);
+
+$editable-cell-whole-grid-bg: ( 
+    "dark": #303b48, 
+    "light": white, 
+);
+
+$editable-cell-whole-grid-border: ( 
+    "dark": $dark-charcoal-0,
+    "light": $gray-gray-2,
+);
+
+$edited-cell-bg: ( 
+    "dark": $dark-gray-11,
+    "light": $gray-gray-2, 
+); 

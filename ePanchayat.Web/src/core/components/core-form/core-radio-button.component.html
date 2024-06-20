@@ -1,0 +1,15 @@
+<div class="pretty p-icon p-round">
+  <input
+    type="radio"
+    [(ngModel)]="model"
+    (ngModelChange)="modelChange.emit(model)"
+    [value]="buttonValue"
+    [name]="buttonName"
+  />
+  <div class="state p-primary">
+    <i class="icon fal fa-check"></i>
+    <label>
+      <span class="fs-12">{{ description }}</span>
+    </label>
+  </div>
+</div>

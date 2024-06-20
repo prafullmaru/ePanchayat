@@ -1,0 +1,36 @@
+@import "src/core/styles/scss/variables"; 
+
+.pretty { 
+    input[type="checkbox"] { 
+        margin: 0; 
+    }
+
+    &.favorite { 
+        .state label:before {
+            border: none;
+        }
+    
+        input[type="checkbox"] ~ .state.p-warning-o .icon { 
+            color: #f0ad4e; 
+        }
+
+        &.p-icon .state .icon { 
+            opacity: 1;
+        }
+    }
+
+    .icon {
+        margin: 0;
+        padding: 0;
+    }
+    
+    label span {
+        font-size: 12px;
+    } 
+}
+
+:host-context(.core-dark-theme) { 
+    .pretty.favorite input[type="checkbox"] ~ .state.p-warning-o .icon {
+        color: $turquoise;
+    }
+}

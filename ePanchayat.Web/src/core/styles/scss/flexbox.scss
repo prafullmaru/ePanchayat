@@ -1,0 +1,32 @@
+.flex-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+
+@media only screen and (min-width: 992px) {
+    .flex-row-md {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-basis: 100%;
+    }
+
+    .flex-column-md {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+    }
+}
+
+
+.flex-justify-space-between {
+    justify-content: space-between;
+}

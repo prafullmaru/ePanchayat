@@ -1,0 +1,79 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <button
+      type="button"
+      class="navbar-toggle"
+      data-toggle="collapse"
+      data-target=".navbar-collapse"
+    >
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" routerLink="">ePanchayat
+      <!-- Future - Display as per selected -->
+      <sup style="font-weight: normal; font-size: 12px">Wagholi</sup>
+    </a>
+  </div>
+  <div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav flex-container navbar-modules">
+      <li
+        class="nav-item flex-item"
+        *ngFor="let topMenu of topMenus"
+        routerLinkActive="active"
+        routerLink="/{{ topMenu.Location }}"
+      >
+        <a
+          class="nav-link flex-item {{ topMenu.Location }}"
+          [tooltip]="topMenu.Name"
+          [delay]="1000"
+          placement="bottom"
+          container="body"
+        >
+          <span class="mr-5 {{ topMenu.Icon }}"></span>
+          <span style="font-weight: normal !important">{{
+            topMenu.Name
+          }}</span>
+        </a>
+      </li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li
+        class="nav-item pull-right"
+        routerLinkActive="active"
+        routerLink="/login"
+      >
+        <a
+          class="nav-link flex-item login"
+          tooltip="Login"
+          delay="1000"
+          placement="bottom"
+          container="body"
+        >
+          <span style="font-weight: normal !important; box-shadow: 0 0 0 1px; border-radius: 20px;padding: 3px;">Sign in</span>
+        </a>
+      </li>
+      <li
+        class="nav-item pull-right"
+        routerLinkActive="active"
+        routerLink="/profile"
+      >
+        <a
+          class="nav-link profile"
+          tooltip="Profile"
+          delay="1000"
+          placement="bottom"
+          container="body"
+        >
+          <span class="fa-regular fa-user" style="box-shadow: 0 0 0 1px; border-radius: 20px; padding: 3px;"></span>
+        </a>
+    </li>
+      <li class="nav-item pull-right">
+        <a class="nav-link" tooltip="GitHub">
+          <span class="fa-brands fa-github" style="box-shadow: 0 0 0 1px; border-radius: 20px; padding: 3px;"></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

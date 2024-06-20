@@ -1,0 +1,1065 @@
+@import "bootstrapOverridesVariables";
+
+%buttons-shared {
+
+    .btn-group,
+    .btn-group-vertical {
+        height: 100%;
+        padding-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .toggle-button-group {
+        height: auto;
+        padding: 6px;
+
+        .btn {
+            letter-spacing: normal;
+            justify-content: space-between;
+            height: 28px !important;
+            padding: 3px 3px 3px 8px;
+        }
+    }
+
+    .btn,
+    .btn-group.dropdown-menu-right .btn,
+    .btn-group-vertical .btn {
+        line-height: 1px;
+        letter-spacing: normal;
+        max-width: 430px;
+        height: 32px !important;
+        padding: 0 15px;
+        transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+            box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+            background: transparent;
+        }
+
+        i:not(:last-child) {
+            padding-right: 5px;
+        }
+
+        .modal-content .btn {
+            font-size: 14px;
+        }
+    }
+}
+
+@each $theme in $themes {
+    .core-#{$theme}-theme {
+        color: map_get($default-text-color-map, $theme);
+        background-color: map_get($default-background-map, $theme) !important;
+
+        &.panel,
+        .panel {
+            .panel-heading {
+                background-color: map_get($default-background-map, $theme);
+            }
+
+            &.panel-default .panel-heading {
+                background-color: map_get($panel-heading-background-map, $theme);
+                color: unset;
+            }
+
+            &.bordered-panel {
+                border: map_get($default-border-map, $theme);
+            }
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: map_get($default-text-color-map, $theme);
+            }
+
+            .btn-primary.action-button {
+                margin-top: 0;
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+
+            h3+h6 {
+                margin-left: 40px;
+            }
+        }
+
+        @extend %buttons-shared;
+
+        .row {
+            margin-left: -10px;
+            margin-right: -10px;
+
+            [class^="col-"] {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+        }
+
+        core-calendar {
+            flex: 1;
+        }
+
+        core-calendar-daterange {
+            flex: 1;
+        }
+
+        .grid-settings-input {
+            width: 260px;
+
+            .settings-input-modal-buttons {
+                display: flex;
+                justify-content: right;
+                align-items: right;
+            }
+
+            .btn-primary {
+                margin-left: 5px;
+            }
+        }
+
+        .active-preference {
+            color: #652394;
+            font-weight: bold;
+        }
+
+        .selector-container-ul {
+            flex: 1;
+            display: flex;
+
+            .li-text {
+                flex: 1;
+            }
+        }
+
+        ng-selectize {
+            flex: 1;
+
+            .selectize-control {
+                height: 32px;
+
+                .selectize-dropdown,
+                .selectize-input,
+                .selectize-input input {
+                    color: map_get($default-text-color-map, $theme);
+                }
+
+                .selectize-input {
+                    height: 32px;
+                    border-radius: map_get($input-radius-map, $theme);
+                    box-shadow: none;
+                    background-color: map_get($input-background-map, $theme) !important;
+                    border: map_get($input-border-map, $theme) !important;
+
+                    &.input-active {
+                        border-color: map_get($input-border-color-active-map, $theme) !important;
+                    }
+
+                    &:before {
+                        display: none;
+                    }
+
+                    &:after {
+                        border-top-color: map_get($dropdown-arrow-map, $theme);
+                    }
+                }
+
+                .selectize-dropdown {
+                    background-color: map_get($input-background-map, $theme);
+                    margin-top: 0;
+                    border: 1px solid map_get($input-background-map, $theme);
+
+                    .option {
+                        .highlight {
+                            background: rgba(125, 168, 208, 0.2);
+                            border-radius: 1px;
+                            font-weight: bolder;
+                        }
+
+                        &.active {
+                            background-color: map_get($input-border-color-active-map, $theme);
+                            color: $primary-white;
+                        }
+                    }
+                }
+
+                &.multi {
+                    .selectize-input {
+                        padding: 0 5px;
+                        display: flex;
+                        align-items: center;
+                        padding-top: 0 !important;
+
+                        .item {
+                            background: map_get($buttons-background-map, $theme) !important;
+                            height: 26px;
+                            display: flex;
+                            align-items: center;
+                            margin: 0 2px;
+                            border-width: 0;
+
+                            .remove {
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                line-height: 1;
+                                padding-top: 0;
+                                border-color: map_get($default-border-color-map, $theme);
+                            }
+                        }
+                    }
+                }
+
+                ::-webkit-scrollbar {
+                    position: absolute;
+                    width: 10px;
+                }
+
+                ::-webkit-scrollbar-thumb {
+                    background-color: map_get($scrollbar-thumb-color-map, $theme);
+                    min-height: 30px;
+                    border-radius: 16px;
+                }
+
+                ::-webkit-scrollbar-track {
+                    background-color: map_get($scrollbar-track-color-map, $theme);
+                }
+            }
+        }
+
+        typeahead-container {
+            .dropdown-menu {
+                border-width: 0;
+                margin-top: 1px;
+                font-size: 12px;
+
+                li {
+                    &.active a {
+
+                        &,
+                        &:hover {
+                            background-color: map_get($input-border-color-active-map, $theme);
+                            color: $primary-white;
+                        }
+
+                        a {
+                            background-color: map_get($input-background-map, $theme);
+                            padding: 5px 8px;
+                            color: map_get($default-text-color-map, $theme);
+                        }
+
+                        .typeahead-item {
+                            font-size: inherit;
+                        }
+
+                        strong {
+                            background: rgba(125, 168, 208, 0.2);
+                            border-radius: 1px;
+                            font-weight: bolder;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Inputs
+        input[type="text"].form-control,
+        input[type="number"].form-control,
+        textarea {
+            height: 32px;
+            border: 1px solid map_get($default-border-color-map, $theme);
+        }
+
+        textarea {
+            height: auto;
+        }
+
+        // Tabs
+        .underlined-menu,
+        .underlined-menu-with-border,
+        .tab-container {
+            margin-bottom: 10px;
+            -webkit-user-select: none;
+
+            .nav-item {
+                &:hover::after {
+                    width: 0;
+                }
+
+                &::after {
+                    transition: all 0.3s ease;
+                    display: block;
+                    content: "";
+                    height: 2px;
+                    position: absolute;
+                    bottom: -1px;
+                }
+
+                &.active::after {
+                    .underlined-menu {
+                        margin-top: -10px;
+                    }
+                }
+            }
+        }
+
+        .modal-body {
+            .underlined-menu {
+                margin-top: -10px;
+            }
+        }
+
+        .nav-tabs {
+            background: transparent;
+            border-bottom: 1px solid $light-gray-12;
+
+            .nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                min-width: 95px;
+                height: 48px;
+                padding: 15px;
+
+                &:hover .nav-link {}
+
+                &.active {
+                    a {
+                        background-color: transparent !important;
+                    }
+                }
+
+                a.nav-link {
+                    padding: 0 !important;
+                    margin-right: 0 !important;
+
+                    &:hover {}
+                }
+            }
+        }
+
+        //Grid
+
+        core-grid {
+            .ag-center-cols-viewport {
+                overflow: hidden;
+            }
+        }
+
+        .pull-right.btn-group.dropdown-menu-right {
+            right: 10px;
+
+            :last-child {
+                margin-right: 0;
+            }
+        }
+
+        .accordion {
+            //margin-bottom: -1px; 
+        }
+
+        // Popover 
+        .popover {
+            background-color: map_get($default-background-map, $theme);
+            border: map_get($default-border-map, $theme);
+            padding: 0;
+
+            @each $side in $sides {
+                &.#{$side} .arrow {
+                    border-#{$side}-color: map_get($default-border-color-map, $theme);
+
+                    &:after {
+                        border-#{$side}-color: map_get($default-background-map, $theme);
+                    }
+                }
+            }
+        }
+
+        .modal-body {
+            padding: 10px 12px 10px 12px;
+        }
+
+        .flex1 {
+            flex: 1;
+        }
+
+        // Another table 
+        .form-table {
+            border: map_get($default-border-map, $theme);
+
+            .alert-success {
+                border: map_get($default-border-map, $theme);
+                background-color: $dark-gray-10;
+            }
+
+            tr {
+                td {
+                    border-top: map_get($default-border-map, $theme);
+
+                    &.link {
+                        color: $bright-turquoise;
+
+                        &:hover {
+                            background-color: $dark-gray-9;
+                        }
+                    }
+                }
+            }
+
+            tr th {
+                border-bottom: map_get($default-border-map, $theme);
+                background-color: map_get($form-table-th-background-map, $theme);
+            }
+        }
+
+        .winner-rule-row {
+            td {
+                background-color: map_get($form-table-winner-rule-row-background-map, $theme);
+                color: white !important;
+
+                input {
+                    background-color: map_get($form-table-winner-rule-row-background-map, $theme);
+
+                    &:focus {
+                        background-color: white !important;
+                        color: #19242f !important;
+                    }
+                }
+            }
+        }
+
+        .calculation {
+            td:hover {
+                background-color: map_get($calculation-td-background-hover-map, $theme);
+            }
+        }
+
+        // time Picker
+        timepicker {
+            .bs-timepicker-field {
+                width: 35px;
+            }
+
+            .btn {
+                padding: 0 10px;
+            }
+        }
+
+        // hr 
+        hr {
+            border-top-color: map_get($default-border-color-map, $theme);
+        }
+
+        // Gutter 
+        split-gutter {
+            background-color: map_get($gutter-color-map, $theme) !important;
+        }
+
+        .bs-datepicker-custom-range {
+            width: 200px;
+        }
+
+        bs-daterangepicker-container {
+            .bs-datepicker {
+                &.left-alingment {
+                    left: 295px;
+
+                    &.no-date-ranges {
+                        left: 175px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// todo.. move these overrides in to theme for loop in respective files
+.core-dark-theme {
+    font-family: CSTypeET, serif;
+
+    textarea:disabled,
+    .form-control [disabled] {
+        opacity: 0.5;
+    }
+
+    .alert,
+    .alert-warning,
+    .alert-info,
+    .alert-danger {
+        border-radius: 0;
+        border: 1px solid $mid-turquoise;
+        background-color: inherit;
+
+        strong {
+            font-weight: normal;
+        }
+    }
+
+    .alert-warning {
+        color: $alerts-amber;
+    }
+
+    .alert-info {
+        color: white;
+    }
+
+    .modal-backdrop {
+        background-color: #a1a4a973;
+
+    }
+
+    .active-preference {
+        color: $bright-turquoise;
+        font-weight: bold;
+    }
+
+    .actions-collapse-panel {
+        border-left: 1px solid white;
+    }
+
+    // Modals 
+    .modal-content {
+        border: none;
+        box-shadow: unset;
+    }
+
+    .ag-filter-toolpanel-action {
+        .active-grid-settings-label {
+            color: white;
+            font-weight: bold;
+            float: right;
+        }
+    }
+
+    .panel-heading,
+    .modal-header {
+        border-bottom: $default-border-dark !important;
+    }
+
+    .modal-body:not(:last-child) {
+        border-radius: 0;
+    }
+
+    .modal-footer {
+        border-top: $default-border-dark;
+    }
+
+    &.panel,
+    .panel {
+        border-radius: 0;
+
+        &.panel-info {
+            border-width: 0;
+        }
+
+        .btn-primary.action-button {
+            margin-top: 0;
+        }
+    }
+
+    .modal-body,
+    .modal-footer,
+    .modal-header,
+    div.dashboard,
+    .panel-primary>.panel-heading {
+        background-color: $dark-charcoal-0;
+    }
+
+    div.dashboard {
+        div.tile {
+            border: $default-border-dark !important;
+
+            &.cards-holder {
+                border: none !important;
+            }
+        }
+
+        div.tile:has(.multi-widget-dashboard) {
+            border: none !important;
+        }
+
+        .tile.cards-holder .card {
+            opacity: 0.8;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient($dark-gray-10, $dark-gray-9);
+            border-width: 0;
+            color: $primary-white;
+
+            &:hover {
+                opacity: 1;
+            }
+
+            &.active {
+                opacity: 1;
+                border-width: 0;
+                border-right-width: unset;
+            }
+
+            .card-details {
+                color: $primary-white;
+            }
+        }
+    }
+
+    .pretty input:checked~.state.p-primary label:after,
+    .pretty.p-toggle .state.p-primary label:after {
+        background-color: $bright-turquoise !important;
+    }
+
+    .toggle-button-group {
+        padding: 3px;
+        border-radius: 0;
+        background: $dark-gray-8;
+        top: 11px;
+
+        .btn {
+            box-shadow: none;
+            border: none;
+            border-bottom: 2px solid transparent;
+
+            &:hover {
+                box-shadow: none;
+                border-bottom: 2px solid transparent !important;
+            }
+
+            &.active,
+            &.active:hover {
+                border-bottom-color: $bright-turquoise !important;
+            }
+        }
+    }
+
+    .btn,
+    .btn-group.dropdown-menu-right .btn,
+    .btn-group-vertical .btn {
+        box-shadow: inset 0 0 0 1px $bright-turquoise;
+        background-color: transparent;
+        border-radius: 0 !important;
+        border: none;
+        color: $primary-white;
+
+        &.active {
+            background-color: transparent !important;
+        }
+
+        &:hover {
+            color: $primary-white;
+            border-radius: 0 !important;
+            border: 0 !important;
+            box-shadow: inset 0 0 0 2px $bright-turquoise;
+        }
+    }
+
+    .btn-primary {
+        color: $primary-white;
+        background: $bright-turquoise;
+
+        &:hover,
+        &:focus {
+            background: $mid-turquoise !important;
+            box-shadow: none;
+        }
+    }
+
+    .btn-warning:hover,
+    .btn-warning:focus {
+        background-color: transparent !important;
+
+        &:active {
+            color: $primary-white;
+        }
+    }
+
+    .btn:focus,
+    .btn:active:focus,
+    .btn.active:focus,
+    .btn.focus,
+    .btn:active.focus,
+    .btn.active.focus {
+        outline: none;
+    }
+
+    label,
+    .control-label {
+        color: $gray-gray-3;
+    }
+
+    .form-group {
+        .info-icon {
+            color: $bright-turquoise;
+        }
+    }
+
+    input[type="text"].form-control,
+    input[type="number"].form-control,
+    input[type="file"].form-control,
+    textarea {
+        background: $dark-gray-8;
+        border: none;
+        font-family: "CSType EP-Roman", sans-serif;
+        font-size: 12px;
+        padding: 9px 8px;
+        color: $primary-white;
+        box-shadow: none;
+        border-radius: 0 !important;
+
+        &:focus {
+            box-shadow: none;
+            outline: 1px solid $bright-turquoise;
+
+            &~.input-group-btn .btn {
+                box-shadow: 1px 0 $bright-turquoise, 0 1px $bright-turquoise, 0 -1px $bright-turquoise;
+            }
+        }
+    }
+
+    input[type="file"].form-control {
+        padding: 5px;
+    }
+
+    .form-group-sm select,
+    .dropdown-menu-right select,
+    select {
+
+        &.form-control,
+        &.duration-selector {
+            background: $dark-gray-8;
+            box-shadow: none;
+            font-family: "core-SegoeUI", sans-serif;
+            font-size: 12px;
+            border: none;
+            height: 32px;
+            color: $gray-gray-3;
+            padding: 0 8px;
+            border-radius: 0 !important;
+        }
+
+        &:focus {
+            outline: 1px solid $bright-turquoise;
+        }
+
+        option {
+            font-family: "core-SegoeUI", sans-serif;
+            font-size: 12px;
+            color: $primary-white;
+            background-color: $dark-gray-8;
+        }
+    }
+
+    .tab-container .nav-tabs {
+        margin-bottom: 5px;
+    }
+
+    .underlined-menu,
+    .underlined-menu-with-border,
+    .tab-container {
+        .nav-item {
+            &:hover::after {
+                width: 0;
+            }
+
+            &::after {
+                transition: all 0.3s ease;
+                display: block;
+                content: "";
+                height: 2px;
+                background-color: $bright-turquoise;
+                position: absolute;
+                bottom: -1px;
+            }
+
+            &.active::after {
+                width: 100%;
+            }
+        }
+    }
+
+    .nav-tabs {
+        border-bottom: 1px solid $dark-gray-9;
+
+        .nav-item {
+            color: $gray-gray-3;
+
+            &:hover .nav-link {
+                color: $primary-white !important;
+            }
+
+            &.active {
+                a {
+                    background-color: transparent !important;
+                    color: $primary-white !important;
+                }
+            }
+        }
+
+        a.nav-link {
+            border: none !important;
+            color: $gray-gray-3 !important;
+
+            &:hover {
+                background-color: transparent !important;
+            }
+        }
+    }
+
+    .sub-header,
+    a {
+        color: $bright-turquoise;
+    }
+
+    // Segmented Control 
+    .segmented-control {
+        background-color: $dark-gray-10 !important;
+        border-radius: 0px;
+
+        &,
+        &>label:not(:last-child) {
+            border-color: $mid-turquoise !important;
+        }
+
+        label:before {
+            background-color: $bright-turquoise !important;
+        }
+    }
+
+    // positionsummary Table
+    .positionsummary {
+        padding: 0 15px;
+        margin-top: 10px;
+        border-radius: 0;
+        background-color: transparent;
+        color: $primary-white;
+        border: $default-border-dark;
+
+        .title {
+            color: $primary-white;
+            padding: 5px 10px;
+        }
+
+        .header {
+            padding: 5px 10px;
+        }
+
+        .datarow {
+            border-bottom: $default-border-dark;
+            padding: 5px 10px;
+
+            &:last-child {
+                border-bottom-width: 0;
+            }
+
+            &:hover {
+                background-color: $dark-gray-8;
+            }
+        }
+    }
+
+    // accordion 
+    .accordion {
+        color: $primary-white;
+        border-bottom: $default-border-dark;
+    }
+
+    // Calendar 
+    .bs-datepicker {
+        background-color: $dark-gray-10;
+        box-shadow: 0 0 10px 0 $primary-black;
+
+        .bs-datepicker-buttons {
+            .btn {
+                box-shadow: none;
+                background-color: $bright-turquoise;
+            }
+        }
+
+        .bs-datepicker-head {
+            background-color: $dark-gray-10;
+        }
+
+        .bs-datepicker-custom-range {
+            background-color: $dark-gray-10;
+            border-left: solid 1px $dark-gray-7;
+
+            .btn {
+                box-shadow: none;
+
+                &.selected {
+                    background-color: $bright-turquoise;
+                }
+            }
+        }
+
+        .bs-datepicker-body table td span.selected,
+        .bs-datepicker-body table td span.in-range::before,
+        .bs-datepicker-body table td.selected span,
+        .bs-datepicker-body table td span [class*="select-"]:after,
+        .bs-datepicker-body table td[class*="select-"] span:after {
+            background-color: $bright-turquoise;
+            color: $primary-white;
+        }
+
+        .bs-datepicker-body {
+            border-left: none;
+            border-bottom: none;
+            border-right: none;
+            border-top: $default-border-dark;
+
+
+            table th {
+                color: $gray-gray-3;
+            }
+
+            table td {
+                color: $primary-white;
+
+                span.is-other-month,
+                &.is-other-month span {
+                    color: $gray-gray-5;
+                }
+
+                &.is-highlighted:not(.disabled):not(.selected) span,
+                span.is-highlighted:not(.disabled) :not(.selected) {
+                    background-color: $dark-gray-7;
+                }
+            }
+        }
+    }
+
+    // Another table.
+    .table.form-table {
+        border: $default-border-dark;
+        color: $primary-white;
+
+        .alert-success {
+            border: $default-border-dark;
+            background-color: $dark-gray-10;
+
+            th {
+                color: $primary-white;
+            }
+        }
+
+        tr {
+            td {
+                border-top: $default-border-dark;
+
+                &.link {
+                    color: $bright-turquoise;
+
+                    &:hover {
+                        background-color: $dark-gray-9;
+                    }
+                }
+            }
+        }
+
+        tr th {
+            border-bottom: $default-border-dark;
+            color: $primary-white;
+            background-color: $dark-gray-10;
+        }
+    }
+
+    .table-striped>tbody>tr:nth-of-type(odd) {
+        background-color: $dark-gray-9;
+    }
+
+    // Highcharts
+    .highcharts-background {
+        fill: $dark-gray-9;
+    }
+
+    .highcharts-title,
+    .highcharts-subtitle {
+        fill: $primary-white !important;
+    }
+
+    .highcharts-axis-title,
+    .highcharts-axis-labels text {
+        fill: $primary-white !important;
+    }
+
+    .highcharts-tooltip-box {
+        fill: $primary-black-2;
+        fill-opacity: 0.6;
+        stroke-width: 0;
+    }
+
+    .highcharts-tooltip span {
+        color: $primary-white !important;
+        text-shadow: 00 3px black !important;
+    }
+
+    .highcharts-tooltip text {
+        fill: $primary-white !important;
+        text-shadow: 0 0 3px black !important;
+    }
+
+    .highcharts-legend-item {
+        text {
+            fill: $primary-white !important;
+        }
+
+        &.highcharts-legend-item-hidden {
+            text {
+                opacity: 0.5;
+            }
+        }
+    }
+
+    .highcharts-legend-title {
+        text {
+            fill: $primary-white !important;
+        }
+    }
+
+    .highcharts-range-label,
+    .highcharts-range-input {
+        text {
+            fill: $primary-white-2 !important;
+        }
+    }
+
+    .highcharts-navigator {
+        opacity: 0.3;
+    }
+
+    .highcharts-range-selector:focus {
+        background: $dark-gray-8;
+        border: none !important;
+        font-family: "core-SegoeUI", sans-serif !important;
+        color: $primary-white;
+        box-shadow: none;
+        border-radius: 0 !important;
+        outline: 1px solid $bright-turquoise;
+        height: 21px !important;
+        width: 94px !important;
+    }
+
+    //Three 
+    .node-content-wrapper:hover {
+        background-color: unset;
+        outline: 1px solid $bright-turquoise;
+    }
+
+    .node-content-wrapper-active {
+        background: $bright-turquoise;
+
+        &:hover {
+            background-color: $bright-turquoise;
+        }
+    }
+}

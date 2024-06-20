@@ -1,0 +1,103 @@
+@import "../../src/core/styles//scss/theme-variables";
+@import "../../src/core/styles//scss/bootstrapOverridesVariables";
+
+$widget-image-map:(
+    'light': url("../assets/images/Positions.PNG"),
+    'dark': url("../assets/images/Positions-dark.PNG")
+);
+
+@each $theme in $themes { 
+    :host-context(.core-#{$theme}-theme) {
+        .hpanel {
+            .panel-body { 
+                border: map_get($default-border-map, $theme);
+                background-color: map_get($default-background-map, $theme);
+            
+                &:hover { 
+                    box-shadow: 0 0 6px map_get($buttons-background-map, $theme);
+                }
+
+                .widget-image { 
+                    background-image: map_get($widget-image-map, $theme); background-repeat: no-repeat; 
+                    background-repeat: no-repeat;
+                    margin: 0;
+                    padding: 0;
+                    height: 140px;
+                    background-size: cover;
+                }
+            }
+        }
+    }
+}
+
+// TODO: need to do something with that override
+:host-context(.core-light-theme) .host {
+    background-color: #f3f6f9 !important;
+    min-height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    align-content: flex-start;
+}
+
+.hpanel {
+    background-color: transparent; 
+    border: 0; 
+    box-shadow: none; 
+    margin-bottom: 25px; cursor: pointer; 
+    cursor: pointer;
+
+    .panel-body { 
+        //background: #fff; 
+        border: 1px solid #eaeaea; 
+        border-radius: 5px; 
+        padding: 15px;
+        padding-top: 5px;
+        position: relative; 
+        min-height: 200px; 
+        max-height: 200px; 
+        transition: all 300ms; 
+
+        &:hover { 
+        box-shadow: 0 0 6px $primary-color; 
+        transform: scale(1.05); 
+        }
+    } 
+}
+
+.m-t-xl {
+    margin-top: 40px;
+}
+
+@media (min-width: 2100px) {
+    .card-container { 
+        width: 16.66666667%;
+    }
+}
+
+@media (min-width: 1600px) and (max-width: 2100px) {
+    .card-container { 
+        width: 20%;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1600px) {
+    .card-container {
+        width: 30%;
+    }
+}
+        
+// todo move this to theme for loop
+:host-context(.core-dark-theme) {
+    .hpanel { 
+        .panel-body {
+            border: none; 
+            border-radius: 0; 
+            background: linear-gradient($dark-gray-10, $dark-gray-9);
+            
+            &:hover {
+                box-shadow: unset;
+            }
+        }
+    }
+}
