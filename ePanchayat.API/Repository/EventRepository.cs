@@ -56,8 +56,10 @@ namespace ePanchayat.API.Repository
                 EventTimeFrom = Convert.ToDateTime(row["EventTimeFrom"]),
                 EventTimeTo = Convert.ToDateTime(row["EventTimeTo"]),
                 EventHostId = Convert.ToInt32(row["EventHostId"]),
+                EventHostFullName = Convert.ToString(row["EventHostFullName"]),
                 LastModifiedOn = Convert.ToDateTime(row["LastModifiedOn"]),
-                LastModifiedBy = Convert.ToString(row["LastModifiedBy"]),
+                LastModifiedBy = Convert.ToInt32(row["LastModifiedBy"]),
+                LastModifiedByFullName = Convert.ToString(row["LastModifiedByFullName"]),
                 IsActive = Convert.ToBoolean(row["IsActive"])
             }).ToList();
 

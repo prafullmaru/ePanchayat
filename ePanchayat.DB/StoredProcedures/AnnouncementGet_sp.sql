@@ -15,23 +15,22 @@ CREATE PROCEDURE dbo.AnnouncementGet_sp
 AS
 BEGIN
 	SELECT
-		AnnouncementId
-		,AnnouncementTitle
-		,Description
-		,DisplayTill
-		,Category
-		,RegistrationNumber
-		,OwnerId
-		,LastModifiedOn
-		,LastModifiedBy
-		,IsActive
+		 A.AnnouncementId
+		,A.AnnouncementTitle
+		,A.Description
+		,A.DisplayTill
+		,A.LastModifiedOn
+		,A.LastModifiedBy
+		,Modified.FirstName + ' ' + Modified.LastName AS 'LastModifiedByFullName'
+		,A.IsActive
 	FROM
-		dbo.Announcement_tbl
+		dbo.Announcement_tbl A
+		LEFT JOIN dbo.User_tbl Modified ON A.LastModifiedBy = Modified.UserId
 	WHERE
 		(
 			AnnouncementId = ISNULL(@AnnouncementId, AnnouncementId)
 			OR CHARINDEX(@AnnouncementTitle, AnnouncementTitle) > 0
 		)
-		AND IsActive = 1
+		AND A.IsActive = 1
 END
 GO

@@ -15,23 +15,27 @@ CREATE PROCEDURE dbo.EventGet_sp
 AS
 BEGIN
 	SELECT
-		EventId,
-		EventTitle,
-		Description,
-		EventDate,
-		EventTimeFrom,
-		EventTimeTo,
-		EventHostId,
-		LastModifiedOn,
-		LastModifiedBy,
-		IsActive
+		E.EventId
+		,E.EventTitle
+		,E.Description
+		,E.EventDate
+		,E.EventTimeFrom
+		,E.EventTimeTo
+		,E.EventHostId
+		,U.FirstName + ' ' + U.LastName AS 'EventHostFullName'
+		,E.LastModifiedOn
+		,E.LastModifiedBy
+		,Modified.FirstName + ' ' + Modified.LastName AS 'LastModifiedByFullName'
+		,E.IsActive
 	FROM
-		dbo.Event_tbl
+		dbo.Event_tbl E
+		LEFT JOIN dbo.User_tbl U ON E.EventHostId = U.UserId
+		LEFT JOIN dbo.User_tbl Modified ON E.LastModifiedBy = Modified.UserId
 	WHERE
 		(
 			EventId = ISNULL(@EventId, EventId)
 			OR CHARINDEX(@EventTitle, EventTitle) > 0
 		)
-		AND IsActive = 1
+		AND E.IsActive = 1
 END
 GO
