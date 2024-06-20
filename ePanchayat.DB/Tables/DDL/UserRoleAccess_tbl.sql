@@ -16,9 +16,9 @@ CREATE TABLE dbo.UserRoleAccess_tbl
 (
 	UserRoleAccessId INT IDENTITY(1,1) NOT NULL,
 	UserId INT NOT NULL,
-	RoleId INT NOT NULL,
+	UserRoleId INT NOT NULL,
 	LastModifiedOn DATETIME NOT NULL,
-	LastModifiedBy VARCHAR(50) NOT NULL,
+	LastModifiedBy INT NOT NULL,
 	IsActive BIT NOT NULL
 )
 GO
@@ -28,7 +28,7 @@ ADD CONSTRAINT FK_User_UserId FOREIGN KEY(UserId) REFERENCES dbo.User_tbl(UserId
 GO
 
 ALTER TABLE dbo.UserRoleAccess_tbl
-ADD CONSTRAINT FK_UserRole_RoleId FOREIGN KEY(RoleId) REFERENCES dbo.UserRole_tbl(RoleId)
+ADD CONSTRAINT FK_UserRole_RoleId FOREIGN KEY(UserRoleId) REFERENCES dbo.UserRole_tbl(UserRoleId)
 GO
 
 ALTER TABLE dbo.UserRoleAccess_tbl
@@ -37,6 +37,10 @@ GO
 
 ALTER TABLE dbo.UserRoleAccess_tbl
 ADD CONSTRAINT DF_UserRoleAccess_Date DEFAULT GETDATE() FOR LastModifiedOn
+GO
+
+ALTER TABLE dbo.UserRoleAccess_tbl
+ADD CONSTRAINT FK_UserRoleAccess_LastModified FOREIGN KEY(LastModifiedBy) REFERENCES dbo.User_tbl(UserId)
 GO
 
 ALTER TABLE dbo.UserRoleAccess_tbl

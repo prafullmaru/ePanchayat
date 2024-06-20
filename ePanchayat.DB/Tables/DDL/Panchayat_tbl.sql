@@ -17,7 +17,7 @@ CREATE TABLE dbo.Panchayat_tbl
 	PanchayatId INT IDENTITY(1,1) NOT NULL,
 	PanchayatName VARCHAR(50) NOT NULL,
 	LastModifiedOn DATETIME NOT NULL,
-	LastModifiedBy VARCHAR(50) NOT NULL,
+	LastModifiedBy INT NOT NULL,
 	IsActive BIT NOT NULL
 )
 GO
@@ -32,6 +32,10 @@ GO
 
 ALTER TABLE dbo.Panchayat_tbl
 ADD CONSTRAINT DF_Panchayat_Date DEFAULT GETDATE() FOR LastModifiedOn
+GO
+
+ALTER TABLE dbo.Panchayat_tbl
+ADD CONSTRAINT FK_Panchayat_LastModified FOREIGN KEY(LastModifiedBy) REFERENCES dbo.User_tbl(UserId)
 GO
 
 ALTER TABLE dbo.Panchayat_tbl
