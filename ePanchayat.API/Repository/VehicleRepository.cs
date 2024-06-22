@@ -30,12 +30,12 @@ namespace ePanchayat.API.Repository
             return Map(dataset).First();
         }
 
-        public bool Remove(Vehicle Vehicle)
+        public bool Remove(Vehicle vehicle)
         {
             throw new NotImplementedException();
         }
 
-        public bool Save(Vehicle Vehicle)
+        public bool Save(Vehicle vehicle)
         {
             throw new NotImplementedException();
         }
@@ -47,18 +47,20 @@ namespace ePanchayat.API.Repository
                 return new List<Vehicle>();
             }
 
-            var Vehicles = dataset.Tables[0].AsEnumerable().Select(row => new Vehicle()
+            var vehicles = dataset.Tables[0].AsEnumerable().Select(row => new Vehicle()
             {
                 VehicleId = Convert.ToInt32(row["VehicleId"]),
                 Category = Convert.ToString(row["Category"]),
                 RegistrationNumber = Convert.ToString(row["RegistrationNumber"]),
                 OwnerId = Convert.ToInt32(row["OwnerId"]),
+                OwnerFullName = Convert.ToString(row["OwnerFullName"]),
                 LastModifiedOn = Convert.ToDateTime(row["LastModifiedOn"]),
-                LastModifiedBy = Convert.ToString(row["LastModifiedBy"]),
+                LastModifiedBy = Convert.ToInt32(row["LastModifiedBy"]),
+                LastModifiedByFullName = Convert.ToString(row["LastModifiedByFullName"]),
                 IsActive = Convert.ToBoolean(row["IsActive"])
             }).ToList();
 
-            return Vehicles;
+            return vehicles;
         }
     }
 }

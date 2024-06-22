@@ -15,6 +15,8 @@ namespace ePanchayat.API.Repository
             collection.AddScoped<IVehicleRepository, VehicleRepository>();
             collection.AddScoped<IQualificationRepository, QualificationRepository>();
             collection.AddScoped<IHouseRepository, HouseRepository>();
+            collection.AddScoped<IEventRepository, EventRepository>();
+            collection.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
         }
     }
 }

@@ -19,23 +19,23 @@ namespace ePanchayat.API.Repository
             return Map(dataset);
         }
 
-        public House GetById(int HouseId)
+        public House GetById(int houseId)
         {
             var parameters = new Dictionary<string, object>
             {
-                { "@HouseId", HouseId }
+                { "@HouseId", houseId }
             };
             var dataset = _sqlDataAccess.GetDataSetByStoredProc("HouseGet_sp", parameters);
 
             return Map(dataset).First();
         }
 
-        public bool Remove(House House)
+        public bool Remove(House house)
         {
             throw new NotImplementedException();
         }
 
-        public bool Save(House House)
+        public bool Save(House house)
         {
             throw new NotImplementedException();
         }
@@ -47,18 +47,20 @@ namespace ePanchayat.API.Repository
                 return new List<House>();
             }
 
-            var Houses = dataset.Tables[0].AsEnumerable().Select(row => new House()
+            var houses = dataset.Tables[0].AsEnumerable().Select(row => new House()
             {
                 HouseId = Convert.ToInt32(row["HouseId"]),
                 HouseNumber = Convert.ToString(row["HouseNumber"]),
                 OwnerId = Convert.ToInt32(row["OwnerId"]),
+                OwnerFullName = Convert.ToString(row["OwnerFullName"]),
                 Landmark = Convert.ToString(row["Landmark"]),
                 LastModifiedOn = Convert.ToDateTime(row["LastModifiedOn"]),
-                LastModifiedBy = Convert.ToString(row["LastModifiedBy"]),
+                LastModifiedBy = Convert.ToInt32(row["LastModifiedBy"]),
+                LastModifiedByFullName = Convert.ToString(row["LastModifiedByFullName"]),
                 IsActive = Convert.ToBoolean(row["IsActive"])
             }).ToList();
 
-            return Houses;
+            return houses;
         }
     }
 }

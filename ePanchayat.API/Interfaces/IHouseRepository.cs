@@ -6,10 +6,10 @@ namespace ePanchayat.API.Interfaces
     {
         List<House> GetAll();
 
-        House GetById(int HouseId);
+        House GetById(int houseId);
 
-        bool Save(House House);
+        bool Save(House house);
 
-        bool Remove(House House);
+        bool Remove(House house);
     }
 }

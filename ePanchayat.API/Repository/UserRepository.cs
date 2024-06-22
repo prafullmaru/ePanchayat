@@ -58,7 +58,8 @@ namespace ePanchayat.API.Repository
                 ProfilePhoto = Convert.FromBase64String(Convert.ToString(row["ProfilePhoto"])),
                 Address = Convert.ToString(row["Address"]),
                 LastModifiedOn = Convert.ToDateTime(row["LastModifiedOn"]),
-                LastModifiedBy = Convert.ToString(row["LastModifiedBy"]),
+                LastModifiedBy = Convert.ToInt32(row["LastModifiedBy"]),
+                LastModifiedByFullName = Convert.ToString(row["LastModifiedByFullName"]),
                 IsActive = Convert.ToBoolean(row["IsActive"])
             }).ToList();
 

@@ -18,8 +18,7 @@ namespace ePanchayat.API.Controllers
         [HttpGet("")]
         public IEnumerable<Panchayat> Get()
         {
-            var panchayats = panchayatRepository.GetAll();
-            return panchayats;
+            return panchayatRepository.GetAll();
         }
     }
 }

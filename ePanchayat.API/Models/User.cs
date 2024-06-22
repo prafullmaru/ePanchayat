@@ -13,7 +13,8 @@ namespace ePanchayat.API.Models
         public byte[] ProfilePhoto { get; set; }
         public string Address { get; set; }
         public DateTime LastModifiedOn { get; set; }
-        public string LastModifiedBy { get; set; }
+        public int LastModifiedBy { get; set; }
+        public string LastModifiedByFullName { get; set; }
         public bool IsActive { get; set; }
     }
 }

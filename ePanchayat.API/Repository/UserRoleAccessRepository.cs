@@ -19,11 +19,11 @@ namespace ePanchayat.API.Repository
             return Map(dataset);
         }
 
-        public UserRoleAccess GetById(int userAccessRoleId)
+        public UserRoleAccess GetById(int userRoleAccessId)
         {
             var parameters = new Dictionary<string, object>
             {
-                { "@UserAccessRoleId", userAccessRoleId }
+                { "@UserRoleAccessId", userRoleAccessId }
             };
             var dataset = _sqlDataAccess.GetDataSetByStoredProc("UserRoleAccessGet_sp", parameters);
 
@@ -51,9 +51,12 @@ namespace ePanchayat.API.Repository
             {
                 UserRoleAccessId = Convert.ToInt32(row["UserRoleAccessId"]),
                 UserId = Convert.ToInt32(row["UserId"]),
+                UserFullName = Convert.ToString(row["UserFullName"]),
                 UserRoleId = Convert.ToInt32(row["UserRoleId"]),
+                UserRoleName = Convert.ToString(row["UserRoleName"]),
                 LastModifiedOn = Convert.ToDateTime(row["LastModifiedOn"]),
-                LastModifiedBy = Convert.ToString(row["LastModifiedBy"]),
+                LastModifiedBy = Convert.ToInt32(row["LastModifiedBy"]),
+                LastModifiedByFullName = Convert.ToString(row["LastModifiedByFullName"]),
                 IsActive = Convert.ToBoolean(row["IsActive"])
             }).ToList();
 

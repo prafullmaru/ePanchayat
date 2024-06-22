@@ -30,12 +30,12 @@ namespace ePanchayat.API.Repository
             return Map(dataset).First();
         }
 
-        public bool Remove(UserQualification UserQualification)
+        public bool Remove(UserQualification userQualification)
         {
             throw new NotImplementedException();
         }
 
-        public bool Save(UserQualification UserQualification)
+        public bool Save(UserQualification userQualification)
         {
             throw new NotImplementedException();
         }
@@ -47,19 +47,21 @@ namespace ePanchayat.API.Repository
                 return new List<UserQualification>();
             }
 
-            var UserQualifications = dataset.Tables[0].AsEnumerable().Select(row => new UserQualification()
+            var userQualifications = dataset.Tables[0].AsEnumerable().Select(row => new UserQualification()
             {
                 QualificationId = Convert.ToInt32(row["QualificationId"]),
                 UserId = Convert.ToInt32(row["UserId"]),
+                UserFullName = Convert.ToString(row["UserFullName"]),
                 Qualification = Convert.ToString(row["Qualification"]),
                 Major = Convert.ToString(row["Major"]),
                 PassingYear = Convert.ToInt32(row["PassingYear"]),
                 LastModifiedOn = Convert.ToDateTime(row["LastModifiedOn"]),
-                LastModifiedBy = Convert.ToString(row["LastModifiedBy"]),
+                LastModifiedBy = Convert.ToInt32(row["LastModifiedBy"]),
+                LastModifiedByFullName = Convert.ToString(row["LastModifiedByFullName"]),
                 IsActive = Convert.ToBoolean(row["IsActive"])
             }).ToList();
 
-            return UserQualifications;
+            return userQualifications;
         }
     }
 }

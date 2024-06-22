@@ -6,7 +6,7 @@ namespace ePanchayat.API.Interfaces
     {
         List<UserRoleAccess> GetAll();
 
-        UserRoleAccess GetById(int userRoleId);
+        UserRoleAccess GetById(int userRoleAccessId);
 
         bool Save(UserRoleAccess userRoleAccess);
 
