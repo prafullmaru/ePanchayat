@@ -4,61 +4,63 @@ using System.Data;
 
 namespace ePanchayat.API.Repository
 {
-    public class PanchayatRepository : IPanchayatRepository
+    public class HouseRepository : IHouseRepository
     {
         private readonly ISqlDataAccess _sqlDataAccess;
 
-        public PanchayatRepository(ISqlDataAccess sqlDataAccess)
+        public HouseRepository(ISqlDataAccess sqlDataAccess)
         {
             _sqlDataAccess = sqlDataAccess;
         }
 
-        public List<Panchayat> GetAll()
+        public List<House> GetAll()
         {
-
-            var dataset = _sqlDataAccess.GetDataSetByStoredProc("PanchayatGet_sp");
+            var dataset = _sqlDataAccess.GetDataSetByStoredProc("HouseGet_sp");
             return Map(dataset);
         }
 
-        public Panchayat GetById(int panchayatId)
+        public House GetById(int houseId)
         {
             var parameters = new Dictionary<string, object>
             {
-                { "@PanchayatId", panchayatId }
+                { "@HouseId", houseId }
             };
-            var dataset = _sqlDataAccess.GetDataSetByStoredProc("PanchayatGet_sp", parameters);
+            var dataset = _sqlDataAccess.GetDataSetByStoredProc("HouseGet_sp", parameters);
 
             return Map(dataset).First();
         }
 
-        public bool Remove(Panchayat panchayat)
+        public bool Remove(House house)
         {
             throw new NotImplementedException();
         }
 
-        public bool Save(Panchayat panchayat)
+        public bool Save(House house)
         {
             throw new NotImplementedException();
         }
 
-        private List<Panchayat> Map(DataSet dataset)
+        private List<House> Map(DataSet dataset)
         {
             if(dataset.Tables.Count == 0 || dataset.Tables[0].Rows.Count == 0)
             {
-                return new List<Panchayat>();
+                return new List<House>();
             }
 
-            var panchayats = dataset.Tables[0].AsEnumerable().Select(row => new Panchayat()
+            var houses = dataset.Tables[0].AsEnumerable().Select(row => new House()
             {
-                PanchayatId = Convert.ToInt32(row["PanchayatId"]),
-                PanchayatName = Convert.ToString(row["PanchayatName"]),
+                HouseId = Convert.ToInt32(row["HouseId"]),
+                HouseNumber = Convert.ToString(row["HouseNumber"]),
+                OwnerId = Convert.ToInt32(row["OwnerId"]),
+                OwnerFullName = Convert.ToString(row["OwnerFullName"]),
+                Landmark = Convert.ToString(row["Landmark"]),
                 LastModifiedOn = Convert.ToDateTime(row["LastModifiedOn"]),
                 LastModifiedBy = Convert.ToInt32(row["LastModifiedBy"]),
                 LastModifiedByFullName = Convert.ToString(row["LastModifiedByFullName"]),
                 IsActive = Convert.ToBoolean(row["IsActive"])
             }).ToList();
 
-            return panchayats;
+            return houses;
         }
     }
 }

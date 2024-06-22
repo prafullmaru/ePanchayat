@@ -1,4 +1,4 @@
-USE [ePanchayat]
+USE ePanchayat
 GO
 
 IF OBJECT_ID('dbo.UsersGet_sp') IS NOT NULL
@@ -20,35 +20,37 @@ CREATE PROCEDURE dbo.UsersGet_sp
 AS
 BEGIN
 	SELECT
-		[UserId]
-		,[UserLogin]
-		,[FirstName]
-		,[LastName]
-		,[MobileNo]
-		,[Email]
-		,[ProfilePhoto]
-		,[Address]
-		,[LastModifiedOn]
-		,[LastModifiedBy]
-		,[IsActive]
+		 U.UserId
+		,U.UserLogin
+		,U.FirstName
+		,U.LastName
+		,U.MobileNo
+		,U.Email
+		,U.ProfilePhoto
+		,U.Address
+		,U.LastModifiedOn
+		,U.LastModifiedBy
+		,Modified.FirstName + ' ' + Modified.LastName AS 'LastModifiedByFullName'
+		,U.IsActive
 	FROM
-		[dbo].[User_tbl]
+		dbo.User_tbl U
+		LEFT JOIN dbo.User_tbl Modified ON U.LastModifiedBy = Modified.UserId
 	WHERE
 		(
-			[UserId] = @UserId
+			U.UserId = @UserId
 			OR
 			(
-				[UserId] IS NULL
+				U.UserId IS NULL
 				AND
-					([UserLogin] = ISNULL(@UserLogin, [UserLogin])
-					OR [FirstName] = ISNULL(@FirstName, [FirstName])
-					OR [LastName] = ISNULL(@LastName, [LastName])
-					OR [MobileNo] = ISNULL(@MobileNo, [MobileNo])
-					OR [Email] = ISNULL(@Email, [Email])
-					OR CHARINDEX(@Address, [Address]) > 0
+					(U.UserLogin = ISNULL(@UserLogin, U.UserLogin)
+					OR U.FirstName = ISNULL(@FirstName, U.FirstName)
+					OR U.LastName = ISNULL(@LastName, U.LastName)
+					OR U.MobileNo = ISNULL(@MobileNo, U.MobileNo)
+					OR U.Email = ISNULL(@Email, U.Email)
+					OR CHARINDEX(@Address, U.Address) > 0
 				)
 			)
 		)
-		AND [IsActive] = 1
+		AND U.IsActive = 1
 END
 GO

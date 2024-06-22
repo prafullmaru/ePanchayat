@@ -4,61 +4,61 @@ using System.Data;
 
 namespace ePanchayat.API.Repository
 {
-    public class PanchayatRepository : IPanchayatRepository
+    public class UserRoleRepository : IUserRoleRepository
     {
         private readonly ISqlDataAccess _sqlDataAccess;
 
-        public PanchayatRepository(ISqlDataAccess sqlDataAccess)
+        public UserRoleRepository(ISqlDataAccess sqlDataAccess)
         {
             _sqlDataAccess = sqlDataAccess;
         }
 
-        public List<Panchayat> GetAll()
+        public List<UserRole> GetAll()
         {
-
-            var dataset = _sqlDataAccess.GetDataSetByStoredProc("PanchayatGet_sp");
+            var dataset = _sqlDataAccess.GetDataSetByStoredProc("UserRoleGet_sp");
             return Map(dataset);
         }
 
-        public Panchayat GetById(int panchayatId)
+        public UserRole GetById(int userRoleId)
         {
             var parameters = new Dictionary<string, object>
             {
-                { "@PanchayatId", panchayatId }
+                { "@UserRoleId", userRoleId }
             };
-            var dataset = _sqlDataAccess.GetDataSetByStoredProc("PanchayatGet_sp", parameters);
+            var dataset = _sqlDataAccess.GetDataSetByStoredProc("UserRoleGet_sp", parameters);
 
             return Map(dataset).First();
         }
 
-        public bool Remove(Panchayat panchayat)
+        public bool Remove(UserRole userRole)
         {
             throw new NotImplementedException();
         }
 
-        public bool Save(Panchayat panchayat)
+        public bool Save(UserRole userRole)
         {
             throw new NotImplementedException();
         }
 
-        private List<Panchayat> Map(DataSet dataset)
+        private List<UserRole> Map(DataSet dataset)
         {
             if(dataset.Tables.Count == 0 || dataset.Tables[0].Rows.Count == 0)
             {
-                return new List<Panchayat>();
+                return new List<UserRole>();
             }
 
-            var panchayats = dataset.Tables[0].AsEnumerable().Select(row => new Panchayat()
+            var userRoles = dataset.Tables[0].AsEnumerable().Select(row => new UserRole()
             {
-                PanchayatId = Convert.ToInt32(row["PanchayatId"]),
-                PanchayatName = Convert.ToString(row["PanchayatName"]),
+                UserRoleId = Convert.ToInt32(row["UserRoleId"]),
+                UserRoleName = Convert.ToString(row["UserRoleName"]),
+                Description = Convert.ToString(row["Description"]),
                 LastModifiedOn = Convert.ToDateTime(row["LastModifiedOn"]),
                 LastModifiedBy = Convert.ToInt32(row["LastModifiedBy"]),
                 LastModifiedByFullName = Convert.ToString(row["LastModifiedByFullName"]),
                 IsActive = Convert.ToBoolean(row["IsActive"])
             }).ToList();
 
-            return panchayats;
+            return userRoles;
         }
     }
 }
