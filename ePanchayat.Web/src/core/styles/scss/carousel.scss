@@ -35,10 +35,20 @@ img {
     width: 25% !important;
 }
 
+.carousel-control .icon-prev {
+    position: absolute;
+    left: 10px;
+}
+
+.carousel-control .icon-next {
+    position: absolute;
+    right: 10px;
+}
+
 .carousel-control .icon-prev,
 .carousel-control .icon-next {
     transform: scale(1.5);
-    color: $primary-color;
+    color: $core-blue-3;
 }
 
 .carousel-control .icon-prev:hover,
@@ -59,7 +69,7 @@ a.right.carousel-control.carousel-control-next {
 /* dark theme */
 .core-dark-theme .carousel-control .icon-prev,
 .core-dark-theme .carousel-control .icon-next {
-    color: $primary-color;
+    color: $core-blue-3;
 }
 
 .core-dark-theme a.left.carousel-control.carousel-control-prev,

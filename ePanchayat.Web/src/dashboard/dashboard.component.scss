@@ -88,12 +88,11 @@
     margin: 15px;
     cursor: pointer;
     background: #fff;
-    border: 1px solid $panel-border-color-light;
-    border-radius: 5px;
+    border: 1px solid $secondary-color !important;
     transition: all 300ms;
     padding: 15px;
     min-height: 200px;
-    box-shadow: 0 0 5px $supporting-color;
+    box-shadow: 0 0 5px $primary-color;
 
     @media(min-width: 2100px) {
         & {
