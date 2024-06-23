@@ -5,6 +5,15 @@ import { VehicleModule, VehicleComponent } from '@features/admin';
 import { WipModule, WipComponent } from '../wip/index';
 
 import {
+  VehicleModule,
+  VehicleComponent,
+  EmployeeModule,
+  EmployeeComponent,
+  HouseModule,
+  HouseComponent
+} from '@features/admin';
+
+import {
   ModuleContainerComponent,
   ModuleContainerModule,
   ModuleHomeComponent,
@@ -38,8 +47,13 @@ const adminRoutes: Route[] = [
       },
       {
         path: 'house',
-        component: WipComponent,
+        component: HouseComponent,
         data: { description: 'House' },
+      },
+      {
+        path: 'vehicles',
+        component: VehicleComponent,
+        data: { description: 'Vehicle' },
       },
       {
         path: 'users',
@@ -52,18 +66,13 @@ const adminRoutes: Route[] = [
         data: { description: 'Qualification' },
       },
       {
-        path: 'vehicles',
-        component: VehicleComponent,
-        data: { description: 'Vehicle' },
-      },
-      {
         path: 'panchayat',
         component: WipComponent,
         data: { description: 'Panchayat' },
       },
-      {
+	  {
         path: 'employees',
-        component: WipComponent,
+        component: EmployeeComponent,
         data: { description: 'Employees' },
       },
     ],
@@ -76,6 +85,8 @@ const adminRoutes: Route[] = [
     ModuleContainerModule,
     WipModule,
     VehicleModule,
+	EmployeeModule,
+	HouseModule
   ],
 })
 export class AdminRoutesModule {}

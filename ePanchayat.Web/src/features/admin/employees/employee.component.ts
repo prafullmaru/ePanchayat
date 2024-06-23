@@ -15,32 +15,28 @@ import {
   dateFormats,
 } from '@core/services';
 
-import { CrudOperationEnum, TabInfo } from '@core/models';
+import { CrudOperationEnum } from '@core/models';
 import { BsModalRef } from 'ngx-bootstrap/modal';
 
-import { Vehicle } from './model';
+import { Employee } from './model';
 import { testData } from './sampleData';
 
 @Component({
-  selector: 'vehicle',
-  templateUrl: 'vehicle.component.html',
+  selector: 'employee',
+  templateUrl: 'employee.component.html',
 })
-export class VehicleComponent {
+export class EmployeeComponent {
   @Input() mode: CrudOperationEnum;
   @Input() showOnlyDetails = false;
 
   manufactureDate: CalendarDate;
-
-  tabs: TabInfo[];
-  activeTab: TabInfo;
-  loadedTabs: string[];
   modalRef: BsModalRef;
 
   gridOptions: CoreGridOptions;
   gridApi: CoreGridApi;
   columnDefs: CoreColumnDef[];
 
-  vehicles: Vehicle[];
+  employees: Employee[];
 
   constructor(
     private dateService: DateInternationalizationService,
@@ -50,11 +46,7 @@ export class VehicleComponent {
   ngOnInit() {
     this.configureGrid();
     this.initializeDates();
-    testData.subscribe((data) => (this.vehicles = data));
-
-    this.initTabs();
-    this.activeTab = this.tabs.find((tab) => tab.isActive);
-    this.loadedTabs = [this.activeTab.description];
+    testData.subscribe((data) => (this.employees = data));
   }
 
   initializeDates() {
@@ -65,19 +57,8 @@ export class VehicleComponent {
     this.manufactureDate.cobDt = new Date();
   }
 
-  initTabs() {
-    this.tabs = [
-      {
-        description: '2 Wheeler',
-        isActive: true,
-        isLoaded: true,
-      },
-      { description: '4 Wheeler' },
-      { description: 'Tractor' },
-      { description: 'Truck' },
-      { description: 'Bus' },
-      { description: 'Others' },
-    ];
+  openDetails(params: Employee) {
+    console.log(params);
   }
 
   private configureGrid() {
@@ -95,18 +76,42 @@ export class VehicleComponent {
   private getColumnDefs(): CoreColumnDef[] {
     return [
       {
-        field: 'id',
-        headerName: 'ID',
+        field: 'All',
         width: 60,
+        headerCheckboxSelection: true,
+        checkboxSelection: true,
+        floatingFilter: false,
+        headerCheckboxSelectionFilteredOnly: true,
+        excludeFromExport: true,
       },
       {
-        field: 'registrationNumber',
-        headerName: 'Registration Number',
-        width: 140,
+        field: 'employeeId',
+        headerName: 'Employee Id',
+        width: 90,
       },
       {
-        field: 'owner',
-        headerName: 'Owner',
+        field: 'employeeId',
+        headerName: 'Details',
+        width: 50,
+        excludeFromExport: true,
+        floatingFilter: false,
+        floatingFilterComponentParams: {
+          suppressFilterButton: true,
+        },
+        cellRenderer: gridConstants.actionLinkRenderer,
+        cellRendererParams: () => ({
+          actionLinkIcon: 'fas fa-arrow-up-right-from-square',
+        }),
+        cellRendererOutputEvent: (params) => this.openDetails(params),
+      },
+      {
+        field: '',
+        headerName: '',
+        width: 120,
+      },
+      {
+        field: '',
+        headerName: '',
         width: 120,
       },
       {
@@ -123,7 +128,12 @@ export class VehicleComponent {
           this.gridUtility.dateFormatter(params.value, 'dd/MM/yyyy'),
       },
       {
-        field: 'id',
+        field: 'isActive',
+        headerName: 'Is Active',
+        width: 120,
+      },
+      {
+        field: 'employeeId',
         headerName: 'Delete',
         width: 100,
         cellRenderer: gridConstants.actionLinkRenderer,
