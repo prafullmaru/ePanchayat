@@ -8,6 +8,7 @@ import {
 } from 'src/module-container';
 
 import { HomeRouteGuard } from './home-route.guard';
+import { WipModule, WipComponent } from '../wip/index';
 
 const galleryRoutes: Route[] = [
   {
@@ -23,11 +24,35 @@ const galleryRoutes: Route[] = [
         component: ModuleHomeComponent,
         canActivate: [HomeRouteGuard],
       },
+      {
+        path: 'all-photos',
+        component: WipComponent,
+        data: { description: 'All Photos' },
+      },
+      {
+        path: 'all-vidoes',
+        component: WipComponent,
+        data: { description: 'All Videos' },
+      },
+      {
+        path: 'event-photos',
+        component: WipComponent,
+        data: { description: 'Event Photos' },
+      },
+      {
+        path: 'event-vidoes',
+        component: WipComponent,
+        data: { description: 'Event Videos' },
+      },
     ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(galleryRoutes), ModuleContainerModule],
+  imports: [
+    RouterModule.forChild(galleryRoutes),
+    ModuleContainerModule,
+    WipModule,
+  ],
 })
 export class GalleryRoutesModule {}

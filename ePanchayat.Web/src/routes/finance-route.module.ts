@@ -8,6 +8,7 @@ import {
 } from 'src/module-container';
 
 import { HomeRouteGuard } from './home-route.guard';
+import { WipModule, WipComponent } from '../wip/index';
 
 const financeRoutes: Route[] = [
   {
@@ -23,11 +24,30 @@ const financeRoutes: Route[] = [
         component: ModuleHomeComponent,
         canActivate: [HomeRouteGuard],
       },
+      {
+        path: 'ledger',
+        component: WipComponent,
+        data: { description: 'Ledger' },
+      },
+      {
+        path: 'tax-collection',
+        component: WipComponent,
+        data: { description: 'Tax Collection' },
+      },
+      {
+        path: 'balance-sheet',
+        component: WipComponent,
+        data: { description: 'Balance Sheet' },
+      },
     ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(financeRoutes), ModuleContainerModule],
+  imports: [
+    RouterModule.forChild(financeRoutes),
+    ModuleContainerModule,
+    WipModule,
+  ],
 })
 export class FinanceRoutesModule {}
