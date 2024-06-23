@@ -1,0 +1,54 @@
+<div class="ag-grid-header-custom-container">
+  <div *ngIf="title" class="title">{{ title }} &nbsp; | &nbsp;</div>
+  <div class="text">Total Rows: {{ totalItems | number }}</div>
+  <div class="text" *ngIf="visibleItems !== totalItems">
+    &nbsp;(Visible Items: {{ visibleItems }})
+  </div>
+  <div class="text" *ngIf="selectedItems">
+    &nbsp;(Selected Rows: {{ selectedItems }})
+  </div>
+
+  <div class="filter-pills-container">
+    <div
+      class="filter-pill"
+      *ngFor="let filterpill of filterpills"
+      (click)="clearFilterPill(filterpill.columnId)"
+    >
+      <strong class="expression">{{ filterpill.columnName }} </strong>
+      <span class="expression-value">{{ filterpill.expressionValue }}</span>
+      <i class="fas fa-xmark"></i>
+    </div>
+  </div>
+
+  <div *ngIf="!suppressMainMenu" class="ag-grid-header-button-container">
+    <div *ngIf="groupByItems" class="ag-grid-header-button group-by">
+      <core-dropdown
+        [selectedValue]="groupBy"
+        [options]="groupByItems"
+        (optionChange)="
+          groupByChange.emit($event); groupBy = $event; filterBy = ''
+        "
+      >
+      </core-dropdown>
+    </div>
+
+    <div *ngIf="filterByItems?.length" class="ag-grid-header-button group-by">
+      <core-dropdown
+        [selectedValue]="filterBy"
+        [options]="filterByItems"
+        (optionChange)="
+          filterByChange.emit($event); filterBy = $event; groupBy = ''
+        "
+      >
+      </core-dropdown>
+    </div>
+
+    <div
+      *ngIf="filterPresented"
+      class="ag-grid-header-button"
+      (click)="clearFilters()"
+    >
+      <i class="fas fa-times filter-icon-cancel"></i>
+    </div>
+  </div>
+</div>

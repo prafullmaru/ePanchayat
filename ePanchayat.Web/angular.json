@@ -40,16 +40,16 @@
               "src/assets"
             ],
             "styles": [
-              "src/assets/fontawesome-free/css/all.min.css",
               "src/main.less",
               "src/main.scss",
-              "src/core/styles/scss/bootstrapOverrides.scss"
+              "src/core/styles/scss/bootstrapOverrides.scss",
+              "node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/selectize/dist/js/standalone/selectize.min.js",
               "node_modules/sortablejs/Sortable.min.js",
-              "node_modules/bootstrap/dist//js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ],
             "vendorChunk": true,
             "extractLicenses": false,

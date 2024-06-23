@@ -1,0 +1,93 @@
+<div
+  [class]="'core-grid-container ag-theme-core-' + themeName"
+  [ngClass]="{ 'mouse-over': isMouseOver, 'grouped-grid': isGroupedGrid }"
+  [ngStyle]="{
+    height: getHeight(),
+    'min-height': minHeight,
+    overflow: height === '0px' ? 'hidden' : 'initial'
+  }"
+>
+  <div
+    class="bordered-grid height-100p {{ gridContainerClassName }}"
+    [ngClass]="{ 'footer-enabled': showAggregatedFooter }"
+  >
+    <header
+      *ngIf="showHeader"
+      title="{{ title }}"
+      [totalItems]="totalItems"
+      [selectedItems]="selectedItems"
+      [visibleItems]="visibleItems"
+      [iconsBySideBar]="iconsBySideBar"
+      [filterPresented]="filterPresented"
+      [columnsActive]="columnsActive"
+      [filtersActive]="filtersActive"
+      [actionsActive]="actionsActive"
+      [filterModel]="filterModel"
+      [columnDefs]="columnDefs"
+      [suppressMainMenu]="suppressMainMenu"
+      [filterByItems]="filterByItems"
+      [groupByItems]="groupByItems"
+      (onColumnsToggle)="handleColumnsToggle()"
+      (onFilterToggle)="handleFilterToggle()"
+      (onClearFilters)="handleClearFilters()"
+      (onActionsToggle)="handleActionsToggle()"
+      (filterModelChange)="onFilterModelChange($event)"
+      (filterByChange)="filterByChange.emit($event)"
+      (groupByChange)="groupByChange.emit($event)"
+    ></header>
+
+    <ag-grid-angular
+      #agGrid
+      [ngStyle]="{ width: width, height: '100%' }"
+      [gridOptions]="gridOptions"
+      [columnDefs]="columnDefs"
+      [rowData]="rowData"
+      [localeText]="localeText"
+      [rowSelection]="rowSelection"
+      [animateRows]="animateRows"
+      [context]="context"
+      [enableRangeSelection]="enableRangeSelection"
+      [allowContextMenuWithControlKey]="allowContextMenuWithControlKey"
+      [frameworkComponents]="customFrameworkComponents"
+      [deltaRowDataMode]="deltaRowDataMode"
+      [aggFuncs]="customAggFuncs"
+      [processCellForClipboard]="processCellCallback"
+      [suppressAggFuncInHeader]="suppressAggFuncInHeader"
+      [singleClickEdit]="singleClickEdit"
+      [stopEditingWhenGridLosesFocus]="stopEditingWhenGridLosesFocus"
+      [tabToNextCell]="tabToNextCell"
+      [getRowNodeId]="getRowNodeId"
+      [groupSelectsChildren]="groupSelectsChildren"
+      [icons]="icons"
+      [suppressRowClickSelection]="suppressRowClickSelection"
+      [sideBar]="sideBar"
+      (gridResize)="onGridResize($event)"
+      (selectionChanged)="selectionChanged.emit($event)"
+      (cellValueChanged)="cellValueChanged.emit($event)"
+      rowHeight="23"
+      floatingFiltersHeight="30"
+      [isExternalFilterPresent]="isExternalFilterPresent"
+      [doesExternalFilterPass]="doesExternalFilterPass"
+    >
+    </ag-grid-angular>
+
+    <ag-grid-angular
+      class="footer-grid"
+      *ngIf="showAggregatedFooter"
+      #footerGrid
+      [rowData]="footerRowData"
+      [gridoptions]="footerGridOptions"
+      [rowstyle]="{ fontweight: 'bold' }"
+      [columnDefs]="footerColumnDefs"
+      [suppressContextMenu]="true"
+    >
+    </ag-grid-angular>
+  </div>
+  <div *ngIf="summaryText">
+    <div
+      class="ui-grid-footer-info ui-grid-grid-footer grid-footer core-grid-footer"
+    >
+      <span class="pull-right sub-header fs-12">{{ summaryText }}</span>
+    </div>
+  </div>
+</div>

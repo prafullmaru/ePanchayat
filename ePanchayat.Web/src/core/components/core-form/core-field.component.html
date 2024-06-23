@@ -1,0 +1,34 @@
+<div class="form-group form-group-sm {{ formGroupClass }}">
+  <label
+    *ngIf="label"
+    class="control-label labelFont"
+    [tooltip]="hasError && finalErrors?.length ? label + 'is required' : ''"
+    [ngClass]="{
+      danger: finalErrors?.length,
+      'required-label': isRequired
+    }"
+  >
+    {{ label }}
+    <span *ngIf="isRequired">*</span>
+    <span
+      *ngIf="labelInfo"
+      class="control-secondary-label secondaryLabelFont"
+      >{{ labelInfo }}</span
+    >
+  </label>
+
+  <i
+    *ngIf="info"
+    class="info-icon fas fa-info-circle"
+    [tooltip]="info"
+    placement="top"
+  >
+  </i>
+
+  <div
+    class="form-field-content"
+    [ngClass]="{ 'input-danger-wrapper': finalErrors?.length }"
+  >
+    <ng-content></ng-content>
+  </div>
+</div>

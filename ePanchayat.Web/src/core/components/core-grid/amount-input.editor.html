@@ -1,0 +1,9 @@
+<input
+  #amount="ngModel"
+  class="editable-cell ag-cell-edit-input box right-align"
+  amountFormatter
+  [updateModelOnKeyPress]="true"
+  [style.width.px]="cellWidth"
+  [(ngModel)]="value"
+  (click)="onClick($event)"
+/>

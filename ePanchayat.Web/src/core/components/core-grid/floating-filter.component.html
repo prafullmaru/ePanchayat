@@ -1,0 +1,21 @@
+<div
+  [ngClass]='{"core-grid-filter-wrapper": true,"filter-text-disabled": disabled}'
+  id="floating-filter-{{ colDef.field }}"
+>
+  <input
+    type="text"
+    #search
+    class="filter-text"
+    [disabled]="disabled"
+    [placeholder]="placeholder"
+    [(ngModel)]="viewValue"
+    (ngModelChange)="onValueChange()"
+  />
+  <i
+    class="fas fa-times filter-icon-cancel"
+    role="button"
+    *ngIf="viewValue && !disabled"
+    (click)="viewValue = ''; onValueChange()"
+  >
+  </i>
+</div>

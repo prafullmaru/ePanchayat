@@ -1,0 +1,26 @@
+<span class="input-group">
+  <input
+    #calendarInput
+    type="text"
+    required
+    class="form-control {{ className }}"
+    #dpDate="bsDatepicker"
+    bsDatepicker
+    [disabled]="disabled"
+    [minDate]="date?.minDate"
+    [maxDate]="date?.maxDate"
+    [bsConfig]="date?.config"
+    [(ngModel)]="date.cobDt"
+    (ngModelChange)="onValueChange()"
+    [daysDisabled]="daysDisabled"
+  />
+  <span class="input-group-btn">
+    <button
+      type="button"
+      class="btn btn-primary btn-sm calendarBtn"
+      click="dpDate.toggle()"
+    >
+      <i class="fa-regular fa-calendar-days"></i>
+    </button>
+  </span>
+</span>

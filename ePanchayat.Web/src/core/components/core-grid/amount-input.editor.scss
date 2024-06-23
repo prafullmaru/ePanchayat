@@ -1,0 +1,23 @@
+@import "src/core/styles/scss/variables"; 
+@import "src/core/styles/scss/bootstrapOverridesVariables"; 
+
+.box { 
+    background-color: white; 
+    padding: 0 5px; 
+    border: inset 2px; 
+    height: 22px; 
+    outline: none;
+}
+
+@each $theme in $themes { 
+    :host-context(.ag-theme-core-#{$theme}) { 
+        .box { 
+            background-color: map_get($input-background-map, $theme); 
+            border: 1px solid map_get($input-border-color-active-map, $theme);
+        }
+    }
+}
+
+.width100pct {
+    width: 100%;
+}
