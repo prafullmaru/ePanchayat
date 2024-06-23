@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
 import { VehicleModule, VehicleComponent } from '@features/admin';
+import { WipModule, WipComponent } from '../wip/index';
 
 import {
   ModuleContainerComponent,
@@ -26,9 +27,44 @@ const adminRoutes: Route[] = [
         canActivate: [HomeRouteGuard],
       },
       {
-        path: 'vehicle',
+        path: 'role',
+        component: WipComponent,
+        data: { description: 'Role' },
+      },
+      {
+        path: 'role-access',
+        component: WipComponent,
+        data: { description: 'Role Access' },
+      },
+      {
+        path: 'house',
+        component: WipComponent,
+        data: { description: 'House' },
+      },
+      {
+        path: 'users',
+        component: WipComponent,
+        data: { description: 'User' },
+      },
+      {
+        path: 'qualifications',
+        component: WipComponent,
+        data: { description: 'Qualification' },
+      },
+      {
+        path: 'vehicles',
         component: VehicleComponent,
-        data: { description: 'vehicle' },
+        data: { description: 'Vehicle' },
+      },
+      {
+        path: 'panchayat',
+        component: WipComponent,
+        data: { description: 'Panchayat' },
+      },
+      {
+        path: 'employees',
+        component: WipComponent,
+        data: { description: 'Employees' },
       },
     ],
   },
@@ -38,6 +74,7 @@ const adminRoutes: Route[] = [
   imports: [
     RouterModule.forChild(adminRoutes),
     ModuleContainerModule,
+    WipModule,
     VehicleModule,
   ],
 })

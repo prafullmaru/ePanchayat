@@ -109,7 +109,7 @@ export class ModuleContainerComponent implements OnInit {
 
     const subMenus = sortBy(
       topMenu.SubMenus.filter(
-        (subMenu) => !subMenu.IsDisabled && subMenu.SortOrder === -1
+        (subMenu) => !subMenu.IsDisabled && subMenu.SortOrder !== -1
       ),
       ['SortOrder']
     );
