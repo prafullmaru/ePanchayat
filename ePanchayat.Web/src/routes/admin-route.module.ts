@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 
-import { VehicleModule, VehicleComponent } from '@features/admin';
-import { WipModule, WipComponent } from '../wip/index';
+import {
+  VehicleModule,
+  VehicleComponent,
+  EModule,
+  EComponent,
+  HouseModule,
+  HouseComponent,
+} from '@features/admin';
 
 import {
   ModuleContainerComponent,
@@ -11,6 +17,7 @@ import {
 } from 'src/module-container';
 
 import { HomeRouteGuard } from './home-route.guard';
+import { WipModule, WipComponent } from '../wip/index';
 
 const adminRoutes: Route[] = [
   {
@@ -38,7 +45,7 @@ const adminRoutes: Route[] = [
       },
       {
         path: 'house',
-        component: WipComponent,
+        component: HouseComponent,
         data: { description: 'House' },
       },
       {
@@ -63,7 +70,7 @@ const adminRoutes: Route[] = [
       },
       {
         path: 'employees',
-        component: WipComponent,
+        component: EComponent,
         data: { description: 'Employees' },
       },
     ],
@@ -76,6 +83,8 @@ const adminRoutes: Route[] = [
     ModuleContainerModule,
     WipModule,
     VehicleModule,
+    EModule,
+    HouseModule,
   ],
 })
 export class AdminRoutesModule {}
