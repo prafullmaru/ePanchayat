@@ -1,0 +1,19 @@
+@import "../node_modules/selectize/dist/css/selectize.default.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-grid.css";
+@import "../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css";
+@import "../node_modules/angular-tree-component/dist/angular-tree-component.css";
+@import "../node_modules/ngx-toastr/toastr.css";
+@import "../node_modules/angular-notifier/styles.css";
+@import "../node_modules/pretty-checkbox/dist/pretty-checkbox.css";
+@import "../node_modules/angular-archwizard/styles/archwizard.scss";
+@import "../src/core/styles/main";
+
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+
+.core-widgets-body {
+    height: auto;
+    padding-top: 0;
+}
