@@ -1,0 +1,53 @@
+<div class="panel panel-primary height-100p animated fadeIn" id="refDataPanel">
+    <div class="panel-heading">
+      <div class="btn-group dropdown-menu-right pull-right">
+        <a class="btn btn-primary" title="Add New" role="button">
+          <i class="fas fa-plus"></i>
+        </a>
+        <a class="btn btn-primary" title="Refresh" role="button">
+          <i class="fas fa-refresh"></i>
+        </a>
+        <a
+          class="btn btn-primary"
+          title="Download 360"
+          role="button"
+        >
+          <i class="fa-regular fa-circle-down"></i>
+        </a>
+        <a
+          class="btn btn-primary"
+          title="Download visible"
+          role="button"
+        >
+          <i class="fa-solid fa-download"></i>
+        </a>
+      </div>
+      <h4 class="panel-title">Employees</h4>
+  </div>
+  <div class="core-panel height-100p" *ngIf="!showOnlyDetails"> 
+    <div class="core-tab-panel">
+        <div class="row">
+          <div class="col-md-2">
+            <core-field label="Asset Type">
+              <input
+                class="form-control input-sm"
+                type="text"
+              />
+            </core-field>
+          </div>
+          <div class="col-md-3">
+            <button type="button" class="btn btn-primary mt-22">Update</button>
+          </div>
+        </div>
+    </div>
+    <div class="height-100p">
+        <core-grid
+            [gridOptions]="gridOptions"
+            [columnDefs]="columnDefs"
+            [rowData]="employees"
+            [rowSelection]="'multiple'"
+            [suppressRowClickSelection]="true"
+        >
+        </core-grid>
+    </div>
+  </div>

@@ -3,7 +3,11 @@ import { Route, RouterModule } from '@angular/router';
 
 import {
   VehicleModule,
-  VehicleComponent
+  VehicleComponent,
+  EmployeeModule,
+  EmployeeComponent,
+  HouseModule,
+  HouseComponent
 } from '@features/admin';
 
 import {
@@ -29,10 +33,20 @@ const adminRoutes: Route[] = [
         canActivate: [HomeRouteGuard],
       },
       {
+        path: 'house',
+        component: HouseComponent,
+        data: { description: 'House' },
+      },
+      {
         path: 'vehicles',
         component: VehicleComponent,
         data: { description: 'Vehicle' },
       }
+      {
+        path: 'employees',
+        component: EmployeeComponent,
+        data: { description: 'Employees' },
+      },
     ],
   },
 ];
@@ -41,7 +55,9 @@ const adminRoutes: Route[] = [
   imports: [
     RouterModule.forChild(adminRoutes),
     ModuleContainerModule,
-    VehicleModule
+    VehicleModule,
+    EmployeeModule,
+    HouseModule
   ],
 })
 export class AdminRoutesModule {}
