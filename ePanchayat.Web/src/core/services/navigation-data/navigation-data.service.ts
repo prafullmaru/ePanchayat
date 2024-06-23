@@ -21,7 +21,7 @@ export class NavigationDataService {
           {
             SubMenuId: 1,
             Description: 'Ledger',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-book',
             IsDisabled: false,
             Location: 'finance/ledger',
             ObjectTypeName: 'ledger',
@@ -31,7 +31,7 @@ export class NavigationDataService {
           {
             SubMenuId: 2,
             Description: 'Tax Collection',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-receipt',
             IsDisabled: false,
             Location: 'finance/tax-collection',
             ObjectTypeName: 'TaxCollection',
@@ -41,7 +41,7 @@ export class NavigationDataService {
           {
             SubMenuId: 3,
             Description: 'Balance Sheet',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-scale-balanced',
             IsDisabled: false,
             Location: 'finance/balance-sheet',
             ObjectTypeName: 'BalanceSheet',
@@ -63,7 +63,7 @@ export class NavigationDataService {
           {
             SubMenuId: 1,
             Description: 'Status',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-bars-staggered',
             IsDisabled: false,
             Location: 'complaint/status',
             ObjectTypeName: 'Status',
@@ -73,7 +73,7 @@ export class NavigationDataService {
           {
             SubMenuId: 2,
             Description: 'Report New',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-file-circle-plus',
             IsDisabled: false,
             Location: 'complaint/report-new',
             ObjectTypeName: 'ReportNew',
@@ -95,7 +95,7 @@ export class NavigationDataService {
           {
             SubMenuId: 1,
             Description: 'Events',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-calendar-day',
             IsDisabled: false,
             Location: 'events/events',
             ObjectTypeName: 'Events',
@@ -105,7 +105,7 @@ export class NavigationDataService {
           {
             SubMenuId: 2,
             Description: 'Announcements',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-volume-high',
             IsDisabled: false,
             Location: 'events/announcements',
             ObjectTypeName: 'Announcements',
@@ -127,7 +127,7 @@ export class NavigationDataService {
           {
             SubMenuId: 1,
             Description: 'All Photos',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-image',
             IsDisabled: false,
             Location: 'gallery/all-photos',
             ObjectTypeName: 'AllPhotos',
@@ -137,7 +137,7 @@ export class NavigationDataService {
           {
             SubMenuId: 2,
             Description: 'All Videos',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-video',
             IsDisabled: false,
             Location: 'gallery/all-vidoes',
             ObjectTypeName: 'AllVideos',
@@ -147,7 +147,7 @@ export class NavigationDataService {
           {
             SubMenuId: 3,
             Description: 'Event Photos',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-calendar-days',
             IsDisabled: false,
             Location: 'gallery/event-photos',
             ObjectTypeName: 'EventPhotos',
@@ -157,7 +157,7 @@ export class NavigationDataService {
           {
             SubMenuId: 4,
             Description: 'Event Videos',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-calendar-days',
             IsDisabled: false,
             Location: 'gallery/event-vidoes',
             ObjectTypeName: 'EventVideos',
@@ -190,7 +190,7 @@ export class NavigationDataService {
           {
             SubMenuId: 1,
             Description: 'By Gender',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-venus-mars',
             IsDisabled: false,
             Location: 'analytics/by-gender',
             ObjectTypeName: 'ByGender',
@@ -200,7 +200,7 @@ export class NavigationDataService {
           {
             SubMenuId: 2,
             Description: 'By Qualifications',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-graduation-cap',
             IsDisabled: false,
             Location: 'analytics/by-qualifications',
             ObjectTypeName: 'ByQualifications',
@@ -210,7 +210,7 @@ export class NavigationDataService {
           {
             SubMenuId: 3,
             Description: 'By Vehicles',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-car-side',
             IsDisabled: false,
             Location: 'analytics/by-vehicles',
             ObjectTypeName: 'ByVehicles',
@@ -220,7 +220,7 @@ export class NavigationDataService {
           {
             SubMenuId: 4,
             Description: 'By Tax Collection',
-            Icon: 'fa-solid fa-user-group',
+            Icon: 'fa-solid fa-file-invoice-dollar',
             IsDisabled: false,
             Location: 'analytics/by-tax-collection',
             ObjectTypeName: 'ByTaxCollection',
