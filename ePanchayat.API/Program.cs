@@ -15,6 +15,7 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    //Add Swagger support
     app.UseSwagger();
     app.UseSwaggerUI();
 }
