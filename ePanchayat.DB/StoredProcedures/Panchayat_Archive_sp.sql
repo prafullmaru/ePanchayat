@@ -1,0 +1,32 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww37900\viewh20740\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 IF OBJECT_ID('dbo.Panchayat_Archive_sp') IS NOT NULL\
+BEGIN\
+	DROP PROCEDURE dbo.Panchayat_Archive_sp\
+END\
+GO\
+\
+CREATE PROCEDURE dbo.Panchayat_Archive_sp\
+(\
+	@Date date \
+)\
+AS\
+BEGIN\
+ INSERT INTO dbo.Panchayat_tbl_history (PanchayatId,PanchayatName,LastModifiedOn,LastModifiedBy,IsActive)\
+	SELECT\
+		 H.PanchayatId\
+		,H.PanchayatName\
+		,H.LastModifiedOn\
+		,H.LastModifiedBy\
+		,H.IsActive\
+	FROM\
+		dbo.Panchayat_tbl H\
+	WHERE\
+		LastModifiedOn < @Date\
+END\
+GO}
