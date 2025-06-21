@@ -20,3 +20,14 @@ VALUES (
   '/uploads/schemes/beneficiary_form_101.pdf',
   'scheme', 101, 5, 'Initial application form'
 );
+
+INSERT INTO documents (
+  file_name, file_type, file_path,
+  linked_module, linked_id, uploaded_by, remarks
+)
+VALUES (
+  'beneficiary_form.pdf', 'pdf',
+  '/uploads/schemes/beneficiary_form_101.pdf',
+  'scheme', 102, 6, 'Final application form'
+);
+
